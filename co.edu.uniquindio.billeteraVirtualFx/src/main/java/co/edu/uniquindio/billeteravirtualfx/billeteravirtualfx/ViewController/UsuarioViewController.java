@@ -200,8 +200,8 @@ public class UsuarioViewController {
 
     private UsuarioDto construirUsuarioDto() {
         return new UsuarioDto(
-                txtNombreUsuario.getText(),
                 txtCedulaUsuario.getText(),
+                txtNombreUsuario.getText(),
                 txtCorreoUsuario.getText(),
                 txtTelefonoUsuario.getText(),
                 Double.valueOf(txtSaldoUsuario.getText())
