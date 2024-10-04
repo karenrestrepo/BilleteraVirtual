@@ -15,6 +15,11 @@ public class ModelFactory implements IModelFactoryService {
 
     BillerteraVirtual billerteraVirtual;
     UsuarioMapper mapper = UsuarioMapper.INSTANCE;
+
+    public static void registrarAccionesSistema(String mensaje, int nivel, String accion) {
+        //Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+    }
+
     private static class SingletonHolder {
         private final static ModelFactory INSTANCE = new ModelFactory();
     }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="599.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.TransaccionViewController">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="592.0" prefWidth="867.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="865.0">
+               <children>
+                  <TextField fx:id="txtIdTransaccion" layoutX="133.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Button fx:id="btnAgregarUsuario" layoutX="367.0" layoutY="257.0" mnemonicParsing="false" onAction="#onCrearTransaccion" text="Crear Transacción" />
+                  <Label layoutX="35.0" layoutY="40.0" text="Id transacción:" />
+                  <Label layoutX="78.0" layoutY="96.0" text="Fecha:" />
+                  <Label layoutX="436.0" layoutY="40.0" text="Descripción (opcional):" />
+                  <Label layoutX="462.0" layoutY="96.0" text="Cuenta de origen:" />
+                  <TextField fx:id="txtCuentaOrigenTransaccion" layoutX="578.0" layoutY="93.0" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="txtDescripcionTransaccion" layoutX="578.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="txtFechaTransaccion" layoutX="133.0" layoutY="92.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Separator layoutX="-1.0" layoutY="244.0" prefHeight="5.0" prefWidth="865.0" />
+                  <TextField fx:id="txtTipoTransaccion" layoutX="133.0" layoutY="146.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Label layoutX="6.0" layoutY="150.0" text="Tipo de transacción:" />
+                  <Label layoutX="4.0" layoutY="1.0" text="Información transacción" />
+                  <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
+                  <TextField fx:id="txtCuentaDestinoTransaccion" layoutX="578.0" layoutY="146.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Label layoutX="474.0" layoutY="150.0" text="Cuenta destino:" />
+                  <TextField fx:id="txtMontoTransaccion" layoutX="133.0" layoutY="199.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Label layoutX="73.0" layoutY="203.0" text="Monto:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="865.0">
+               <children>
+                  <TableView fx:id="tableTransaccion" layoutX="-1.0" layoutY="69.0" prefHeight="219.0" prefWidth="865.0">
+                     <columns>
+                        <TableColumn fx:id="tcIdTransaccion" prefWidth="106.0" text="Id transacción" />
+                        <TableColumn fx:id="tcFechaTransaccion" minWidth="0.0" prefWidth="81.0" text="Fecha" />
+                        <TableColumn fx:id="tcTipoTransaccion" prefWidth="105.0" text="Tipo" />
+                        <TableColumn fx:id="tcMontoTransaccion" prefWidth="118.0" text="Monto" />
+                        <TableColumn fx:id="tcDescripcionTransaccion" prefWidth="187.0" text="Descripción" />
+                        <TableColumn fx:id="tcCuentaOrigen" prefWidth="131.0" text="Cuenta origen" />
+                        <TableColumn fx:id="tcCuentaDestinoTransaccion" prefWidth="136.0" text="Cuenta destino" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="txtFiltrarTransaccion" layoutX="94.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0" />
+                  <Label layoutX="29.0" layoutY="27.0" text="Filtrar por:" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

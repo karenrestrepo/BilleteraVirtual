@@ -8,6 +8,7 @@ public class Usuario {
     private String email;
     private String telefono;
     private double saldo;
+    private String contraseña;
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
@@ -68,5 +69,13 @@ public class Usuario {
 
     public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 }

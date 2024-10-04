@@ -5,5 +5,5 @@ public record UsuarioDto(
         String nombre,
         String email,
         String telefono,
-        double saldo) {
+        Double saldo) {
 }
