@@ -1,11 +1,15 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory;
 
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.Service.IModelFactoryService;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.TransaccionMapper;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.UsuarioMapper;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistencia;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.BilleteraVirtualUtils;
 
@@ -15,10 +19,17 @@ public class ModelFactory implements IModelFactoryService {
 
     BillerteraVirtual billerteraVirtual;
     UsuarioMapper mapper = UsuarioMapper.INSTANCE;
+    TransaccionMapper transaccionMapper = TransaccionMapper.INSTANCE;
 
     public static void registrarAccionesSistema(String mensaje, int nivel, String accion) {
-        //Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+        Persistencia.guardaRegistroLog(mensaje, nivel, accion);
     }
+
+    public List<TransaccionDto> obtenerTransacciones() {
+        return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
+    }
+
+
 
     private static class SingletonHolder {
         private final static ModelFactory INSTANCE = new ModelFactory();
@@ -86,6 +97,27 @@ public class ModelFactory implements IModelFactoryService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean crearTransaccion(TransaccionDto transaccionDto) {
+        try{
+            if(!billerteraVirtual.verificarCuentaExistente(transaccionDto.cuentaOrigen())) {
+                Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
+                getBillerteraVirtual().crearTransaccion(transaccion);
+                registrarAccionesSistema("Transacción realizada: "+ transaccion.getIdTransaccion(),1,"crearTransaccion");
+                guardarResourceXML();
+            }
+            return true;
+        }catch (TransaccionException e){
+            e.getMessage();
+            registrarAccionesSistema(e.getMessage(),3,"crearTransaccion");
+            return false;
+        }
+    }
+
+    private void guardarResourceXML() {
+        Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);
     }
 }
 

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46c6ec00-6b7c-4786-b3f8-6c61f69a57df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.billeteraVirtualFx/src/main/resources/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Usuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.billeteraVirtualFx/src/main/resources/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Usuario.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,16 +24,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev__programacion",
-    "last_opened_file_path": "C:/Users/proin/Downloads/Intelligent/Mi repositorio/P3/BilleteraVirtual/co.edu.uniquindio.billeteraVirtualFx",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__programacion&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/proin/Downloads/Intelligent/Mi repositorio/P3/BilleteraVirtual/co.edu.uniquindio.billeteraVirtualFx&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,6 +45,7 @@
       <workItem from="1726849062732" duration="137000" />
       <workItem from="1728069245520" duration="75000" />
       <workItem from="1728069451831" duration="107000" />
+      <workItem from="1728142404777" duration="33000" />
     </task>
     <servers />
   </component>

@@ -24,7 +24,7 @@ public class UsuarioApplication extends Application {
     public void mostrarVentanaPrincipal() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UsuarioApplication.class.getResource("Usuario.fxml" +
+            loader.setLocation(UsuarioApplication.class.getResource("BilleteraView.fxml" +
                     ""));
             AnchorPane rootLayout = (AnchorPane) loader.load();
             UsuarioViewController usuarioViewController = loader.getController();

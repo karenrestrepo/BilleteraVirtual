@@ -1,5 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
 
@@ -139,5 +140,31 @@ public class BillerteraVirtual implements IBilleteraVirtualService {
     @Override
     public ArrayList<Usuario> obtenerUsuario() {
         return getListaUsuarios();
+    }
+
+    @Override
+    public boolean verificarCuentaExistente(String cuenta) throws TransaccionException {
+        if(!transaccionExiste(cuenta)){
+            throw new TransaccionException("La cuenta de origen: "+cuenta+" no existe");
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public void crearTransaccion(Transaccion nuevaTransaccion) throws TransaccionException{
+        getListaTransacciones().add(nuevaTransaccion);
+
+    }
+
+    private boolean transaccionExiste(String cuenta) {
+        boolean transaccionEncontrada = false;
+        for (Cuenta cuenta1 : getListaCuentas()) {
+            if(cuenta1.getNumeroCuenta().equalsIgnoreCase(cuenta)){
+                transaccionEncontrada = true;
+                break;
+            }
+        }
+        return transaccionEncontrada;
     }
 }

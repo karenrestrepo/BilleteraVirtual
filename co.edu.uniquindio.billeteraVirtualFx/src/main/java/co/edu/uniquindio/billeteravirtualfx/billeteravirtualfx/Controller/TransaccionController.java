@@ -6,14 +6,20 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.ModelFact
 import java.util.List;
 
 public class TransaccionController implements ITransaccionControllerService {
+    ModelFactory modelFactory;
+
+    public TransaccionController(){
+        modelFactory = ModelFactory.getInstance();
+    }
     @Override
     public List<TransaccionDto> obtenerTransacciones() {
-        return null;
+        return modelFactory.obtenerTransacciones();
     }
 
     @Override
     public boolean crearTransaccion(TransaccionDto transaccionDto) {
-        return false;
+
+        return modelFactory.crearTransaccion(transaccionDto);
     }
 
     @Override

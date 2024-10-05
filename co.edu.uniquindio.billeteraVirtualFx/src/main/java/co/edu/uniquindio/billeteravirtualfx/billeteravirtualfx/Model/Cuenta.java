@@ -3,7 +3,7 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 public class Cuenta {
     private String idCuenta;
     private String nombreBanco;
-    private int numeroCuenta;
+    private String numeroCuenta;
     private String tipoCuenta;
 
 
@@ -26,11 +26,11 @@ public class Cuenta {
         this.nombreBanco = nombreBanco;
     }
 
-    public int getNumeroCuenta() {
+    public String getNumeroCuenta() {
         return numeroCuenta;
     }
 
-    public void setNumeroCuenta(int numeroCuenta) {
+    public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 

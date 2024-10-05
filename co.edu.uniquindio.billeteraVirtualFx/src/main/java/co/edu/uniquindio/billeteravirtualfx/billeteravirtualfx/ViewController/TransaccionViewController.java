@@ -1,6 +1,7 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionController;
@@ -90,6 +91,7 @@ public class TransaccionViewController {
         tableTransaccion.getItems().clear();
         tableTransaccion.setItems(listaTransaccionesDto);
         listenerSelection();
+        mostrarTransaccion();
     }
 
     private void initDataBinding() {
@@ -135,19 +137,22 @@ public class TransaccionViewController {
 
     private void crearTransaccion() {
         TransaccionDto transaccionDto = construirTransaccionDto();
-        if(datosValidos(transaccionDto)){
-            if(transaccionControllerService.crearTransaccion(transaccionDto)){
-                listaTransaccionesDto.add(transaccionDto);
-                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposTransaccion();
-                registrarAcciones("Empleado agregado",1, "Agregar empleado");
-            }else{
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+        if(datosValidos(transaccionDto)) {
+            if (mostrarMensajeConfirmacion("¿Estas seguro de la realización de la transacción?")) {
+                if (transaccionControllerService.crearTransaccion(transaccionDto)) {
+                    listaTransaccionesDto.add(transaccionDto);
+                    mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+                    limpiarCamposTransaccion();
+                    registrarAcciones("Empleado agregado", 1, "Agregar empleado");
+                } else {
+                    mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+                }
+            } else {
+                mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
             }
-        }else{
-            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
         }
     }
+
 
     private boolean datosValidos(TransaccionDto transaccionDto) {
         String mensaje = "";
@@ -169,12 +174,24 @@ public class TransaccionViewController {
         }
     }
 
-    private void mostrarMensaje(String notificaciónCliente, String datosInvalidos, String mensaje, Alert.AlertType alertType) {
+    private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
         Alert aler = new Alert(alertType);
         aler.setTitle(titulo);
         aler.setHeaderText(header);
         aler.setContentText(contenido);
         aler.showAndWait();
+    }
+    private boolean mostrarMensajeConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Confirmación");
+        alert.setContentText(mensaje);
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private TransaccionDto construirTransaccionDto() {
@@ -199,6 +216,24 @@ public class TransaccionViewController {
     }
     private void registrarAcciones(String mensaje, int nivel, String accion) {
         transaccionControllerService.registrarAcciones(mensaje, nivel, accion);
+    }
+
+    private void mostrarTransaccion() {
+        txtFiltrarTransaccion.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtrarTablas(newValue.toLowerCase());
+        });
+    }
+
+    private void filtrarTablas(String valorBusqueda) {
+        ObservableList<TransaccionDto> transaccionFiltrada = FXCollections.observableArrayList();
+        for (TransaccionDto transaccionDto : listaTransaccionesDto) {
+            if (transaccionDto.fecha().toLowerCase().contains(valorBusqueda.toLowerCase()) ||
+                    transaccionDto.tipo().toLowerCase().contains(valorBusqueda.toLowerCase()))
+                    {
+                        transaccionFiltrada.add(transaccionDto);
+            }
+        }
+        tableTransaccion.setItems(transaccionFiltrada);
     }
 
 }

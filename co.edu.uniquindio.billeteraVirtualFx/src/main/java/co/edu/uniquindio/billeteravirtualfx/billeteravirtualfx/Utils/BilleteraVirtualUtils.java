@@ -1,6 +1,7 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 
 public class BilleteraVirtualUtils {
@@ -31,6 +32,27 @@ public class BilleteraVirtualUtils {
         usuario2.setTelefono("314268");
         usuario2.setSaldo(150000);
         billerteraVirtual.getListaUsuarios().add(usuario2);
+
+        Cuenta cuenta = new Cuenta();
+        cuenta.setIdCuenta("0110");
+        cuenta.setNumeroCuenta("4566555");
+        cuenta.setTipoCuenta("Ahorros");
+        cuenta.setNombreBanco("Davivienda");
+        usuario.getListaCuentas().add(cuenta);
+
+        Cuenta cuenta1 = new Cuenta();
+        cuenta1.setIdCuenta("0111");
+        cuenta1.setNumeroCuenta("9654445");
+        cuenta1.setTipoCuenta("Ahorros");
+        cuenta1.setNombreBanco("Bancolombia");
+        usuario1.getListaCuentas().add(cuenta1);
+
+        Cuenta cuenta2 = new Cuenta();
+        cuenta2.setIdCuenta("0112");
+        cuenta2.setNumeroCuenta("4500555");
+        cuenta2.setTipoCuenta("Corriente");
+        cuenta2.setNombreBanco("Davivienda");
+        usuario2.getListaCuentas().add(cuenta2);
 
         return billerteraVirtual;
     }
