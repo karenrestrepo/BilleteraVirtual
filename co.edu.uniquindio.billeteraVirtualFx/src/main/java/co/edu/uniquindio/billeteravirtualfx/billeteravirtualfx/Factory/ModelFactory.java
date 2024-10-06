@@ -13,6 +13,7 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistenci
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.BilleteraVirtualUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ModelFactory implements IModelFactoryService {
@@ -40,7 +41,40 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     public ModelFactory() {
+
+        //1. inicializar datos y luego guardarlo en archivos
+        System.out.println("invocación clase singleton");
+       cargarDatosBase();
+       salvarDatosPrueba();
+
+        //2. Cargar los datos de los archivos
+//		cargarDatosDesdeArchivos();
+
+        //3. Guardar y Cargar el recurso serializable binario
+//		cargarResourceBinario();
+//		guardarResourceBinario();
+
+        //4. Guardar y Cargar el recurso serializable XML
+//		guardarResourceXML();
+        //cargarResourceXML();
+
+        //Siempre se debe verificar si la raiz del recurso es null
+
+        if(billerteraVirtual == null){
+            cargarDatosBase();
+            guardarResourceXML();
+        }
+        registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
         cargarDatosBase();
+    }
+
+    private void salvarDatosPrueba() {
+        try {
+            Persistencia.guardarUsuarios(getBillerteraVirtual().getListaUsuarios());
+
+        }catch (IOException e){
+          throw new RuntimeException(e);
+       }
     }
 
     private void cargarDatosBase() {
