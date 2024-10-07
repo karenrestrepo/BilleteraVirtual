@@ -57,6 +57,8 @@ public class UsuarioViewController {
 
     @FXML
     private TextField txtCorreoUsuario;
+    @FXML
+    private TextField txtContraseñaUsuario;
 
     @FXML
     private TextField txtFiltrarUsuario;
@@ -214,6 +216,8 @@ public class UsuarioViewController {
         txtCorreoUsuario.setText("");
         txtTelefonoUsuario.setText("");
         txtSaldoUsuario.setText("");
+        txtContraseñaUsuario.setText("");
+
 
     }
 

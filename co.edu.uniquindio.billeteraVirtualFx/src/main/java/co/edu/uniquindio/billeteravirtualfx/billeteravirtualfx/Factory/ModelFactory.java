@@ -152,6 +152,7 @@ public class ModelFactory implements IModelFactoryService {
         try {
             Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
             getBillerteraVirtual().actualizarUsuario(idActual, usuario);
+            guardarResourceXML();
             return true;
         } catch (UsuarioException e) {
             e.printStackTrace();
