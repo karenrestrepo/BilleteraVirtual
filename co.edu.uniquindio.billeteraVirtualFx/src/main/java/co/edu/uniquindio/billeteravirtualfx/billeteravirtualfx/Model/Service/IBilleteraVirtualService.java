@@ -1,6 +1,7 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 
@@ -19,4 +20,6 @@ public interface IBilleteraVirtualService {
     void crearTransaccion(Transaccion transaccion) throws TransaccionException;
 
     boolean verificarCredenciales(String correo, String contraseña);
+
+    Cuenta obtenerCuentaPorNumero(String dato);
 }

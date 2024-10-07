@@ -1,0 +1,4 @@
+0113@@2024-10-07@@Consignacion@@50000.0@@@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@4e4bc2ad@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@1923b98f
+0113@@2024-10-07@@Consignacion@@50000.0@@@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@62a6c64@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@1e5adc16
+0113@@2024-10-07@@Consignacion@@50000.0@@@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@7c9e9563@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@12f42efd
+0114@@2024-10-07@@Retiro@@30000.0@@@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@5c7d7540@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@7cb25071

@@ -143,3 +143,47 @@ oct 07, 2024 3:16:12 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 INFO: crearTransaccion,Transacción realizada: 0113,2024-10-07
 oct 07, 2024 3:16:18 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: Agregar empleado,Empleado agregado,2024-10-07
+oct 07, 2024 3:22:24 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 3:22:44 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: julian@gmail.com,2024-10-07
+oct 07, 2024 3:23:50 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 3:25:59 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 3:26:10 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: manu@gmail.com,2024-10-07
+oct 07, 2024 3:26:47 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: manu@gmail.com,2024-10-07
+oct 07, 2024 3:26:57 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-10-07
+oct 07, 2024 3:54:06 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 3:56:15 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: crearTransaccion,Transacción realizada: 0114,2024-10-07
+oct 07, 2024 3:56:20 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: Agregar empleado,Empleado agregado,2024-10-07
+oct 07, 2024 3:58:51 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 3:59:05 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: isa@gmail.com,2024-10-07
+oct 07, 2024 3:59:50 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: crearTransaccion,Transacción realizada: 0115,2024-10-07
+oct 07, 2024 3:59:56 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: Agregar empleado,Empleado agregado,2024-10-07
+oct 07, 2024 4:26:01 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 4:26:20 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: isa@gmail.com,2024-10-07
+oct 07, 2024 4:28:24 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: crearTransaccion,Transacción realizada: 0116,2024-10-07
+oct 07, 2024 4:28:25 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: Agregar empleado,Empleado agregado,2024-10-07
+oct 07, 2024 4:30:58 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 4:31:12 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: isa@gmail.com,2024-10-07
+oct 07, 2024 4:31:48 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: crearTransaccion,Transacción realizada: 0117,2024-10-07
+oct 07, 2024 4:31:49 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: Agregar empleado,Empleado agregado,2024-10-07

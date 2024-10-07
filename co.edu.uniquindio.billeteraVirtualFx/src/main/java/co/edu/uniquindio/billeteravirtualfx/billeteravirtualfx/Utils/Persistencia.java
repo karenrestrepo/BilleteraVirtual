@@ -1,6 +1,8 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 
 import java.io.File;
@@ -18,10 +20,12 @@ public class Persistencia {
     private static final String RUTA_DIRECTORIO_RESPALDO = "src/main/resources/persistencia/Respaldo/";
     private static final String RUTA_DIRECTORIO_USUARIOS = "src/main/resources/persistencia/archivos/";
     private static final String PREFIJO_ARCHIVO_USUARIOS = "archivoUsuarios";
+    private static final String RUTA_DIRECTORIO_TRANSACCION = "src/main/resources/persistencia/archivos/";
+    private static final String PREFIJO_ARCHIVO_TRANSACCION = "archivoTransacciones";
     private static final String EXTENSION_ARCHIVO = ".txt";
 
 
-    private static void verificarDirectorios() {
+    private static void verificarDirectoriosUsuarios() {
         File directorioUsuarios = new File(RUTA_DIRECTORIO_USUARIOS);
         File directorioRespaldo = new File(RUTA_DIRECTORIO_RESPALDO);
 
@@ -33,7 +37,7 @@ public class Persistencia {
         }
     }
 
-    public static String obtenerRutaArchivoMasReciente() {
+    public static String obtenerRutaArchivoMasRecienteUsuario() {
         File directorio = new File(RUTA_DIRECTORIO_USUARIOS);
         File[] archivos = directorio.listFiles((dir, name) ->
                 name.startsWith(PREFIJO_ARCHIVO_USUARIOS) && name.endsWith(EXTENSION_ARCHIVO));
@@ -68,7 +72,7 @@ public class Persistencia {
     //////////////////////////////Cargar//////////////////////////////
     public static ArrayList<Usuario> cargarUsuarios() throws FileNotFoundException, IOException
     {
-        String rutaArchivo = obtenerRutaArchivoMasReciente();
+        String rutaArchivo = obtenerRutaArchivoMasRecienteUsuario();
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         ArrayList<String> contenido = ArchivoUtil.leerArchivo(rutaArchivo);
 
@@ -94,7 +98,7 @@ public class Persistencia {
 
 
     public static void guardarUsuarios(ArrayList<Usuario> listaUsuarios) throws IOException {
-        verificarDirectorios();
+        verificarDirectoriosUsuarios();
         String contenido = "";
         for(Usuario usuario:listaUsuarios)
         {
@@ -119,11 +123,11 @@ public class Persistencia {
         ArchivoUtil.guardarArchivo(rutaArchivoRespaldo, contenido, false);
 
         // Eliminar archivos antiguos (tanto en la carpeta principal como en la de respaldo)
-        limpiarArchivosAntiguos(RUTA_DIRECTORIO_USUARIOS);
-        limpiarArchivosAntiguos(RUTA_DIRECTORIO_RESPALDO);
+        limpiarArchivosAntiguosUsuarios(RUTA_DIRECTORIO_USUARIOS);
+        limpiarArchivosAntiguosUsuarios(RUTA_DIRECTORIO_RESPALDO);
     }
 
-    private static void limpiarArchivosAntiguos(String rutaDirectorio) {
+    private static void limpiarArchivosAntiguosUsuarios(String rutaDirectorio) {
         File directorio = new File(rutaDirectorio);
         File[] archivos = directorio.listFiles((dir, name) ->
                 name.startsWith(PREFIJO_ARCHIVO_USUARIOS) && name.endsWith(EXTENSION_ARCHIVO));
@@ -185,5 +189,106 @@ public class Persistencia {
 
         }
         return billerteraVirtual;
+    }
+
+    public static void guardarTransacciones(ArrayList<Transaccion> listaTransacciones) throws IOException {
+        verificarDirectoriosTransacciones();
+        String contenido = "";
+        for(Transaccion transaccion:listaTransacciones)
+        {
+            contenido+= transaccion.getIdTransaccion()+"@@"+
+                    transaccion.getFecha()+"@@"+
+                    transaccion.getTipo()+"@@"+
+                    transaccion.getMonto()+"@@"+
+                    transaccion.getDescripcion()+"@@"+
+                    transaccion.getCuentaOrigen()+"@@"+
+                    transaccion.getCuentaDestino()+"\n";
+        }
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String nombreArchivo = PREFIJO_ARCHIVO_TRANSACCION + "_" + timestamp + EXTENSION_ARCHIVO;
+
+        // Rutas para el archivo principal y el respaldo
+        String rutaArchivoPrincipal = RUTA_DIRECTORIO_TRANSACCION + nombreArchivo;
+        String rutaArchivoRespaldo = RUTA_DIRECTORIO_RESPALDO + nombreArchivo;
+
+        // Guardar el archivo principal
+        ArchivoUtil.guardarArchivo(rutaArchivoPrincipal, contenido, false);
+
+        // Guardar la copia de respaldo
+        ArchivoUtil.guardarArchivo(rutaArchivoRespaldo, contenido, false);
+
+        // Eliminar archivos antiguos (tanto en la carpeta principal como en la de respaldo)
+        limpiarArchivosAntiguosTransaccion(RUTA_DIRECTORIO_TRANSACCION);
+        limpiarArchivosAntiguosTransaccion(RUTA_DIRECTORIO_RESPALDO);
+    }
+
+    private static void limpiarArchivosAntiguosTransaccion(String rutaDirectorioTransaccion) {
+        File directorio = new File(rutaDirectorioTransaccion);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_TRANSACCION) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos != null && archivos.length > 1) {
+            Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+
+            // Mantener solo el archivo más reciente
+            for (int i = 1; i < archivos.length; i++) {
+                archivos[i].delete();
+            }
+        }
+    }
+
+    private static void verificarDirectoriosTransacciones() {
+        File directorioTransaccion = new File(RUTA_DIRECTORIO_TRANSACCION);
+        File directorioRespaldo = new File(RUTA_DIRECTORIO_TRANSACCION);
+
+        if (!directorioTransaccion.exists()) {
+            directorioTransaccion.mkdirs();
+        }
+        if (!directorioRespaldo.exists()) {
+            directorioRespaldo.mkdirs();
+        }
+    }
+
+    public static ArrayList<Transaccion> cargarTransacciones() throws IOException {
+        String rutaArchivo = obtenerRutaArchivoMasRecienteTransaccion();
+        ArrayList<Transaccion> transacciones = new ArrayList<Transaccion>();
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(rutaArchivo);
+
+        for (String linea : contenido) {
+            String[] datos = linea.split("@@");
+            Transaccion transaccion = new Transaccion();
+            transaccion.setIdTransaccion(datos[0]);
+            transaccion.setFecha(datos[1]);
+            transaccion.setTipo(datos[2]);
+            transaccion.setMonto(Double.parseDouble(datos[3]));
+            transaccion.setDescripcion(datos[4]);
+            Cuenta cuentaOrigen = obtenerCuentaPorNumero(datos[5]);
+            transaccion.setCuentaOrigen(cuentaOrigen);
+            Cuenta cuentaDestino = obtenerCuentaPorNumero(datos[6]);
+            transaccion.setCuentaDestino(cuentaDestino);
+            if (datos.length > 7) {
+                transaccion.setIdTransaccion(datos[5]);
+            }
+            transacciones.add(transaccion);
+        }
+        return transacciones;
+    }
+
+    private static String obtenerRutaArchivoMasRecienteTransaccion() {
+        File directorio = new File(RUTA_DIRECTORIO_TRANSACCION);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_TRANSACCION) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos == null || archivos.length == 0) {
+            return RUTA_DIRECTORIO_TRANSACCION + PREFIJO_ARCHIVO_TRANSACCION + EXTENSION_ARCHIVO;
+        }
+
+        Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+        return archivos[0].getPath();
+    }
+
+    private static Cuenta obtenerCuentaPorNumero(String dato) {
+        BillerteraVirtual billeteraVirtual = new BillerteraVirtual();
+        return billeteraVirtual.obtenerCuentaPorNumero(dato);
     }
 }

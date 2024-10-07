@@ -170,6 +170,7 @@ public class ModelFactory implements IModelFactoryService {
                 Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
                 getBillerteraVirtual().crearTransaccion(transaccion);
                 registrarAccionesSistema("Transacción realizada: "+ transaccion.getIdTransaccion(),1,"crearTransaccion");
+                Persistencia.guardarTransacciones(getBillerteraVirtual().getListaTransacciones());
                 guardarResourceXML();
             }
             return true;
@@ -177,6 +178,8 @@ public class ModelFactory implements IModelFactoryService {
             e.getMessage();
             registrarAccionesSistema(e.getMessage(),3,"crearTransaccion");
             return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

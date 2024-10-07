@@ -193,7 +193,15 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return false;
     }
 
-
+    @Override
+    public Cuenta obtenerCuentaPorNumero(String numeroCuenta) {
+        for (Cuenta cuenta : listaCuentas) {
+            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
+                return cuenta;
+            }
+        }
+        return null;
+    }
 
 
     private boolean transaccionExiste(String cuenta) {

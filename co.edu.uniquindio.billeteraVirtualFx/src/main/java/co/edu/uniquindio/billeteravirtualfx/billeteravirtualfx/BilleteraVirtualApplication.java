@@ -47,6 +47,7 @@ public class BilleteraVirtualApplication extends Application {
 
             // Carga los usuarios desde el archivo
             ArrayList<Usuario> usuariosCargados = Persistencia.cargarUsuarios();
+            ArrayList<Transaccion> transaccionesCargadas = Persistencia.cargarTransacciones();
 
             // Actualiza la lista de usuarios en la billetera
             billerteraVirtual.getListaUsuarios().clear();
