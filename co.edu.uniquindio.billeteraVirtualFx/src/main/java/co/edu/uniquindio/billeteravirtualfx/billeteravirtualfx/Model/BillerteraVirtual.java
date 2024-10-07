@@ -4,15 +4,21 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.Transac
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BillerteraVirtual implements IBilleteraVirtualService {
+public class BillerteraVirtual implements IBilleteraVirtualService, Serializable {
+
+    private static final long serialVersionUID = 1L;
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
     ArrayList<Categoria> listaCategorias = new ArrayList<>();
 
+    public BillerteraVirtual() {
+
+    }
 
     public ArrayList<Cuenta> getListaCuentas() {
         return listaCuentas;

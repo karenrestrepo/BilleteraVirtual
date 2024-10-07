@@ -48,15 +48,15 @@ public class ModelFactory implements IModelFactoryService {
        //salvarDatosPrueba();
 
         //2. Cargar los datos de los archivos
-		cargarDatosDesdeArchivos();
+		//cargarDatosDesdeArchivos();
 
         //3. Guardar y Cargar el recurso serializable binario
-//		cargarResourceBinario();
-//		guardarResourceBinario();
+    	cargarResourceBinario();
+		//guardarResourceBinario();
 
         //4. Guardar y Cargar el recurso serializable XML
-//		guardarResourceXML();
-        //cargarResourceXML();
+        //guardarResourceXML();
+        cargarResourceXML();
 
         //Siempre se debe verificar si la raiz del recurso es null
 
@@ -65,8 +65,21 @@ public class ModelFactory implements IModelFactoryService {
             guardarResourceXML();
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
-        //cargarDatosBase();
+
     }
+
+    private void cargarResourceXML() {
+        billerteraVirtual = Persistencia.cargarRecursoBilleteraXML();
+    }
+
+    private void cargarResourceBinario() {
+        billerteraVirtual = Persistencia.cargarRecursoBilleteraBinario();
+    }
+
+    private void guardarResourceBinario() {
+        Persistencia.guardarRecursoBancoBinario(billerteraVirtual);
+    }
+
 
     private void cargarDatosDesdeArchivos() {
         billerteraVirtual = new BillerteraVirtual();
@@ -112,6 +125,7 @@ public class ModelFactory implements IModelFactoryService {
             if(!billerteraVirtual.verificarUsuarioExistente(usuarioDto.idUsuario())) {
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getBillerteraVirtual().crearUsuario(usuario);
+                guardarResourceXML();
             }
             return true;
         }catch (UsuarioException e){
@@ -125,6 +139,7 @@ public class ModelFactory implements IModelFactoryService {
         boolean idExiste = false;
         try {
             idExiste = getBillerteraVirtual().eliminarUsuario(id);
+            guardarResourceXML();
         } catch (UsuarioException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

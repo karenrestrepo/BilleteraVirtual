@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.4" class="java.beans.XMLDecoder">
+ <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual" id="BillerteraVirtual0">
+  <void property="listaUsuarios">
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
+     <void property="email">
+      <string>kathe@gmail.com</string>
+     </void>
+     <void property="idUsuario">
+      <string>1234</string>
+     </void>
+     <void property="nombre">
+      <string>Katherine</string>
+     </void>
+     <void property="saldo">
+      <double>100000.0</double>
+     </void>
+     <void property="telefono">
+      <string>300627</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
+     <void property="email">
+      <string>Esteban@gmail.com</string>
+     </void>
+     <void property="idUsuario">
+      <string>5678</string>
+     </void>
+     <void property="nombre">
+      <string>Esteban Rojas</string>
+     </void>
+     <void property="saldo">
+      <double>100000.0</double>
+     </void>
+     <void property="telefono">
+      <string>748796</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
+     <void property="email">
+      <string>sara@gmail.com</string>
+     </void>
+     <void property="idUsuario">
+      <string>5987</string>
+     </void>
+     <void property="nombre">
+      <string>Sara Mora</string>
+     </void>
+     <void property="saldo">
+      <double>150000.0</double>
+     </void>
+     <void property="telefono">
+      <string>314268</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

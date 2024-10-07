@@ -12,6 +12,7 @@ public class Persistencia {
     public static final String RUTA_ARCHIVO_MODELO_BILLETERAVIRTUAL_XML = "src/main/resources/persistencia/model.xml";
 
     public static final String RUTA_ARCHIVO_USUARIOS = "src/main/resources/persistencia/archivos/archivoUsiarios.txt";
+    private static final String RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO = "src/main/resources/persistencia/model.dat";
 
 
     public static void cargarDatosArchivos(BillerteraVirtual billerteraVirtual) throws FileNotFoundException, IOException {
@@ -70,9 +71,31 @@ public class Persistencia {
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_USUARIOS, contenido, false);
     }
 
+    public static void guardarRecursoBancoBinario(BillerteraVirtual billerteraVirtual) {
+        try {
+            ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO, billerteraVirtual);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {
         ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG);
 
+    }
+
+
+    public static BillerteraVirtual cargarRecursoBilleteraBinario() {
+        BillerteraVirtual billerteraVirtual = null;
+
+        try {
+            billerteraVirtual = (BillerteraVirtual)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return billerteraVirtual;
     }
 
     public static void guardarRecursoBilleteraXML(BillerteraVirtual billerteraVirtual) {
@@ -82,5 +105,18 @@ public class Persistencia {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public static BillerteraVirtual cargarRecursoBilleteraXML() {
+        BillerteraVirtual billerteraVirtual= null;
+        try {
+            billerteraVirtual =(BillerteraVirtual)ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUAL_XML);
+
+        }catch (Exception e){
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+
+        }
+        return billerteraVirtual;
     }
 }

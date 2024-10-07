@@ -3,6 +3,7 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
 
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.ArrayList;
@@ -135,6 +136,18 @@ public class ArchivoUtil {
         }
         return aux;
     }
+    public static void salvarRecursoSerializado(String rutaArchivo, Object object)	throws Exception {
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(rutaArchivo));
+            oos.writeObject(object);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (oos != null)
+                oos.close();
+        }
+    }
 
 
     public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
@@ -143,5 +156,15 @@ public class ArchivoUtil {
         codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
         codificadorXML.writeObject(objeto);
         codificadorXML.close();
+    }
+
+    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException{
+        XMLDecoder decodificadorXML;
+        Object objetoXML;
+
+        decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
+        objetoXML = decodificadorXML.readObject();
+        decodificadorXML.close();
+        return objetoXML;
     }
 }
