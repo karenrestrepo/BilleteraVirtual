@@ -154,7 +154,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
     @Override
     public boolean verificarCuentaExistente(String cuenta) throws TransaccionException {
-        if(!transaccionExiste(cuenta)){
+        if(transaccionExiste(cuenta)){
             throw new TransaccionException("La cuenta de origen: "+cuenta+" no existe");
         }else{
             return false;
