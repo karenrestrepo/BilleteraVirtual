@@ -44,11 +44,11 @@ public class ModelFactory implements IModelFactoryService {
 
         //1. inicializar datos y luego guardarlo en archivos
         System.out.println("invocación clase singleton");
-       cargarDatosBase();
-       salvarDatosPrueba();
+       //cargarDatosBase();
+       //salvarDatosPrueba();
 
         //2. Cargar los datos de los archivos
-//		cargarDatosDesdeArchivos();
+		cargarDatosDesdeArchivos();
 
         //3. Guardar y Cargar el recurso serializable binario
 //		cargarResourceBinario();
@@ -65,7 +65,18 @@ public class ModelFactory implements IModelFactoryService {
             guardarResourceXML();
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
-        cargarDatosBase();
+        //cargarDatosBase();
+    }
+
+    private void cargarDatosDesdeArchivos() {
+        billerteraVirtual = new BillerteraVirtual();
+        try {
+            Persistencia.cargarDatosArchivos(billerteraVirtual);
+        }catch (IOException e){
+            throw new RuntimeException(e);
+
+        }
+
     }
 
     private void salvarDatosPrueba() {

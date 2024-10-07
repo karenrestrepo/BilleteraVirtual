@@ -28,7 +28,7 @@ public class UsuarioApplication extends Application {
             AnchorPane rootLayout = (AnchorPane) loader.load();
             UsuarioViewController usuarioViewController = loader.getController();
 //            usuarioViewController.setAplicacion(this);
-            // Show the scene containing the root layout.
+            //Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             //scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
             primaryStage.setScene(scene);

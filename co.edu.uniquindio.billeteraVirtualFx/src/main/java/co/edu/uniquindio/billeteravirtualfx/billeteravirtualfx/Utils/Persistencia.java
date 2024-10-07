@@ -11,7 +11,7 @@ public class Persistencia {
     public static final String RUTA_ARCHIVO_LOG = "src/main/resources/persistencia/log/BilleteraVirtualLog.txt";
     public static final String RUTA_ARCHIVO_MODELO_BILLETERAVIRTUAL_XML = "src/main/resources/persistencia/model.xml";
 
-    public static final String RUTA_ARCHIVO_USUARIOS = "src/main/resources/persistencia/archivoUsiarios.txt";
+    public static final String RUTA_ARCHIVO_USUARIOS = "src/main/resources/persistencia/archivos/archivoUsiarios.txt";
 
 
     public static void cargarDatosArchivos(BillerteraVirtual billerteraVirtual) throws FileNotFoundException, IOException {
@@ -41,20 +41,16 @@ public class Persistencia {
         String linea="";
         for (int i = 0; i < contenido.size(); i++)
         {
-            linea = contenido.get(i);//juan,arias,125454,Armenia,uni1@,12454,125444
+            linea = contenido.get(i);
             Usuario usuario = new Usuario();
-            usuario.setIdUsuario(linea.split(",")[1]);
             usuario.setNombre(linea.split(",")[0]);
+            usuario.setIdUsuario(linea.split(",")[1]);
             usuario.setEmail(linea.split(",")[2]);
-            usuario.setTelefono(linea.split(",")[3]);
-            try {
-                double saldo = Double.parseDouble(linea.split(",")[4].trim());
-                usuario.setSaldo(saldo);
-            } catch (NumberFormatException e) {
-                System.out.println("Error al convertir el saldo: " + e.getMessage());
-            }
-            usuario.setContrasena(linea.split(",")[5]);
-            usuario.setTelefono(linea.split(",")[6]);
+            usuario.setSaldo(Double.parseDouble(linea.split(",")[3]));
+            usuario.setTelefono(linea.split(",")[4]);
+
+
+
             usuarios.add(usuario);
         }
         return usuarios;
@@ -69,7 +65,7 @@ public class Persistencia {
         for(Usuario usuario:listaUsuarios)
         {
             contenido+= usuario.getNombre()+","+usuario.getIdUsuario()+","+usuario.getEmail()
-                    +","+usuario.getContrasena()+","+usuario.getTelefono()+","+"\n";
+                    +","+usuario.getSaldo()+","+ usuario.getTelefono()+ "\n";
         }
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_USUARIOS, contenido, false);
     }

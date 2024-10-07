@@ -1,3 +1,0 @@
-Katherine Serna,1234,kathe@gmail.com,null,300627,
-Esteban Rojas,5678,Esteban@gmail.com,null,748796,
-Sara Mora,5987,sara@gmail.com,null,314268,
