@@ -71,22 +71,44 @@
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
      <void property="contrasena">
-      <string>123456</string>
+      <string>julian01</string>
      </void>
      <void property="email">
-      <string>karen@gmail.com</string>
+      <string>julian@gmail.com</string>
      </void>
      <void property="idUsuario">
-      <string>1005</string>
+      <string>10986</string>
      </void>
      <void property="nombre">
-      <string>Karen Vanessa</string>
+      <string>Julian Garibello</string>
      </void>
      <void property="saldo">
-      <double>200000.0</double>
+      <double>60000.0</double>
      </void>
      <void property="telefono">
-      <string>300627</string>
+      <string>369894</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
+     <void property="contrasena">
+      <string>nata01</string>
+     </void>
+     <void property="email">
+      <string>nata@gmail.com</string>
+     </void>
+     <void property="idUsuario">
+      <string>48852</string>
+     </void>
+     <void property="nombre">
+      <string>Natalia Perez</string>
+     </void>
+     <void property="saldo">
+      <double>20000.0</double>
+     </void>
+     <void property="telefono">
+      <string>36985</string>
      </void>
     </object>
    </void>

@@ -101,3 +101,11 @@ oct 07, 2024 2:47:24 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 INFO: inicioSesión,Inicio de sesión,2024-10-07
 oct 07, 2024 2:47:36 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-10-07
+oct 07, 2024 2:49:06 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:50:38 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:50:52 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: julian@gmail.com,2024-10-07
+oct 07, 2024 3:04:43 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07

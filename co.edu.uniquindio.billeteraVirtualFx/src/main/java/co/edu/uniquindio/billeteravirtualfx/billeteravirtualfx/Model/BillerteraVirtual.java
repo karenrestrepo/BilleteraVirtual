@@ -3,6 +3,7 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistencia;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
     ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
     ArrayList<Categoria> listaCategorias = new ArrayList<>();
 
+    Persistencia persistencia;
     public BillerteraVirtual() {
 
     }

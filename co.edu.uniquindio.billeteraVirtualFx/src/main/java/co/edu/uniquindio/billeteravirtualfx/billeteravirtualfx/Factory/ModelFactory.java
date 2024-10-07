@@ -125,12 +125,15 @@ public class ModelFactory implements IModelFactoryService {
             if(!billerteraVirtual.verificarUsuarioExistente(usuarioDto.idUsuario())) {
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getBillerteraVirtual().crearUsuario(usuario);
+                Persistencia.guardarUsuarios(getBillerteraVirtual().getListaUsuarios());
                 guardarResourceXML();
             }
             return true;
         }catch (UsuarioException e){
             e.getMessage();
             return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
