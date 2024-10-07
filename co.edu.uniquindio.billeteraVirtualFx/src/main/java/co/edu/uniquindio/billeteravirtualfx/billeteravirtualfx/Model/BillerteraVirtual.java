@@ -61,7 +61,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
     }
 
     @Override
-    public Usuario agregarUsuario(String nombre, String idUsuario, String email, String telefono, double saldo) throws UsuarioException {
+    public Usuario agregarUsuario(String nombre, String idUsuario, String email, String telefono, double saldo, String contrasena) throws UsuarioException {
         Usuario nuevoUsuario = null;
         boolean usuarioExiste = verificarUsuarioExistente(idUsuario);
         if(usuarioExiste){
@@ -73,6 +73,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             nuevoUsuario.setEmail(email);
             nuevoUsuario.setTelefono(telefono);
             nuevoUsuario.setSaldo(0);
+            nuevoUsuario.setContrasena(contrasena);
             getListaUsuarios().add(nuevoUsuario);
         }
         return nuevoUsuario;
@@ -107,6 +108,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             usuarioExiste.setEmail(usuario.getEmail());
             usuarioExiste.setTelefono(usuario.getTelefono());
             usuarioExiste.setSaldo(usuario.getSaldo());
+            usuarioExiste.setContrasena(usuario.getContrasena());
             return true;
         }
     }
@@ -162,6 +164,35 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         getListaTransacciones().add(nuevaTransaccion);
 
     }
+
+    @Override
+    public boolean verificarCredenciales(String correo, String contraseña) {
+        System.out.println("Intentando verificar credenciales para correo: " + correo);
+
+        if (correo == null || contraseña == null) {
+            System.out.println("Correo o contraseña es null");
+            return false;
+        }
+
+        for (Usuario usuario : getListaUsuarios()) {
+            System.out.println("Comprobando usuario: " + usuario.getEmail());
+            System.out.println("Contraseña almacenada: " + usuario.getContrasena());
+
+            if (usuario != null &&
+                    usuario.getEmail() != null &&
+                    usuario.getContrasena() != null &&
+                    usuario.getEmail().equalsIgnoreCase(correo) &&
+                    usuario.getContrasena().equals(contraseña)) {
+                System.out.println("¡Coincidencia encontrada!");
+                return true;
+            }
+        }
+        System.out.println("No se encontró coincidencia");
+        return false;
+    }
+
+
+
 
     private boolean transaccionExiste(String cuenta) {
         boolean transaccionEncontrada = false;

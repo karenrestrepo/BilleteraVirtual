@@ -15,6 +15,7 @@ public class BilleteraVirtualUtils {
         usuario.setEmail("kathe@gmail.com");
         usuario.setTelefono("300627");
         usuario.setSaldo(100000);
+        usuario.setContrasena("katherine01");
         billerteraVirtual.getListaUsuarios().add(usuario);
 
         Usuario usuario1 = new Usuario();
@@ -23,6 +24,7 @@ public class BilleteraVirtualUtils {
         usuario1.setEmail("Esteban@gmail.com");
         usuario1.setTelefono("748796");
         usuario1.setSaldo(100000);
+        usuario1.setContrasena("esteban01");
         billerteraVirtual.getListaUsuarios().add(usuario1);
 
         Usuario usuario2 = new Usuario();
@@ -31,6 +33,7 @@ public class BilleteraVirtualUtils {
         usuario2.setEmail("sara@gmail.com");
         usuario2.setTelefono("314268");
         usuario2.setSaldo(150000);
+        usuario2.setContrasena("sara01");
         billerteraVirtual.getListaUsuarios().add(usuario2);
 
         Cuenta cuenta = new Cuenta();

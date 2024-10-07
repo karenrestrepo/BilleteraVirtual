@@ -1,8 +1,11 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Transaccion {
+public class Transaccion implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String idTransaccion;
     private String fecha;

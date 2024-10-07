@@ -43,3 +43,61 @@ oct 06, 2024 9:50:32 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 INFO: inicioSesión,Inicio de sesión,2024-10-06
 oct 06, 2024 9:50:49 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-10-06
+oct 07, 2024 9:28:55 A. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 9:30:15 A. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 9:39:12 A. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 12:09:25 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 12:15:59 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 12:19:05 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 12:20:31 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 12:23:40 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 1:21:11 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 1:33:23 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 1:44:43 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 1:44:54 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-10-07
+oct 07, 2024 1:45:43 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:11:13 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:12:12 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:12:49 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-10-07
+oct 07, 2024 2:31:37 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:32:54 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:33:36 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-10-07
+oct 07, 2024 2:34:40 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:34:59 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-10-07
+oct 07, 2024 2:41:48 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:42:07 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-10-07
+oct 07, 2024 2:42:53 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:43:00 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: karen@gmail.com,2024-10-07
+oct 07, 2024 2:45:54 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:46:02 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: karen@gmail.com,2024-10-07
+oct 07, 2024 2:47:24 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-07
+oct 07, 2024 2:47:36 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-10-07

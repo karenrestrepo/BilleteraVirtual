@@ -18,6 +18,7 @@ public interface UsuarioMapper {
 
     UsuarioDto usuarioToUsuarioDto(Usuario usuario);
 
+    @Named("usuarioDtoToUsuario")
     Usuario usuarioDtoToUsuario(UsuarioDto usuarioDto);
 
     @IterableMapping(qualifiedByName = "usuarioToUsuarioDto")

@@ -13,4 +13,7 @@ public interface IModelFactoryService {
 
     boolean actualizarUsuario(String idActual, UsuarioDto usuarioDto);
     boolean crearTransaccion(TransaccionDto transaccionDto);
+
+    boolean ingresar(String correo, String contraseña);
+
 }

@@ -74,7 +74,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx/co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.UsuarioApplication</mainClass>
+              <mainClass>co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx/co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.BilleteraVirtualApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

@@ -152,13 +152,13 @@ public class UsuarioViewController {
                     listaUsuarioDto.remove(usuarioSeleccionado);
                     listaUsuarioDto.add(usuarioDto);
                     tableUsuario.refresh();
-                    mostrarMensaje("Notificación empleado", "Empleado actualizado", "El empleado se ha actualizado con éxito", AlertType.INFORMATION);
+                    mostrarMensaje("Notificación usuario", "Usuario actualizado", "El usuario se ha actualizado con éxito", AlertType.INFORMATION);
                     limpiarCamposUsuarios();
                 }else{
-                    mostrarMensaje("Notificación empleado", "Empleado no actualizado", "El empleado no se ha actualizado con éxito", AlertType.INFORMATION);
+                    mostrarMensaje("Notificación usuario", "Usuario no actualizado", "El usuario no se ha actualizado con éxito", AlertType.INFORMATION);
                 }
             }else{
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", AlertType.ERROR);
+                mostrarMensaje("Notificación usuario", "Usuario no actualizado", "Los datos ingresados son invalidos", AlertType.ERROR);
             }
 
         }
@@ -206,7 +206,8 @@ public class UsuarioViewController {
                 txtNombreUsuario.getText(),
                 txtCorreoUsuario.getText(),
                 txtTelefonoUsuario.getText(),
-                Double.valueOf(txtSaldoUsuario.getText())
+                Double.valueOf(txtSaldoUsuario.getText()),
+                txtContraseñaUsuario.getText()
         );
     }
 

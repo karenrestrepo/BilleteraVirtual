@@ -177,6 +177,23 @@ public class ModelFactory implements IModelFactoryService {
         }
     }
 
+    @Override
+    public boolean ingresar(String correo, String contraseña) {
+        try {
+            boolean credencialesValidas = billerteraVirtual.verificarCredenciales(correo, contraseña);
+            if (credencialesValidas) {
+                registrarAccionesSistema("Inicio de sesión exitoso para: " + correo, 1, "ingresar");
+                return true;
+            } else {
+                registrarAccionesSistema("Intento de inicio de sesión fallido para: " + correo, 2, "ingresar");
+                return false;
+            }
+        } catch (Exception e) {
+            registrarAccionesSistema("Error durante el inicio de sesión: " + e.getMessage(), 3, "ingresar");
+            return false;
+        }
+    }
+
     private void guardarResourceXML() {
         Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);
     }
