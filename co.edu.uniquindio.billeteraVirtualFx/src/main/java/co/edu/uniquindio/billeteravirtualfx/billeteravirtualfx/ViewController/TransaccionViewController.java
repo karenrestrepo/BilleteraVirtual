@@ -141,14 +141,14 @@ public class TransaccionViewController {
             if (mostrarMensajeConfirmacion("¿Estas seguro de la realización de la transacción?")) {
                 if (transaccionControllerService.crearTransaccion(transaccionDto)) {
                     listaTransaccionesDto.add(transaccionDto);
-                    mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+                    mostrarMensaje("Notificación Transacción", "Transacción creado", "El Transacción se ha creado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCamposTransaccion();
-                    registrarAcciones("Empleado agregado", 1, "Agregar empleado");
+                    registrarAcciones(" Transacción Creada ", 1, " La transacción se creo correctamente");
                 } else {
-                    mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+                    mostrarMensaje("Notificación Transacción", "Transacción no creado", "El Transacción no se ha creado con éxito", Alert.AlertType.ERROR);
                 }
             } else {
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+                mostrarMensaje("Notificación Transacción", "Transacción no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
             }
         }
     }

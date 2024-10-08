@@ -4,20 +4,6 @@
   <void property="listaTransacciones">
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566555</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566555</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -37,20 +23,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566556</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566555</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -70,20 +42,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566555</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566556</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -103,20 +61,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>4566555</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>6655551</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -136,20 +80,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>3644558</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>9654445</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -169,20 +99,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>6478891</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>9654445</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -202,20 +118,6 @@
    </void>
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion">
-     <void property="cuentaDestino">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>6584682</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
-       <void property="nombreBanco">
-        <string>6655551</string>
-       </void>
-      </object>
-     </void>
      <void property="descripcion">
       <string></string>
      </void>
@@ -238,7 +140,7 @@
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
      <void property="contrasena">
-      <string>kathe01</string>
+      <string>katherine01</string>
      </void>
      <void property="email">
       <string>kathe@gmail.com</string>
@@ -247,7 +149,7 @@
       <string>1234</string>
      </void>
      <void property="nombre">
-      <string>Katherine</string>
+      <string>Katherine Serna</string>
      </void>
      <void property="saldo">
       <double>100000.0</double>
@@ -298,28 +200,6 @@
      </void>
      <void property="telefono">
       <string>314268</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
-     <void property="contrasena">
-      <string>isa01</string>
-     </void>
-     <void property="email">
-      <string>isa@gmail.com</string>
-     </void>
-     <void property="idUsuario">
-      <string>10548</string>
-     </void>
-     <void property="nombre">
-      <string>Isabel Chica</string>
-     </void>
-     <void property="saldo">
-      <double>44444.0</double>
-     </void>
-     <void property="telefono">
-      <string>25496</string>
      </void>
     </object>
    </void>

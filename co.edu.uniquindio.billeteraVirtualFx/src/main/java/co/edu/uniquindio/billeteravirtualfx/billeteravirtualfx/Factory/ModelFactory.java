@@ -19,6 +19,7 @@ import java.util.List;
 public class ModelFactory implements IModelFactoryService {
 
     BillerteraVirtual billerteraVirtual;
+    Transaccion transaccion;
     UsuarioMapper mapper = UsuarioMapper.INSTANCE;
     TransaccionMapper transaccionMapper = TransaccionMapper.INSTANCE;
 
@@ -55,8 +56,8 @@ public class ModelFactory implements IModelFactoryService {
 		//guardarResourceBinario();
 
         //4. Guardar y Cargar el recurso serializable XML
-        //guardarResourceXML();
-        cargarResourceXML();
+        guardarResourceXML();
+        //cargarResourceXML();
 
         //Siempre se debe verificar si la raiz del recurso es null
 
@@ -77,7 +78,7 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     private void guardarResourceBinario() {
-        Persistencia.guardarRecursoBancoBinario(billerteraVirtual);
+        Persistencia.guardarRecursoBilleteraBinario(billerteraVirtual);
     }
 
 

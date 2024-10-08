@@ -17,6 +17,7 @@ public class Persistencia {
     public static final String RUTA_ARCHIVO_LOG = "src/main/resources/persistencia/log/BilleteraVirtualLog.txt";
     public static final String RUTA_ARCHIVO_MODELO_BILLETERAVIRTUAL_XML = "src/main/resources/persistencia/model.xml";
     private static final String RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO = "src/main/resources/persistencia/model.dat";
+    private static final String RUTA_ARCHIVO_TRANSACCION_BILLETERA_BINARIO = "src/main/resources/persistencia/transaccion.dat";
     private static final String RUTA_DIRECTORIO_RESPALDO = "src/main/resources/persistencia/Respaldo/";
     private static final String RUTA_DIRECTORIO_USUARIOS = "src/main/resources/persistencia/archivos/";
     private static final String PREFIJO_ARCHIVO_USUARIOS = "archivoUsuarios";
@@ -52,14 +53,17 @@ public class Persistencia {
 
     public static void cargarDatosArchivos(BillerteraVirtual billerteraVirtual) throws FileNotFoundException, IOException {
         //cargar archivo de clientes
-        ArrayList<Usuario> usuariosCargados = cargarUsuarios();
-        if(usuariosCargados.size() > 0)
+       ArrayList<Usuario> usuariosCargados = cargarUsuarios();
+       if (usuariosCargados.size() > 0) {
             billerteraVirtual.getListaUsuarios().addAll(usuariosCargados);
+       }
+        ArrayList<Transaccion> transaccionesCargadas = cargarTransacciones();
+        if (transaccionesCargadas.size() > 0) {
+            billerteraVirtual.getListaTransacciones().addAll(transaccionesCargadas);
+        }
 
-        //cargar archivos empleados
-       // ArrayList<Empleado> empleadosCargados = cargarEmpleados();
-       // if(empleadosCargados.size() > 0)
-        //    banco.getListaEmpleados().addAll(empleadosCargados);
+        // Cargar archivo de transacciones
+
 
         //cargar archivo transcciones
 
@@ -68,6 +72,10 @@ public class Persistencia {
         //cargar archivo prestamo
 
     }
+
+
+
+
 
     //////////////////////////////Cargar//////////////////////////////
     public static ArrayList<Usuario> cargarUsuarios() throws FileNotFoundException, IOException
@@ -142,9 +150,11 @@ public class Persistencia {
         }
     }
 
-    public static void guardarRecursoBancoBinario(BillerteraVirtual billerteraVirtual) {
+    public static void guardarRecursoBilleteraBinario(BillerteraVirtual billerteraVirtual) {
         try {
             ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO, billerteraVirtual);
+
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -154,14 +164,18 @@ public class Persistencia {
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {
         ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG);
 
+
     }
 
 
     public static BillerteraVirtual cargarRecursoBilleteraBinario() {
         BillerteraVirtual billerteraVirtual = null;
 
+
         try {
-            billerteraVirtual = (BillerteraVirtual)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO);
+          billerteraVirtual = (BillerteraVirtual)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERA_BINARIO);
+
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -172,6 +186,7 @@ public class Persistencia {
     public static void guardarRecursoBilleteraXML(BillerteraVirtual billerteraVirtual) {
         try {
             ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUAL_XML, billerteraVirtual);
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
