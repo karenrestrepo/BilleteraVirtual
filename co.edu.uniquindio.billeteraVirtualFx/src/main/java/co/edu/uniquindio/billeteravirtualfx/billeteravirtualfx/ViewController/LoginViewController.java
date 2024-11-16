@@ -77,10 +77,15 @@ public class LoginViewController {
         }
 
         try {
-            if (loginControllerService.ingresar(correo, contraseña)) {
-                mostrarMensaje("Notificación ingreso", "Ingreso exitoso",
-                        "Ha ingresado exitosamente como: " + correo, Alert.AlertType.INFORMATION);
+
+            if (loginControllerService.verificarAdmin(correo, contraseña)) {
+
+                ingresarBilleteraAdmin();
+            }else if (loginControllerService.ingresar(correo, contraseña)){
                 ingresarBilletera();
+
+            mostrarMensaje("Notificación ingreso", "Ingreso exitoso",
+                        "Ha ingresado exitosamente como: " + correo, Alert.AlertType.INFORMATION);
             } else {
                 mostrarMensaje("Notificación ingreso", "Ingreso no exitoso",
                         "Correo o contraseña inválidos", Alert.AlertType.ERROR);
@@ -88,6 +93,17 @@ public class LoginViewController {
         } catch (Exception e) {
             mostrarMensaje("Error", "Error de sistema",
                     "Ocurrió un error al intentar ingresar: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    private void ingresarBilleteraAdmin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/BilleteraViewAdmin.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) txtCorreoLogin.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -22,4 +22,6 @@ public interface IBilleteraVirtualService {
     boolean verificarCredenciales(String correo, String contraseña);
 
     Cuenta obtenerCuentaPorNumero(String dato);
+
+    boolean verificarAdmin(String correo, String contraseña);
 }

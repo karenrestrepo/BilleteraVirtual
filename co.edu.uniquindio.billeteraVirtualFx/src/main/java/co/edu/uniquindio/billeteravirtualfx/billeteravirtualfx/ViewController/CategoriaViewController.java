@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class PresupuestoViewController {
+public class CategoriaViewController {
 
     @FXML
     private ResourceBundle resources;
@@ -27,34 +27,25 @@ public class PresupuestoViewController {
     private Button btnEliminar;
 
     @FXML
-    private TableView<?> tablePresupuesto;
+    private TableView<?> tableCategorias;
 
     @FXML
-    private TableColumn<?, ?> tcCategoria;
+    private TableColumn<?, ?> tcDescripcion;
 
     @FXML
-    private TableColumn<?, ?> tcEstado;
-
-    @FXML
-    private TableColumn<?, ?> tcIdPresupuesto;
-
-    @FXML
-    private TableColumn<?, ?> tcMontoAsignado;
-
-    @FXML
-    private TableColumn<?, ?> tcMontoGastado;
+    private TableColumn<?, ?> tcIdCategoria;
 
     @FXML
     private TableColumn<?, ?> tcNombre;
 
     @FXML
-    private TextField txtFiltrarPresupuesto;
+    private TextField txtDescripcion;
 
     @FXML
-    private TextField txtIdPresupuesto;
+    private TextField txtFiltrarCategoria;
 
     @FXML
-    private TextField txtMontoAsignado;
+    private TextField txtIdCategoria;
 
     @FXML
     private TextField txtNombre;
@@ -76,7 +67,7 @@ public class PresupuestoViewController {
 
     @FXML
     void initialize() {
+
     }
 
 }
-

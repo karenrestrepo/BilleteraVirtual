@@ -8,4 +8,6 @@ public interface ILoginController {
     boolean crearUsuario(UsuarioDto usuarioDto);
 
     boolean ingresar(String correo, String contraseña);
+
+    boolean verificarAdmin(String correo, String contraseña);
 }

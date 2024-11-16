@@ -16,4 +16,5 @@ public interface IModelFactoryService {
 
     boolean ingresar(String correo, String contraseña);
 
+    boolean verificarAdmin(String correo, String contraseña);
 }

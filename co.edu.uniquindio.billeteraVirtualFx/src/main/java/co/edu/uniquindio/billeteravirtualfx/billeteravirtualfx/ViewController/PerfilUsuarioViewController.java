@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class PerfilUsuarioViewController {
@@ -45,6 +46,9 @@ public class PerfilUsuarioViewController {
     private TextField txtConsultaSaldo;
 
     @FXML
+    private TextArea txtConsultaTransaccion;
+
+    @FXML
     private TextField txtCorreoUsuario;
 
     @FXML
@@ -71,8 +75,6 @@ public class PerfilUsuarioViewController {
     @FXML
     void initialize() {
 
-
     }
 
 }
-

@@ -27,4 +27,9 @@ public class LoginController implements ILoginController {
     public boolean ingresar(String correo, String contraseña) {
         return modelFactory.ingresar(correo, contraseña);
     }
+
+    @Override
+    public boolean verificarAdmin(String correo, String contraseña) {
+        return modelFactory.verificarAdmin(correo, contraseña);
+    }
 }

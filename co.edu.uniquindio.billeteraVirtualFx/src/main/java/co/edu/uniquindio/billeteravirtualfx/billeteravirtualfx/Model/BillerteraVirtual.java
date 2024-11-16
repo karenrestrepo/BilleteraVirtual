@@ -203,6 +203,29 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return null;
     }
 
+    @Override
+    public boolean verificarAdmin(String correo, String contraseña) {
+        System.out.println("Intentando verificar credenciales para correo: " + correo);
+
+        if (correo == null || contraseña == null) {
+            System.out.println("Correo o contraseña es null");
+            return false;
+        }
+
+        for (Usuario usuario : getListaUsuarios()) {
+            System.out.println("Comprobando usuario: " + usuario.getEmail());
+            System.out.println("Contraseña almacenada: " + usuario.getContrasena());
+
+            if (correo.equals("administrador@gmail.com") &&
+                    contraseña.equals("admin01")) {
+                System.out.println("¡Coincidencia encontrada!");
+                return true;
+            }
+        }
+        System.out.println("No se encontró coincidencia");
+        return false;
+    }
+
 
     private boolean transaccionExiste(String cuenta) {
         boolean transaccionEncontrada = false;
