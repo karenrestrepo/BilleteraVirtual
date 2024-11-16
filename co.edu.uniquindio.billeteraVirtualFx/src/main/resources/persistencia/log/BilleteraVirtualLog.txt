@@ -229,3 +229,7 @@ oct 07, 2024 9:13:31 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 INFO: inicioSesión,Inicio de sesión,2024-10-07
 oct 07, 2024 9:14:24 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-10-07
+nov 15, 2024 6:35:04 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-15
+nov 15, 2024 6:35:30 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-11-15

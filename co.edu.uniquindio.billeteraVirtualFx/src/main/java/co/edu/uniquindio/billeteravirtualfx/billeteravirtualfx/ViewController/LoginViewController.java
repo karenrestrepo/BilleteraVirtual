@@ -2,11 +2,9 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.LoginController;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.UsuarioController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -97,7 +94,7 @@ public class LoginViewController {
 
     private void ingresarBilletera() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/BilleteraView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/BilleteraViewUsuario.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) txtCorreoLogin.getScene().getWindow();
             stage.setScene(new Scene(root));
