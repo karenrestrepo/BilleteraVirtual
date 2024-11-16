@@ -10,7 +10,7 @@
     <children>
         <TabPane layoutX="8.0" layoutY="8.0" prefHeight="642.0" prefWidth="865.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Usuario">
+                <Tab text="Gestión de usuarios">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -23,13 +23,39 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Transacción">
+                <Tab text="Gestión de transacciones">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
                                     <items>
-                                        <fx:include source="Transaccion.fxml" />
+                                        <fx:include source="TransaccionAdm.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Gestión de cuentas">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
+                                    <items>
+                                        <fx:include source="CuentaAdm.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Estadísticas">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
+                                    <items>
+                                        <fx:include source="Estadistica.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>

@@ -9,13 +9,13 @@
     <children>
         <TabPane layoutX="8.0" layoutY="8.0" prefHeight="642.0" prefWidth="865.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Usuario">
+                <Tab text="Perfil de usuario">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
                                     <items>
-                                        <fx:include source="Usuario.fxml" />
+                                        <fx:include source="PerfilUsuario.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>
@@ -29,6 +29,32 @@
                                 <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
                                     <items>
                                         <fx:include source="Transaccion.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Presupuesto">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
+                                    <items>
+                                        <fx:include source="Presupuesto.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Cuentas">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="-4.0" layoutY="3.0" orientation="VERTICAL" prefHeight="542.0" prefWidth="790.0">
+                                    <items>
+                                        <fx:include source="CuentaBancaria.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>

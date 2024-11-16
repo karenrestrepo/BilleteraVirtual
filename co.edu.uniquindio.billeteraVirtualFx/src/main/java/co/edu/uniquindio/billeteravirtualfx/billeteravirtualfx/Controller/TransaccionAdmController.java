@@ -1,0 +1,6 @@
+package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller;
+
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Service.ITransaccionAdmControllerService;
+
+public class TransaccionAdmController implements ITransaccionAdmControllerService{
+}
