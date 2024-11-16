@@ -50,6 +50,7 @@
                   </TableView>
                   <TextField fx:id="txtFiltrarTransaccion" layoutX="94.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0" />
                   <Label layoutX="29.0" layoutY="27.0" text="Filtrar por:" />
+                  <Button fx:id="btnCategorizar" layoutX="641.0" layoutY="21.0" mnemonicParsing="false" onAction="#onCategorizar" prefHeight="25.0" prefWidth="110.0" text="Categorizar" />
                </children>
             </AnchorPane>
          </items>

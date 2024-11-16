@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.CuentaAdmViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.CuentaAdmViewController">
+   <children>
+      <SplitPane dividerPositions="0.6130952380952381" orientation="VERTICAL" prefHeight="506.0" prefWidth="887.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="865.0">
+               <children>
+                  <TextField fx:id="txtIdCuenta" layoutX="133.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Button fx:id="btnAgregarCuenta" layoutX="283.0" layoutY="251.0" mnemonicParsing="false" onAction="#onAgregarCuenta" prefHeight="25.0" prefWidth="102.0" text="Agregar" />
+                  <Label layoutX="59.0" layoutY="40.0" text="Id cuenta:" />
+                  <Label layoutX="9.0" layoutY="96.0" text="Nombre del banco:" />
+                  <Label layoutX="447.0" layoutY="40.0" text="Número de cuenta:" />
+                  <Label layoutX="467.0" layoutY="96.0" text="Tipo de cuenta:" />
+                  <TextField fx:id="txtTipoCuenta" layoutX="578.0" layoutY="93.0" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="txtNumeroCuenta" layoutX="578.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="txtNombreBanco" layoutX="133.0" layoutY="92.0" prefHeight="25.0" prefWidth="240.0" />
+                  <Separator layoutX="-1.0" layoutY="227.0" prefHeight="5.0" prefWidth="865.0" />
+                  <Label layoutX="4.0" layoutY="1.0" text="Información de las cuentas" />
+                  <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
+                  <Button fx:id="btnActualizarCuenta" layoutX="481.0" layoutY="252.0" mnemonicParsing="false" onAction="#onActualizarCuenta" prefHeight="25.0" prefWidth="102.0" text="Actualizar" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="885.0">
+               <children>
+                  <TextField fx:id="txtCuentaEliminar" layoutX="29.0" layoutY="48.0" prefHeight="25.0" prefWidth="823.0" />
+                  <Label layoutX="29.0" layoutY="27.0" text="Número de cuenta a eliminar:" />
+                  <Button fx:id="btnEliminar" layoutX="390.0" layoutY="90.0" mnemonicParsing="false" onAction="#onEliminar" prefHeight="25.0" prefWidth="102.0" text="Eliminar" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
 </AnchorPane>

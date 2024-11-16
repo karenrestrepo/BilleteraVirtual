@@ -28,6 +28,8 @@ public class TransaccionViewController {
 
     @FXML
     private Button btnAgregarUsuario;
+    @FXML
+    private Button btnCategorizar;
 
     @FXML
     private TableView<TransaccionDto> tableTransaccion;
@@ -76,6 +78,10 @@ public class TransaccionViewController {
 
     @FXML
     private TextField txtTipoTransaccion;
+    @FXML
+    void onCategorizar(ActionEvent event) {
+
+    }
 
 
     @FXML
