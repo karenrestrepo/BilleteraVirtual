@@ -247,3 +247,9 @@ nov 16, 2024 4:59:42 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-11-16
 nov 16, 2024 4:59:42 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-11-16
+nov 18, 2024 4:52:10 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-18
+nov 18, 2024 4:52:20 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: sara@gmail.com,2024-11-18
+nov 18, 2024 4:52:20 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: sara@gmail.com,2024-11-18
