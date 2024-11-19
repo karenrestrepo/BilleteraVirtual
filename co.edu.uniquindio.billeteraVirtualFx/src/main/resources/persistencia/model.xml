@@ -15,6 +15,19 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria" id="Categoria1">
+     <void property="descripcion">
+      <string>02</string>
+     </void>
+     <void property="idCategoria">
+      <string>02</string>
+     </void>
+     <void property="nombre">
+      <string>Transporte</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="listaTransacciones">
    <void method="add">
@@ -372,7 +385,7 @@
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario" id="Usuario0">
      <void property="contrasena">
-      <string>katherine01</string>
+      <string></string>
      </void>
      <void property="email">
       <string>kathe@gmail.com</string>
@@ -412,12 +425,12 @@
       <double>100000.0</double>
      </void>
      <void property="telefono">
-      <string>300628</string>
+      <string>300626</string>
      </void>
     </object>
    </void>
    <void method="add">
-    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario" id="Usuario1">
      <void property="contrasena">
       <string>esteban01</string>
      </void>
@@ -427,6 +440,11 @@
      <void property="idUsuario">
       <string>5678</string>
      </void>
+     <void property="listaCategorias">
+      <void method="add">
+       <object idref="Categoria1"/>
+      </void>
+     </void>
      <void property="nombre">
       <string>Esteban Rojas</string>
      </void>
@@ -434,7 +452,7 @@
       <double>100000.0</double>
      </void>
      <void property="telefono">
-      <string>748796</string>
+      <string>748798</string>
      </void>
     </object>
    </void>

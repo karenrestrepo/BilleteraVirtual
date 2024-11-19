@@ -1129,3 +1129,49 @@ nov 19, 2024 11:29:06 A. M. co.edu.uniquindio.billeteravirtualfx.billeteravirt
 SEVERE: crearTransaccion,Una o ambas cuentas no existen.,2024-11-19
 nov 19, 2024 1:07:47 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 2:45:02 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 2:45:19 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 2:45:19 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:25:09 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:25:09 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:26:08 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:26:26 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:26:26 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:32:21 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:32:40 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: administrador@gmail.com,2024-11-19
+nov 19, 2024 3:33:55 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:34:19 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: administrador@gmail.com,2024-11-19
+nov 19, 2024 3:34:52 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:35:06 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gamil.com,2024-11-19
+nov 19, 2024 3:35:06 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gamil.com,2024-11-19
+nov 19, 2024 3:35:13 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:35:13 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:37:33 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:37:49 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:37:49 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:47:35 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 3:48:38 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 3:48:38 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19

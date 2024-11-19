@@ -37,21 +37,21 @@ public class BilleteraVirtualUtils {
         Cuenta cuenta = new Cuenta();
         cuenta.setIdCuenta("0110");
         cuenta.setNumeroCuenta("4566555");
-        cuenta.setTipoCuenta("Ahorros");
+        cuenta.setTipoCuenta(TipoCuenta.AHORRO);
         cuenta.setNombreBanco("Davivienda");
         usuario.getListaCuentas().add(cuenta);
 
         Cuenta cuenta1 = new Cuenta();
         cuenta1.setIdCuenta("0111");
         cuenta1.setNumeroCuenta("9654445");
-        cuenta1.setTipoCuenta("Ahorros");
+        cuenta1.setTipoCuenta(TipoCuenta.AHORRO);
         cuenta1.setNombreBanco("Bancolombia");
         usuario1.getListaCuentas().add(cuenta1);
 
         Cuenta cuenta2 = new Cuenta();
         cuenta2.setIdCuenta("0112");
         cuenta2.setNumeroCuenta("4500555");
-        cuenta2.setTipoCuenta("Corriente");
+        cuenta2.setTipoCuenta(TipoCuenta.CORRIENTE);
         cuenta2.setNombreBanco("Davivienda");
         usuario2.getListaCuentas().add(cuenta2);
 

@@ -4,7 +4,7 @@ public class Cuenta {
     private String idCuenta;
     private String nombreBanco;
     private String numeroCuenta;
-    private String tipoCuenta;
+    private TipoCuenta tipoCuenta;
 
 
     public Cuenta() {
@@ -34,11 +34,11 @@ public class Cuenta {
         this.numeroCuenta = numeroCuenta;
     }
 
-    public String getTipoCuenta() {
+    public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
     }
 
-    public void setTipoCuenta(String tipoCuenta) {
+    public void setTipoCuenta(TipoCuenta tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
 }
