@@ -385,7 +385,7 @@
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario" id="Usuario0">
      <void property="contrasena">
-      <string></string>
+      <string>katherine01</string>
      </void>
      <void property="email">
       <string>kathe@gmail.com</string>

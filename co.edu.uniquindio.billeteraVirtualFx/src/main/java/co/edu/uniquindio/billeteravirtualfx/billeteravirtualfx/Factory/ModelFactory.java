@@ -334,6 +334,9 @@ public class ModelFactory implements IModelFactoryService {
         }
 
     }
+    public List<TransaccionDto> obtenerTransaccionesAdm() {
+        return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
+    }
 
 
     private void guardarResourceXML() {
