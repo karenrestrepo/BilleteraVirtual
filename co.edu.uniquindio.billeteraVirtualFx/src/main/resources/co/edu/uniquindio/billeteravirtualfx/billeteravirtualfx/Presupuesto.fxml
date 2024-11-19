@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,24 +12,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.PresupuestoViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.PresupuestoViewController">
    <children>
       <SplitPane dividerPositions="0.4540636042402827" orientation="VERTICAL" prefHeight="561.0" prefWidth="881.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="865.0">
                <children>
                   <TextField fx:id="txtNombre" layoutX="115.0" layoutY="113.0" prefHeight="25.0" prefWidth="276.0" />
-                  <Button fx:id="btnAgregar" layoutX="245.0" layoutY="206.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="25.0" prefWidth="110.0" text="Agregar " />
+                  <Button fx:id="btnAgregar" layoutX="474.0" layoutY="201.0" mnemonicParsing="false" onAction="#onAgregar" prefHeight="25.0" prefWidth="110.0" text="Agregar " />
                   <Label layoutX="53.0" layoutY="117.0" text="Nombre:" />
                   <Label layoutX="23.0" layoutY="60.0" text="Id presupuesto:" />
                   <Label layoutX="447.0" layoutY="60.0" text="Monto asignado:" />
                   <TextField fx:id="txtMontoAsignado" layoutX="556.0" layoutY="56.0" prefHeight="25.0" prefWidth="276.0" />
                   <TextField fx:id="txtIdPresupuesto" layoutX="115.0" layoutY="56.0" prefHeight="25.0" prefWidth="276.0" />
                   <Separator layoutY="183.0" prefHeight="5.0" prefWidth="865.0" />
-                  <Button fx:id="btnActualizar" layoutX="499.0" layoutY="206.0" mnemonicParsing="false" onAction="#onActualizar" prefHeight="25.0" prefWidth="110.0" text="Actualizar" />
+                  <Button fx:id="btnActualizar" layoutX="233.0" layoutY="201.0" mnemonicParsing="false" onAction="#onActualizar" prefHeight="25.0" prefWidth="110.0" text="Actualizar" />
                   <Label layoutX="1.0" layoutY="1.0" text="Presupuesto" />
                   <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
+                  <Label layoutX="447.0" layoutY="117.0" text="Elige una categoria:" />
+                  <ComboBox fx:id="comboCategoria" layoutX="571.0" layoutY="113.0" onAction="#onCategoriabox" prefWidth="150.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="865.0">

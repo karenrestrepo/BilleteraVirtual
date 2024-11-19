@@ -6,14 +6,15 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
-import javafx.beans.property.SimpleDoubleProperty;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Productor.ProductorController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
+
+import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.util.Constantes.QUEUE_NUEVA_PUBLICACION;
 
 public class TransaccionViewController {
     TransaccionController transaccionControllerService;
@@ -146,7 +147,14 @@ public class TransaccionViewController {
         if(datosValidos(transaccionDto)) {
             if (mostrarMensajeConfirmacion("¿Estas seguro de la realización de la transacción?")) {
                 if (transaccionControllerService.crearTransaccion(transaccionDto)) {
-                    listaTransaccionesDto.add(transaccionDto);
+
+                    ProductorController modelFactoryController = ProductorController.getInstance();
+                    String mensaje = "";
+                    mensaje += "100;";
+                    mensaje += "NUEVO_PRODUCTO";
+                    modelFactoryController.producirMensaje(QUEUE_NUEVA_PUBLICACION, mensaje);
+
+                    //listaTransaccionesDto.add(transaccionDto);
                     mostrarMensaje("Notificación Transacción", "Transacción creado", "El Transacción se ha creado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCamposTransaccion();
                     registrarAcciones(" Transacción Creada ", 1, " La transacción se creo correctamente");

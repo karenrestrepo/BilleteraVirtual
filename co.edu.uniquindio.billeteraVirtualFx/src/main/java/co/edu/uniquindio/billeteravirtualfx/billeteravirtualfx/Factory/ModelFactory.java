@@ -1,16 +1,20 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory;
 
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.CategoriaException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.PresupuestoException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.Service.IModelFactoryService;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.CategoriaMapper;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.PresupuestoMapper;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.TransaccionMapper;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.UsuarioMapper;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistencia;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.BilleteraVirtualUtils;
 
 import java.io.IOException;
@@ -19,18 +23,27 @@ import java.util.List;
 public class ModelFactory implements IModelFactoryService {
 
     BillerteraVirtual billerteraVirtual;
+    Usuario usuario;
     Transaccion transaccion;
+
     UsuarioMapper mapper = UsuarioMapper.INSTANCE;
     TransaccionMapper transaccionMapper = TransaccionMapper.INSTANCE;
+    PresupuestoMapper presupuestoMapper = PresupuestoMapper.INSTANCE;
+    CategoriaMapper categoriaMapper = CategoriaMapper.INSTANCE;
 
     public static void registrarAccionesSistema(String mensaje, int nivel, String accion) {
         Persistencia.guardaRegistroLog(mensaje, nivel, accion);
     }
 
     public List<TransaccionDto> obtenerTransacciones() {
-        return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
+        System.out.println(usuario.getListaTransacciones());
+        return  transaccionMapper.getTransaccionesDto(usuario.getListaTransacciones());
+
     }
 
+    public List<PresupuestoDto> obtenerPresupuestos() {
+        return  presupuestoMapper.getPresupuestoDto(billerteraVirtual.getListaPresupuestos());
+    }
 
 
     private static class SingletonHolder {
@@ -50,14 +63,13 @@ public class ModelFactory implements IModelFactoryService {
 
         //2. Cargar los datos de los archivos
 		//cargarDatosDesdeArchivos();
-
         //3. Guardar y Cargar el recurso serializable binario
-    	cargarResourceBinario();
+    	//cargarResourceBinario();
 		//guardarResourceBinario();
 
         //4. Guardar y Cargar el recurso serializable XML
-        guardarResourceXML();
-        //cargarResourceXML();
+        //guardarResourceXML();
+        cargarResourceXML();
 
         //Siempre se debe verificar si la raiz del recurso es null
 
@@ -104,6 +116,7 @@ public class ModelFactory implements IModelFactoryService {
 
     private void cargarDatosBase() {
         billerteraVirtual = BilleteraVirtualUtils.inicializarDatos();
+
     }
 
     public BillerteraVirtual getBillerteraVirtual() {
@@ -171,6 +184,7 @@ public class ModelFactory implements IModelFactoryService {
                 Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
                 getBillerteraVirtual().crearTransaccion(transaccion);
                 registrarAccionesSistema("Transacción realizada: "+ transaccion.getIdTransaccion(),1,"crearTransaccion");
+
                 Persistencia.guardarTransacciones(getBillerteraVirtual().getListaTransacciones());
                 guardarResourceXML();
             }
@@ -187,8 +201,10 @@ public class ModelFactory implements IModelFactoryService {
     @Override
     public boolean ingresar(String correo, String contraseña) {
         try {
-            boolean credencialesValidas = billerteraVirtual.verificarCredenciales(correo, contraseña);
-            if (credencialesValidas) {
+            Usuario currentUser = billerteraVirtual.verificarCredenciales(correo, contraseña);
+            this.usuario = currentUser;
+            billerteraVirtual.setUsuarioSeleccionado(currentUser);
+            if (currentUser != null) {
                 registrarAccionesSistema("Inicio de sesión exitoso para: " + correo, 1, "ingresar");
                 return true;
             } else {
@@ -217,6 +233,108 @@ public class ModelFactory implements IModelFactoryService {
             return false;
         }
     }
+
+
+    @Override
+    public boolean crearPresupuesto(PresupuestoDto presupuestoDto){
+        try{
+            if(!billerteraVirtual.verificarPresupuestoExistente(presupuestoDto.idPresupuesto())) {
+                Presupuesto presupuesto = presupuestoMapper.presupuestoDtoToPresupuesto(presupuestoDto);
+                getBillerteraVirtual().crearPresupuesto(presupuesto);
+                registrarAccionesSistema("Presupuesto realizada: "+ presupuesto.getIdPresupuesto(),1,"crear Presupuesto");
+                Persistencia.guardarPresupuesto(getBillerteraVirtual().getListaPresupuestos());
+                guardarResourceXML();
+            }
+            return true;
+        }catch (PresupuestoException e){
+            e.getMessage();
+            return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean eliminarPresupuesto(String id){
+        boolean idExiste = false;
+        try {
+            idExiste = getBillerteraVirtual().eliminarPresupuesto(id);
+            guardarResourceXML();
+        } catch (PresupuestoException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return idExiste;
+
+    }
+
+    @Override
+    public boolean actualizarPresupuesto(String idActual, PresupuestoDto presupuestoDto){
+        try {
+            Presupuesto presupuesto = presupuestoMapper.presupuestoDtoToPresupuesto(presupuestoDto);
+            getBillerteraVirtual().actualizarPresupuesto(idActual, presupuesto);
+            guardarResourceXML();
+            return true;
+        } catch (PresupuestoException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    public List<CategoriaDto> obtenerCategorias(){
+        return  categoriaMapper.getCategoriaDto(usuario.getListaCategorias());
+
+    }
+    @Override
+   public  boolean crearCategorias( CategoriaDto categoriaDto){
+        try{
+            if(!billerteraVirtual.verificarCategoriaExistente(categoriaDto.idCategoria())) {;
+                Categoria categoria = categoriaMapper.categoriaDtoToCategoria(categoriaDto);
+                getBillerteraVirtual().crearCategoria(categoria);
+                Persistencia.guardarCategorias(getBillerteraVirtual().getListaCategorias());
+                guardarResourceXML();
+            }
+            return true;
+        }catch (CategoriaException e){
+            e.getMessage();
+            return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public boolean eliminarCategoria(String id){
+
+        boolean idExiste = false;
+        try {
+            idExiste = getBillerteraVirtual().eliminarCategoria(id);
+            guardarResourceXML();
+        } catch (CategoriaException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return idExiste;
+
+    }
+
+    @Override
+    public boolean actualizarCategoria(String idActual, CategoriaDto categoriaDto){
+        try {
+            Categoria categoria = categoriaMapper.categoriaDtoToCategoria(categoriaDto);
+            getBillerteraVirtual().actualizarCategoria(idActual, categoria);
+            guardarResourceXML();
+            return true;
+        } catch (CategoriaException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
 
     private void guardarResourceXML() {
         Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);

@@ -1,9 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils;
 
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Usuario;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +18,10 @@ public class Persistencia {
     private static final String RUTA_DIRECTORIO_RESPALDO = "src/main/resources/persistencia/Respaldo/";
     private static final String RUTA_DIRECTORIO_USUARIOS = "src/main/resources/persistencia/archivos/";
     private static final String PREFIJO_ARCHIVO_USUARIOS = "archivoUsuarios";
+    private static final String RUTA_DIRECTORIO_CATEGORIA= "src/main/resources/persistencia/archivos/";
+    private static final String PREFIJO_ARCHIVO_CATEGORIA = "archivoCategoria";
+    private static final String RUTA_DIRECTORIO_PRESUPUESTO = "src/main/resources/persistencia/archivos/";
+    private static final String PREFIJO_ARCHIVO_PRESUPUESTO = "archivoPresupuesto";
     private static final String RUTA_DIRECTORIO_TRANSACCION = "src/main/resources/persistencia/archivos/";
     private static final String PREFIJO_ARCHIVO_TRANSACCION = "archivoTransacciones";
     private static final String EXTENSION_ARCHIVO = ".txt";
@@ -60,6 +61,11 @@ public class Persistencia {
         ArrayList<Transaccion> transaccionesCargadas = cargarTransacciones();
         if (transaccionesCargadas.size() > 0) {
             billerteraVirtual.getListaTransacciones().addAll(transaccionesCargadas);
+        }
+
+        ArrayList<Presupuesto> presupuestosCargados = cargarPresupuesto();
+        if (presupuestosCargados.size() > 0) {
+            billerteraVirtual.getListaPresupuestos().addAll(presupuestosCargados);
         }
 
         // Cargar archivo de transacciones
@@ -254,7 +260,7 @@ public class Persistencia {
 
     private static void verificarDirectoriosTransacciones() {
         File directorioTransaccion = new File(RUTA_DIRECTORIO_TRANSACCION);
-        File directorioRespaldo = new File(RUTA_DIRECTORIO_TRANSACCION);
+        File directorioRespaldo = new File(RUTA_DIRECTORIO_RESPALDO);
 
         if (!directorioTransaccion.exists()) {
             directorioTransaccion.mkdirs();
@@ -305,5 +311,187 @@ public class Persistencia {
     private static Cuenta obtenerCuentaPorNumero(String dato) {
         BillerteraVirtual billeteraVirtual = new BillerteraVirtual();
         return billeteraVirtual.obtenerCuentaPorNumero(dato);
+    }
+    public static ArrayList<Presupuesto> cargarPresupuesto() throws FileNotFoundException, IOException
+    {
+        String rutaArchivo = obtenerRutaArchivoMasRecientePresupuesto();
+        ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(rutaArchivo);
+
+        for (String linea : contenido) {
+            String[] datos = linea.split("@@");
+            Presupuesto presupuesto = new Presupuesto();
+            presupuesto.setIdPresupuesto(datos[0]);
+            presupuesto.setNombre(datos[1]);
+            presupuesto.setMontoAsignado(Double.parseDouble(datos[2]));
+            presupuesto.setMontoGastado(Double.parseDouble(datos[3]));
+            if (datos.length > 4) {
+                presupuesto.setIdPresupuesto(datos[5]);
+            }
+            presupuestos.add(presupuesto);
+        }
+        return presupuestos;
+
+    }
+
+    private static String obtenerRutaArchivoMasRecientePresupuesto() {
+        File directorio = new File(RUTA_DIRECTORIO_PRESUPUESTO);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_PRESUPUESTO) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos == null || archivos.length == 0) {
+            return RUTA_DIRECTORIO_PRESUPUESTO + PREFIJO_ARCHIVO_PRESUPUESTO + EXTENSION_ARCHIVO;
+        }
+
+        Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+        return archivos[0].getPath();
+    }
+    public static void guardarPresupuesto(ArrayList<Presupuesto> listaPresupuestos) throws IOException {
+        verificarDirectoriosPresupuestos();
+        String contenido = "";
+        for(Presupuesto presupuesto:listaPresupuestos)
+        {
+            contenido+= presupuesto.getIdPresupuesto()+"@@"+
+                    presupuesto.getNombre()+"@@"+
+                    presupuesto.getMontoAsignado()+"@@"+
+                    presupuesto.getMontoGastado()+"\n";
+        }
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String nombreArchivo = PREFIJO_ARCHIVO_PRESUPUESTO + "_" + timestamp + EXTENSION_ARCHIVO;
+
+        // Rutas para el archivo principal y el respaldo
+        String rutaArchivoPrincipal = RUTA_DIRECTORIO_PRESUPUESTO + nombreArchivo;
+        String rutaArchivoRespaldo = RUTA_DIRECTORIO_RESPALDO + nombreArchivo;
+
+        // Guardar el archivo principal
+        ArchivoUtil.guardarArchivo(rutaArchivoPrincipal, contenido, false);
+
+        // Guardar la copia de respaldo
+        ArchivoUtil.guardarArchivo(rutaArchivoRespaldo, contenido, false);
+
+        // Eliminar archivos antiguos (tanto en la carpeta principal como en la de respaldo)
+        limpiarArchivosAntiguosPresupuestos(RUTA_DIRECTORIO_PRESUPUESTO);
+        limpiarArchivosAntiguosPresupuestos(RUTA_DIRECTORIO_RESPALDO);
+    }
+
+    private static void verificarDirectoriosPresupuestos() {
+        File directorioPresupuesto = new File(RUTA_DIRECTORIO_PRESUPUESTO);
+        File directorioRespaldo = new File(RUTA_DIRECTORIO_RESPALDO);
+
+
+        if (!directorioPresupuesto.exists()) {
+            directorioPresupuesto.mkdirs();
+        }
+        if (!directorioRespaldo.exists()) {
+            directorioRespaldo.mkdirs();
+        }
+    }
+
+    private static void limpiarArchivosAntiguosPresupuestos(String rutaDirectorioPresupuesto) {
+        File directorio = new File(rutaDirectorioPresupuesto);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_PRESUPUESTO) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos != null && archivos.length > 1) {
+            Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+
+            // Mantener solo el archivo más reciente
+            for (int i = 1; i < archivos.length; i++) {
+                archivos[i].delete();
+            }
+        }
+    }
+
+    private static void verificarDirectoriosCategoria() {
+        File directorioCategoria = new File(RUTA_DIRECTORIO_CATEGORIA);
+        File directorioRespaldo = new File(RUTA_DIRECTORIO_RESPALDO);
+
+        if (!directorioCategoria.exists()) {
+            directorioCategoria.mkdirs();
+        }
+
+        if (!directorioRespaldo.exists()) {
+            directorioRespaldo.mkdirs();
+        }
+    }
+
+    public static String obtenerRutaArchivoMasRecienteCategoria() {
+        File directorio = new File(RUTA_DIRECTORIO_CATEGORIA);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_CATEGORIA) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos == null || archivos.length == 0) {
+            return RUTA_DIRECTORIO_CATEGORIA + PREFIJO_ARCHIVO_CATEGORIA + EXTENSION_ARCHIVO;
+        }
+
+        Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+        return archivos[0].getPath();
+    }
+    public static ArrayList<Categoria> cargarCategoria() throws FileNotFoundException, IOException
+    {
+        String rutaArchivo = obtenerRutaArchivoMasRecienteCategoria();
+        ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(rutaArchivo);
+
+        for (String linea : contenido) {
+            String[] datos = linea.split("@@");
+            Categoria categoria = new Categoria();
+            categoria.setIdCategoria(datos[0]);
+            categoria.setNombre(datos[1]);
+            categoria.setDescripcion(datos[2]);
+
+            if (datos.length > 3) {
+                categoria.setIdCategoria(datos[3]);
+            }
+            categorias.add(categoria);
+        }
+        return categorias;
+
+    }
+
+
+//////////////////////guardar//////////////////////////////////
+
+
+    public static void guardarCategorias(ArrayList<Categoria> listaCategorias) throws IOException {
+        verificarDirectoriosCategoria();
+        String contenido = "";
+        for(Categoria categoria:listaCategorias)
+        {
+            contenido+= categoria.getIdCategoria()+"@@"+
+                    categoria.getNombre()+"@@"+
+                    categoria.getDescripcion()+"\n";
+        }
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String nombreArchivo = PREFIJO_ARCHIVO_CATEGORIA + "_" + timestamp + EXTENSION_ARCHIVO;
+
+        // Rutas para el archivo principal y el respaldo
+        String rutaArchivoPrincipal = RUTA_DIRECTORIO_CATEGORIA + nombreArchivo;
+        String rutaArchivoRespaldo = RUTA_DIRECTORIO_RESPALDO + nombreArchivo;
+
+        // Guardar el archivo principal
+        ArchivoUtil.guardarArchivo(rutaArchivoPrincipal, contenido, false);
+
+        // Guardar la copia de respaldo
+        ArchivoUtil.guardarArchivo(rutaArchivoRespaldo, contenido, false);
+
+        // Eliminar archivos antiguos (tanto en la carpeta principal como en la de respaldo)
+        limpiarArchivosAntiguosCategoria(RUTA_DIRECTORIO_CATEGORIA);
+        limpiarArchivosAntiguosCategoria(RUTA_DIRECTORIO_RESPALDO);
+    }
+
+    private static void limpiarArchivosAntiguosCategoria(String rutaDirectorio) {
+        File directorio = new File(rutaDirectorio);
+        File[] archivos = directorio.listFiles((dir, name) ->
+                name.startsWith(PREFIJO_ARCHIVO_CATEGORIA) && name.endsWith(EXTENSION_ARCHIVO));
+
+        if (archivos != null && archivos.length > 1) {
+            Arrays.sort(archivos, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+
+            // Mantener solo el archivo más reciente
+            for (int i = 1; i < archivos.length; i++) {
+                archivos[i].delete();
+            }
+        }
     }
 }

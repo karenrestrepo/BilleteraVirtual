@@ -4,6 +4,7 @@ module co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx {
     requires org.mapstruct;
     requires java.logging;
     requires java.desktop;
+    requires com.rabbitmq.client;
 
 
     opens co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx to javafx.fxml;

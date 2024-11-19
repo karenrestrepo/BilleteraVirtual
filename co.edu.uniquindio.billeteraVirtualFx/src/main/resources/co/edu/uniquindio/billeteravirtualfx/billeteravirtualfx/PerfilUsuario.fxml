@@ -25,7 +25,7 @@
                   <Label layoutX="312.0" layoutY="189.0" text="Correo:" />
                   <Label layoutX="6.0" layoutY="1.0" text="Información de mi perfil" />
                   <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
-                  <TableView fx:id="tableUsuario" layoutX="87.0" layoutY="51.0" prefHeight="51.0" prefWidth="705.0">
+                  <TableView fx:id="tableUsuario" layoutX="86.0" layoutY="33.0" prefHeight="91.0" prefWidth="705.0">
                      <columns>
                         <TableColumn fx:id="tcNombreUsuario" prefWidth="224.0" text="Nombre" />
                         <TableColumn fx:id="tcCedulaUsuario" minWidth="0.0" prefWidth="151.0" text="Cédula" />

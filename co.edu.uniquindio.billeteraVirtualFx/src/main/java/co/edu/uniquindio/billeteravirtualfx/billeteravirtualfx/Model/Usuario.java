@@ -14,8 +14,25 @@ public class Usuario implements Serializable {
     private String contrasena;
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
+    ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
+    ArrayList<Categoria> listaCategorias = new ArrayList<>();
+
+    public ArrayList<Categoria> getListaCategorias() {
+        return listaCategorias;
+    }
+
+    public void setListaCategorias(ArrayList<Categoria> listaCategorias) {
+        this.listaCategorias = listaCategorias;
+    }
 
     public Usuario() {
+    }
+    public ArrayList<Presupuesto> getListaPresupuestos() {
+        return listaPresupuestos;
+    }
+
+    public void setListaPresupuestos(ArrayList<Presupuesto> listaPresupuestos) {
+        this.listaPresupuestos = listaPresupuestos;
     }
 
     public String getIdUsuario() {

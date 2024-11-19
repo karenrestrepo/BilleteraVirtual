@@ -110,13 +110,38 @@ public class LoginViewController {
 
     private void ingresarBilletera() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/BilleteraViewUsuario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/InicialUsuario.fxml"));
             Parent root = loader.load();
+
+            // Obtener el controlador de la vista cargada
+            InicioUsuarioViewController inicioController = loader.getController();
+
+            // Buscar el UsuarioDto correspondiente en la lista
+            UsuarioDto usuarioDto = obtenerUsuarioPorCorreo(txtCorreoLogin.getText());
+
+            // Pasar el UsuarioDto al controlador de la vista de inicio
+            if (usuarioDto != null) {
+                inicioController.setUsuario(usuarioDto);
+
+            }
+
             Stage stage = (Stage) txtCorreoLogin.getScene().getWindow();
             stage.setScene(new Scene(root));
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private UsuarioDto obtenerUsuarioPorCorreo(String correo) {
+            for (UsuarioDto usuario : listaUsuarioDto) {
+                if (usuario.email().equals(correo)) {
+                    return usuario;
+                }
+            }
+            return null; // Si no se encuentra el usuario
+
     }
 
     @FXML

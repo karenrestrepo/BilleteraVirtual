@@ -1,5 +1,7 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.CategoriaException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.PresupuestoException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
@@ -16,6 +18,8 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
     ArrayList<Categoria> listaCategorias = new ArrayList<>();
+
+    Usuario usuarioSeleccionado;
 
     Persistencia persistencia;
     public BillerteraVirtual() {
@@ -162,18 +166,46 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
     }
 
     @Override
-    public void crearTransaccion(Transaccion nuevaTransaccion) throws TransaccionException{
-        getListaTransacciones().add(nuevaTransaccion);
+    public void crearTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
+        // Verificar si ambas cuentas (origen y destino) son válidas
+        boolean cuentaOrigenValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaOrigen().getIdCuenta());
+        boolean cuentaDestinoValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaDestino().getIdCuenta());
 
+        if (cuentaOrigenValida && cuentaDestinoValida) {
+            // Si ambas cuentas son válidas, proceder con la transacción
+            getListaTransacciones().add(nuevaTransaccion);
+            usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+            System.out.println("Transacción realizada con éxito.");
+        } else {
+            // Si alguna cuenta no es válida, lanzar una excepción
+            throw new TransaccionException("Una o ambas cuentas no existen.");
+        }
     }
 
+
+    public boolean encontrarCuentaExistente(String transaccion) {
+        // Recorrer la lista de cuentas
+        for (Cuenta cuenta : listaCuentas) {
+            // Si la cuenta coincide con la ID de transacción
+            if (cuenta.getIdCuenta().equals(transaccion)) {
+                System.out.println("La cuenta existe");
+                return true;  // Retorna true si la cuenta se encuentra
+            }
+        }
+
+        // Si no se encontró la cuenta, se retorna false
+        System.out.println("La cuenta no existe");
+        return false;
+    }
+
+
     @Override
-    public boolean verificarCredenciales(String correo, String contraseña) {
+    public Usuario verificarCredenciales(String correo, String contraseña) {
         System.out.println("Intentando verificar credenciales para correo: " + correo);
 
         if (correo == null || contraseña == null) {
             System.out.println("Correo o contraseña es null");
-            return false;
+            return null;
         }
 
         for (Usuario usuario : getListaUsuarios()) {
@@ -186,11 +218,12 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
                     usuario.getEmail().equalsIgnoreCase(correo) &&
                     usuario.getContrasena().equals(contraseña)) {
                 System.out.println("¡Coincidencia encontrada!");
-                return true;
+
+                return usuario;
             }
         }
         System.out.println("No se encontró coincidencia");
-        return false;
+        return null;
     }
 
     @Override
@@ -236,5 +269,177 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             }
         }
         return transaccionEncontrada;
+    }
+
+
+
+    @Override
+    public Presupuesto agregarPresupuesto(String idPresupuesto, String nombre, double montoAsignado, double montoGastado, String categoria) throws PresupuestoException{
+
+        Presupuesto nuevoPresupuesto = null;
+        boolean presupuestoExiste = verificarPresupuestoExistente(idPresupuesto);
+        if(presupuestoExiste){
+            throw new PresupuestoException("El usuario con cedula: "+idPresupuesto+" ya existe");
+        }else{
+            nuevoPresupuesto = new Presupuesto();
+            nuevoPresupuesto.setIdPresupuesto(idPresupuesto);
+            nuevoPresupuesto.setNombre(nombre);
+            nuevoPresupuesto.setMontoAsignado(montoAsignado);
+            nuevoPresupuesto.setMontoGastado(montoGastado);
+
+            usuarioSeleccionado.getListaPresupuestos().add(nuevoPresupuesto);
+        }
+        return nuevoPresupuesto;
+
+    }
+
+    @Override
+    public Boolean eliminarPresupuesto(String id)throws PresupuestoException{
+        Presupuesto presupuesto = null;
+        boolean idExiste = false;
+        System.out.println("hola");
+        presupuesto = obtenerPresupuesto(id);
+        if(presupuesto == null)
+            throw new PresupuestoException("El Presupuesto a eliminar no existe");
+        else{
+            getListaPresupuestos().remove(presupuesto);
+            idExiste = true;
+        }
+        return idExiste;
+
+    }
+
+    @Override
+    public boolean actualizarPresupuesto(String idActual, Presupuesto presupuesto) throws PresupuestoException{
+        Presupuesto presupuestoExiste = obtenerPresupuesto(idActual);
+        if(presupuestoExiste == null)
+            throw new PresupuestoException("El presupuesto a actualizar no existe");
+        else{
+
+            presupuestoExiste.setIdPresupuesto(presupuesto.getIdPresupuesto());
+            presupuestoExiste.setNombre(presupuesto.getNombre());
+            presupuestoExiste.setMontoAsignado(presupuesto.getMontoAsignado());
+            presupuestoExiste.setMontoGastado(presupuesto.getMontoGastado());
+
+            return true;
+        }
+
+    }
+
+    @Override
+    public boolean  verificarPresupuestoExistente(String presupuesto) throws PresupuestoException{
+
+        if(presupuestoExiste(presupuesto)){
+            throw new PresupuestoException("La cuenta de origen: "+presupuesto+" no existe");
+        }else{
+            return false;
+        }
+
+    }
+
+    private boolean presupuestoExiste(String presupuesto) {
+
+        boolean presupuestoEncontrado= false;
+        for (Presupuesto presupuesto1 : getListaPresupuestos()) {
+            if(presupuesto1.getIdPresupuesto().equalsIgnoreCase(presupuesto)){
+                presupuestoEncontrado = true;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
+    }
+
+    @Override
+    public Presupuesto obtenerPresupuesto(String id){
+        Presupuesto presupuestoEncontrado = null;
+        for (Presupuesto presupuesto : getListaPresupuestos()) {
+            if(presupuesto.getIdPresupuesto().equalsIgnoreCase(id)){
+                presupuestoEncontrado = presupuesto;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
+
+    }
+
+    public void crearPresupuesto(Presupuesto presupuesto) {
+        getListaPresupuestos().add(presupuesto);
+        usuarioSeleccionado.getListaPresupuestos().add(presupuesto);
+    }
+
+    @Override
+    public void crearCategoria(Categoria categoria) throws CategoriaException{
+        getListaCategorias().add(categoria);
+        usuarioSeleccionado.getListaCategorias().add(categoria);
+
+    }
+    @Override
+    public Boolean eliminarCategoria(String id)throws CategoriaException{
+        Categoria categoria = null;
+        boolean idExiste = false;
+        categoria = obtenerCategoria(id);
+        if(categoria == null)
+            throw new CategoriaException("El usuario a eliminar no existe");
+        else{
+            getListaCategorias().remove(categoria);
+            usuarioSeleccionado.getListaCategorias().remove(categoria);
+            idExiste = true;
+        }
+        return idExiste;
+
+    }
+    @Override
+    public boolean actualizarCategoria(String idActual, Categoria categoria) throws CategoriaException{
+        Categoria categoriaExistente = obtenerCategoria(idActual);
+        if(categoriaExistente == null)
+            throw new CategoriaException("La categoria a actualizar no existe");
+        else{
+
+            categoriaExistente.setIdCategoria(categoria.getIdCategoria());
+            categoriaExistente.setNombre(categoria.getNombre());
+            categoriaExistente.setDescripcion(categoria.getIdCategoria());
+
+
+
+            return true;
+        }
+
+    }
+    @Override
+    public boolean  verificarCategoriaExistente(String id) throws CategoriaException{
+        if(categoriaExistente(id)){
+            throw new CategoriaException("La categoria de origen: "+id+" no existe");
+        }else{
+            return false;
+        }
+
+    }
+
+    private boolean categoriaExistente(String categoria) {
+        boolean categoriaEncontrada = false;
+        for (Categoria categoria1 : usuarioSeleccionado.getListaCategorias()) {
+            if(categoria1.getIdCategoria().equalsIgnoreCase(categoria)){
+                categoriaEncontrada = true;
+                break;
+            }
+        }
+        return categoriaEncontrada;
+    }
+
+    @Override
+    public Categoria obtenerCategoria(String id){
+        Categoria categoria = null;
+        for (Categoria categoria1 : usuarioSeleccionado.getListaCategorias() ) {
+            if(categoria1.getIdCategoria().equalsIgnoreCase(id)){
+                categoria = categoria1;
+                break;
+            }
+        }
+        return categoria;
+
+    }
+
+    public void setUsuarioSeleccionado(Usuario usuarioSeleccionado) {
+        this.usuarioSeleccionado = usuarioSeleccionado;
     }
 }

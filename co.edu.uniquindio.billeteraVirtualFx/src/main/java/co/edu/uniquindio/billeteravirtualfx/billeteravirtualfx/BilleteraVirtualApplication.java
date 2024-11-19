@@ -1,5 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx;
 
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Consumidor.controller.ConsumidorController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 import javafx.application.Application;
@@ -20,6 +21,9 @@ public class BilleteraVirtualApplication extends Application {
         this.primaryStage.setTitle("Billetera Virtual");
         mostrarVentanaLogin();
         inicializarAplicacion();
+        ConsumidorController consumidorController = ConsumidorController.getInstance();
+        consumidorController.consumirMensajesServicio1();
+
     }
 
     public void mostrarVentanaLogin() {
@@ -48,10 +52,12 @@ public class BilleteraVirtualApplication extends Application {
             // Carga los usuarios desde el archivo
             ArrayList<Usuario> usuariosCargados = Persistencia.cargarUsuarios();
             ArrayList<Transaccion> transaccionesCargadas = Persistencia.cargarTransacciones();
+            ArrayList<Presupuesto> presupuestoCargados = Persistencia.cargarPresupuesto();
 
             // Actualiza la lista de usuarios en la billetera
             billerteraVirtual.getListaUsuarios().clear();
             billerteraVirtual.getListaUsuarios().addAll(usuariosCargados);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

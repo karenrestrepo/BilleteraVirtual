@@ -21,6 +21,7 @@ public class UsuarioController implements IUsuaruoControllerService {
 
     @Override
     public boolean crearUsuario(UsuarioDto usuarioDto) {
+
         return modelFactory.crearUsuario(usuarioDto);
     }
 

@@ -1,6 +1,10 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
-public class Presupuesto {
+import java.io.Serializable;
+
+public class Presupuesto implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String idPresupuesto;
     private String nombre;
@@ -9,6 +13,14 @@ public class Presupuesto {
     private String categoria;
 
     public Presupuesto() {
+    }
+
+    public Presupuesto(String idPresupuesto, String nombre, double montoAsignado, double montoGastado, String categoria) {
+        this.idPresupuesto = idPresupuesto;
+        this.nombre = nombre;
+        this.montoAsignado = montoAsignado;
+        this.montoGastado = montoGastado;
+        this.categoria = categoria;
     }
 
     public String getIdPresupuesto() {
