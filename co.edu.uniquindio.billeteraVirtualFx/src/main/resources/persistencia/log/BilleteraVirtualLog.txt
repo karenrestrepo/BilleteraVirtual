@@ -1175,3 +1175,7 @@ nov 19, 2024 3:48:38 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtu
 WARNING: ingresar,Intento de inicio de sesión fallido para: Esteban@gmail.com,2024-11-19
 nov 19, 2024 3:48:38 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
 INFO: ingresar,Inicio de sesión exitoso para: Esteban@gmail.com,2024-11-19
+nov 19, 2024 4:36:23 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 4:36:41 P. M. co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.ArchivoUtil guardarRegistroLog
+INFO: ingresar,Inicio de sesión exitoso para: administrador@gmail.com,2024-11-19

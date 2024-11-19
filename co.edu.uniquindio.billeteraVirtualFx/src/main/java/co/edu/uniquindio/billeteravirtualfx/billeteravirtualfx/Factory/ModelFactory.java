@@ -335,6 +335,11 @@ public class ModelFactory implements IModelFactoryService {
 
     }
 
+    @Override
+    public List<TransaccionDto> obtenerTransaccionesAdm() {
+        return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
+    }
+
 
     private void guardarResourceXML() {
         Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);

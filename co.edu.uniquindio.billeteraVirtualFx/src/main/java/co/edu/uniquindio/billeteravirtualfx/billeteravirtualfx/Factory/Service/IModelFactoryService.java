@@ -31,4 +31,6 @@ public interface IModelFactoryService {
     boolean eliminarCategoria(String id);
 
     boolean actualizarCategoria(String idActual, CategoriaDto categoriaDto);
+
+    List<TransaccionDto> obtenerTransaccionesAdm();
 }
