@@ -24,9 +24,26 @@ public interface UsuarioMapper {
     @IterableMapping(qualifiedByName = "usuarioToUsuarioDto")
     List<UsuarioDto> getUsuariosDto (List<Usuario> listaUsuarios);
 
-//    @Named("mappingToEmpeladoDto")
-//    EmpleadoDto mappingToEmpeladoDto(Empleado empleado);
+    public static Usuario dtoToEntity(UsuarioDto usuarioDto) {
+        return new Usuario(
+                usuarioDto.idUsuario(),
+                usuarioDto.nombre(),
+                usuarioDto.email(),
+                usuarioDto.telefono(),
+                usuarioDto.saldo(),
+                usuarioDto.contrasena()
+        );
+    }
 
-
+    public static UsuarioDto entityToDto(Usuario usuario) {
+        return new UsuarioDto(
+                usuario.getIdUsuario(),
+                usuario.getNombre(),
+                usuario.getEmail(),
+                usuario.getTelefono(),
+                usuario.getSaldo(),
+                usuario.getContrasena()
+        );
+    }
 
 }

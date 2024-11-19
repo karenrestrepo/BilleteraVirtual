@@ -18,6 +18,9 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
+    public Usuario(String s, String nombre, String email, String telefono, double saldo, String contrasena) {
+    }
+
     public String getIdUsuario() {
         return idUsuario;
     }

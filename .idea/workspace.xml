@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46c6ec00-6b7c-4786-b3f8-6c61f69a57df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.billeteraVirtualFx/src/main/resources/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Usuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.billeteraVirtualFx/src/main/resources/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Usuario.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="46c6ec00-6b7c-4786-b3f8-6c61f69a57df" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,25 +13,35 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: -1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2mLHhWe1GpVgwooYwCr8n3guGJO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev__programacion&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/proin/Downloads/Intelligent/Mi repositorio/P3/BilleteraVirtual/co.edu.uniquindio.billeteraVirtualFx&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev__programacion2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/proin/Downloads/Intelligent/Mi repositorio/P3/BilleteraVirtual/co.edu.uniquindio.billeteraVirtualFx",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,6 +54,7 @@
       <workItem from="1728069245520" duration="75000" />
       <workItem from="1728069451831" duration="107000" />
       <workItem from="1728142404777" duration="33000" />
+      <workItem from="1731985836541" duration="106000" />
     </task>
     <servers />
   </component>

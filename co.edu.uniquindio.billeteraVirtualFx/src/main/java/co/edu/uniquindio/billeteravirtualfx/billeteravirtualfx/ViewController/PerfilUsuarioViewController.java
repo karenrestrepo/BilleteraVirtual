@@ -2,6 +2,8 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.PerfilUsuarioController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,9 +13,9 @@ import javafx.collections.ObservableList;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 
 public class PerfilUsuarioViewController {
+    private PerfilUsuarioController perfilUsuarioController;
     private UsuarioDto usuarioActual;
     private ObservableList<UsuarioDto> listaUsuarios = FXCollections.observableArrayList();
-
     @FXML
     private ResourceBundle resources;
 
