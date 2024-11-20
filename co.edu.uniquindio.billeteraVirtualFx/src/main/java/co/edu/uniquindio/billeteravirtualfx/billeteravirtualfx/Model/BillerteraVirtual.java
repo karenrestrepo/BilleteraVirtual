@@ -158,36 +158,66 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
     @Override
     public boolean verificarCuentaExistente(String cuenta) throws TransaccionException {
-        if(transaccionExiste(cuenta)){
-            throw new TransaccionException("La cuenta de origen: "+cuenta+" no existe");
-        }else{
+        if (transaccionExiste(cuenta)) {
+            throw new TransaccionException("La cuenta de origen: " + cuenta + " no existe");
+        } else {
             return false;
         }
     }
 
+    // Este método revisa si ya existe una transacción con el ID especificado
+    public boolean transaccionExiste(String idTransaccion) {
+        for (Transaccion transaccion : listaTransacciones) {
+            if (transaccion.getIdTransaccion().equalsIgnoreCase(idTransaccion)) {
+                return true;  // Ya existe una transacción con el mismo ID
+            }
+        }
+        return false;
+    }
+
+
     @Override
     public void crearTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
-        // Verificar si ambas cuentas (origen y destino) son válidas
-        boolean cuentaOrigenValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaOrigen().getIdCuenta());
-        boolean cuentaDestinoValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaDestino().getIdCuenta());
+        // Verificar que ambas cuentas sean válidas
+        boolean cuentaOrigenValida = encontrarCuentaExistenteUsuario(nuevaTransaccion.getCuentaOrigen().getNumeroCuenta());
+        boolean cuentaDestinoValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaDestino().getNumeroCuenta());
 
         if (cuentaOrigenValida && cuentaDestinoValida) {
-            // Si ambas cuentas son válidas, proceder con la transacción
+            // Verificar que no exista una transacción con el mismo ID
+            if (transaccionExiste(nuevaTransaccion.getIdTransaccion())) {
+                throw new TransaccionException("Ya existe una transacción con el mismo ID: " + nuevaTransaccion.getIdTransaccion());
+            }
+
+            // Si las verificaciones pasan, agregar la transacción a las listas
             getListaTransacciones().add(nuevaTransaccion);
             usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
-            System.out.println("Transacción realizada con éxito.");
         } else {
-            // Si alguna cuenta no es válida, lanzar una excepción
             throw new TransaccionException("Una o ambas cuentas no existen.");
         }
     }
 
 
+    public boolean encontrarCuentaExistenteUsuario(String transaccion) {
+        System.out.println(usuarioSeleccionado.listaCuentas);
+        // Recorrer la lista de cuentas
+        for (Cuenta cuenta : usuarioSeleccionado.getListaCuentas()) {
+            // Si la cuenta coincide con la ID de transacción
+            if (cuenta.getNumeroCuenta().equalsIgnoreCase(transaccion)){
+                System.out.println("La cuenta existe");
+                return true;  // Retorna true si la cuenta se encuentra
+            }
+        }
+
+        // Si no se encontró la cuenta, se retorna false
+        System.out.println("La cuenta no existe");
+        return false;
+    }
     public boolean encontrarCuentaExistente(String transaccion) {
+        System.out.println(listaCuentas);
         // Recorrer la lista de cuentas
         for (Cuenta cuenta : listaCuentas) {
             // Si la cuenta coincide con la ID de transacción
-            if (cuenta.getIdCuenta().equals(transaccion)) {
+            if (cuenta.getNumeroCuenta().equalsIgnoreCase(transaccion)) {
                 System.out.println("La cuenta existe");
                 return true;  // Retorna true si la cuenta se encuentra
             }
@@ -260,16 +290,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
     }
 
 
-    private boolean transaccionExiste(String cuenta) {
-        boolean transaccionEncontrada = false;
-        for (Cuenta cuenta1 : getListaCuentas()) {
-            if(cuenta1.getNumeroCuenta().equalsIgnoreCase(cuenta)){
-                transaccionEncontrada = true;
-                break;
-            }
-        }
-        return transaccionEncontrada;
-    }
+
 
 
 

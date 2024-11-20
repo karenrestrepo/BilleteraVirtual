@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Productor.ProductorController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.control.*;
 import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.util.Constantes.QUEUE_NUEVA_PUBLICACION;
 
 public class TransaccionViewController {
+    UsuarioDto usuarioSeleccionado;
     TransaccionController transaccionControllerService;
     ObservableList<TransaccionDto> listaTransaccionesDto = FXCollections.observableArrayList();
     TransaccionDto transaccionSeleccionada;
@@ -79,6 +81,9 @@ public class TransaccionViewController {
 
     @FXML
     private TextField txtTipoTransaccion;
+
+
+
     @FXML
     void onCategorizar(ActionEvent event) {
 
@@ -99,6 +104,10 @@ public class TransaccionViewController {
         tableTransaccion.setItems(listaTransaccionesDto);
         listenerSelection();
         mostrarTransaccion();
+    }
+    public  void setUser(UsuarioDto usuarioDto) {
+        usuarioSeleccionado = usuarioDto;
+
     }
 
     private void initDataBinding() {
@@ -154,7 +163,7 @@ public class TransaccionViewController {
                     mensaje += "NUEVO_PRODUCTO";
                     modelFactoryController.producirMensaje(QUEUE_NUEVA_PUBLICACION, mensaje);
 
-                    //listaTransaccionesDto.add(transaccionDto);
+                    listaTransaccionesDto.add(transaccionDto);
                     mostrarMensaje("Notificación Transacción", "Transacción creado", "El Transacción se ha creado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCamposTransaccion();
                     registrarAcciones(" Transacción Creada ", 1, " La transacción se creo correctamente");
@@ -217,8 +226,11 @@ public class TransaccionViewController {
                 txtDescripcionTransaccion.getText(),
                 txtCuentaOrigenTransaccion.getText(),
                 txtCuentaDestinoTransaccion.getText()
+
         );
+
     }
+
     private void limpiarCamposTransaccion() {
         txtIdTransaccion.setText("");
         txtFechaTransaccion.setText("");

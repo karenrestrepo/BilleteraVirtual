@@ -15,14 +15,14 @@ public interface TransaccionMapper {
     TransaccionMapper INSTANCE = Mappers.getMapper(TransaccionMapper.class);
 
     @Named("transaccionToTransaccionDto")
-    @Mapping(source = "cuentaOrigen.nombreBanco ",target = "cuentaOrigen")
-    @Mapping(source = "cuentaDestino.nombreBanco", target = "cuentaDestino")
+    @Mapping(source = "cuentaOrigen.numeroCuenta ",target = "cuentaOrigen")
+    @Mapping(source = "cuentaDestino.numeroCuenta", target = "cuentaDestino")
     TransaccionDto transaccionToTransaccionDto(Transaccion transaccion);
 
     @Named("transaccionDtoToTransaccion")
 
-    @Mapping(source = "cuentaOrigen",target = "cuentaOrigen.nombreBanco")
-    @Mapping(source = "cuentaDestino", target = "cuentaDestino.nombreBanco")
+    @Mapping(source = "cuentaOrigen",target = "cuentaOrigen.numeroCuenta")
+    @Mapping(source = "cuentaDestino", target = "cuentaDestino.numeroCuenta")
     Transaccion transaccionDtoToTransaccion(TransaccionDto transaccionDto);
 
     @IterableMapping(qualifiedByName = "transaccionToTransaccionDto")

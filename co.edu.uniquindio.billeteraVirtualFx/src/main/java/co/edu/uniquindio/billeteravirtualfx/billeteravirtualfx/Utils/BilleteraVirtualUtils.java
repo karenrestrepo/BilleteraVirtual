@@ -40,6 +40,7 @@ public class BilleteraVirtualUtils {
         cuenta.setTipoCuenta(TipoCuenta.AHORRO);
         cuenta.setNombreBanco("Davivienda");
         usuario.getListaCuentas().add(cuenta);
+        billerteraVirtual.getListaCuentas().add(cuenta);
 
         Cuenta cuenta1 = new Cuenta();
         cuenta1.setIdCuenta("0111");
@@ -47,6 +48,7 @@ public class BilleteraVirtualUtils {
         cuenta1.setTipoCuenta(TipoCuenta.AHORRO);
         cuenta1.setNombreBanco("Bancolombia");
         usuario1.getListaCuentas().add(cuenta1);
+        billerteraVirtual.getListaCuentas().add(cuenta1);
 
         Cuenta cuenta2 = new Cuenta();
         cuenta2.setIdCuenta("0112");
@@ -54,6 +56,8 @@ public class BilleteraVirtualUtils {
         cuenta2.setTipoCuenta(TipoCuenta.CORRIENTE);
         cuenta2.setNombreBanco("Davivienda");
         usuario2.getListaCuentas().add(cuenta2);
+        billerteraVirtual.getListaCuentas().add(cuenta2);
+
 
         Categoria categoria1 = new Categoria();
         categoria1.setIdCategoria("01");
@@ -69,6 +73,7 @@ public class BilleteraVirtualUtils {
         categoria3.setIdCategoria("03");
         categoria3.setNombre("Comida");
         usuario.getListaCategorias().add(categoria3);
+        billerteraVirtual.getListaCategorias().add(categoria3);
 
         Transaccion transaccion = new Transaccion();
         transaccion.setIdTransaccion("0A");

@@ -179,24 +179,39 @@ public class ModelFactory implements IModelFactoryService {
 
     @Override
     public boolean crearTransaccion(TransaccionDto transaccionDto) {
-        try{
-            if(!billerteraVirtual.verificarCuentaExistente(transaccionDto.cuentaOrigen())) {
-                Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
-                getBillerteraVirtual().crearTransaccion(transaccion);
-                registrarAccionesSistema("Transacción realizada: "+ transaccion.getIdTransaccion(),1,"crearTransaccion");
+        try {
+            // Verificar si la cuenta de origen existe
+            if (!billerteraVirtual.verificarCuentaExistente(transaccionDto.cuentaOrigen())) {
+                // Verificar si la transacción ya existe
+                if (billerteraVirtual.transaccionExiste(transaccionDto.idTransaccion())) {
+                    throw new TransaccionException("La transacción con el ID: " + transaccionDto.idTransaccion() + " ya existe.");
+                }
 
+                // Si las verificaciones pasaron, crear la transacción
+                Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
+
+                // Iniciar la transacción para crear la nueva transacción en la billetera
+                getBillerteraVirtual().crearTransaccion(transaccion);
+
+                // Registrar acción en el sistema
+                registrarAccionesSistema("Transacción realizada: " + transaccion.getIdTransaccion(), 1, "crearTransaccion");
+
+                // Guardar cambios en la persistencia y los archivos
                 Persistencia.guardarTransacciones(getBillerteraVirtual().getListaTransacciones());
                 guardarResourceXML();
             }
             return true;
-        }catch (TransaccionException e){
-            e.getMessage();
-            registrarAccionesSistema(e.getMessage(),3,"crearTransaccion");
+        } catch (TransaccionException e) {
+            // Log de error
+            registrarAccionesSistema(e.getMessage(), 3, "crearTransaccion");
             return false;
         } catch (IOException e) {
+            // Si ocurre un error en la persistencia, revertir cambios y lanzar error
+            registrarAccionesSistema("Error al guardar las transacciones: " + e.getMessage(), 3, "crearTransaccion");
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public boolean ingresar(String correo, String contraseña) {

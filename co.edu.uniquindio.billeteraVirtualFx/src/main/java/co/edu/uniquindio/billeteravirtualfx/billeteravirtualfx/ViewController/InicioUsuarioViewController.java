@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.PerfilUsuarioController;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.UsuarioController;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
@@ -72,10 +73,13 @@ public class InicioUsuarioViewController {
 
         try {
              // Cargar el nuevo archivo FXML
-            Parent fxml = FXMLLoader.load(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Transaccion.fxml"));
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/Transaccion.fxml"));
+            Parent fxml = loader.load();
+            TransaccionViewController transaccionViewController = loader.getController();
+            transaccionViewController.setUser(usuarioDto);
             ctnContenido.getChildren().removeAll();
             ctnContenido.getChildren().setAll(fxml);
+
 
 
         } catch (IOException e) {

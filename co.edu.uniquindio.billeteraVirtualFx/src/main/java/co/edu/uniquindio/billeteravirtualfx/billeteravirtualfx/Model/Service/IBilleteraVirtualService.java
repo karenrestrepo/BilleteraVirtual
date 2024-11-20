@@ -17,7 +17,7 @@ public interface IBilleteraVirtualService {
 
     boolean verificarCuentaExistente(String cuenta) throws TransaccionException;
 
-    void crearTransaccion(Transaccion transaccion) throws TransaccionException;
+    void crearTransaccion( Transaccion transaccion) throws TransaccionException;
 
     Usuario verificarCredenciales(String correo, String contraseña);
 
