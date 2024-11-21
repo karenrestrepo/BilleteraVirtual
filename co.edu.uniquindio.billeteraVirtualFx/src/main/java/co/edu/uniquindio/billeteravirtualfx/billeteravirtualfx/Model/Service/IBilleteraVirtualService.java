@@ -40,4 +40,10 @@ public interface IBilleteraVirtualService {
     boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException;
     public boolean  verificarCuentaExistente(String id) throws CuentaException;
     public Cuenta obtenerCuenta(String id);
+
+    boolean verificarCuentaExistenteA(String id) throws CuentaException;
+
+    boolean eliminarCuentaA(String idCuenta) throws CuentaException;
+
+    void crearCuentaAdm(Cuenta cuenta);
 }

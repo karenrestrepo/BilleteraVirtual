@@ -489,8 +489,8 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         if(cuenta == null)
             throw new CuentaException("La Cuenta a eliminar no existe");
         else{
-            getListaCategorias().remove(cuenta);
-            usuarioSeleccionado.getListaCategorias().remove(cuenta);
+            getListaCuentas().remove(cuenta);
+            usuarioSeleccionado.getListaCuentas().remove(cuenta);
             idExiste = true;
         }
         return idExiste;
@@ -551,6 +551,56 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
     }
 
+    @Override
+    public boolean verificarCuentaExistenteA(String id) throws CuentaException {
+        if(cuentaExisteA(id)){
+            throw new CuentaException("La cuenta de origen: "+id+" no existe");
+        }else{
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean eliminarCuentaA(String idCuenta) throws CuentaException {
+        Cuenta cuenta = null;
+        boolean idExiste = false;
+        cuenta = obtenerCuentaA(idCuenta);
+        if(cuenta == null)
+            throw new CuentaException("La Cuenta a eliminar no existe");
+        else{
+            getListaCuentas().remove(cuenta);
+            idExiste = true;
+        }
+        return idExiste;
+    }
+
+    @Override
+    public void crearCuentaAdm(Cuenta cuenta) {
+        getListaCuentas().add(cuenta);
+    }
+
+    private Cuenta obtenerCuentaA(String idCuenta) {
+        Cuenta cuenta = null;
+        for (Cuenta cuenta1 : listaCuentas ) {
+            if(cuenta1.getNumeroCuenta().equalsIgnoreCase(idCuenta)){
+                cuenta = cuenta1;
+                break;
+            }
+        }
+        return cuenta;
+    }
+
+    private boolean cuentaExisteA(String cuenta) {
+        boolean cuentaEncontrada = false;
+        for (Cuenta cuenta1 : getListaCuentas()) {
+            if(cuenta1.getNumeroCuenta().equalsIgnoreCase(cuenta)){
+                cuentaEncontrada = true;
+                break;
+            }
+        }
+        return cuentaEncontrada;
+    }
 
 
     public void setUsuarioSeleccionado(Usuario usuarioSeleccionado) {

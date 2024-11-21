@@ -396,6 +396,38 @@ public class ModelFactory implements IModelFactoryService {
 
     }
 
+    @Override
+    public boolean crearCuentaAdm(CuentaDto cuentaDto) {
+        try{
+            if(!billerteraVirtual.verificarCuentaExistenteA(cuentaDto.numeroCuenta())) {;
+                Cuenta cuenta = cuentaMapper.cuentaDtoToCuenta(cuentaDto);
+                getBillerteraVirtual().crearCuentaAdm(cuenta);
+                Persistencia.guardarCuenta(getBillerteraVirtual().getListaCuentas());
+                guardarResourceXML();
+            }
+            return true;
+        }catch (CuentaException e){
+            e.getMessage();
+            return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public boolean eliminarCuentaA(String idCuenta) {
+        boolean idExiste = false;
+        try {
+            idExiste = getBillerteraVirtual().eliminarCuentaA(idCuenta);
+            guardarResourceXML();
+        } catch (CuentaException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return idExiste;
+    }
+
 
     private void guardarResourceXML() {
         Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);

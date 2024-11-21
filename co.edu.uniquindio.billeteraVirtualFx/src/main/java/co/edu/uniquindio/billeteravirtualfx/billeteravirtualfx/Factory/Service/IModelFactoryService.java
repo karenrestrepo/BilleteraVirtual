@@ -35,4 +35,8 @@ public interface IModelFactoryService {
     boolean eliminarCuenta(String id);
 
     boolean actualizarCuenta(String idActual, CuentaDto cuentaDto);
+
+    boolean crearCuentaAdm(CuentaDto cuentaDto);
+
+    boolean eliminarCuentaA(String idCuenta);
 }
