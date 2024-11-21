@@ -10,12 +10,12 @@ public class Presupuesto implements Serializable {
     private String nombre;
     private double montoAsignado;
     private double montoGastado;
-    private String categoria;
+    private Categoria categoria;
 
     public Presupuesto() {
     }
 
-    public Presupuesto(String idPresupuesto, String nombre, double montoAsignado, double montoGastado, String categoria) {
+    public Presupuesto(String idPresupuesto, String nombre, double montoAsignado, double montoGastado, Categoria categoria) {
         this.idPresupuesto = idPresupuesto;
         this.nombre = nombre;
         this.montoAsignado = montoAsignado;
@@ -56,11 +56,11 @@ public class Presupuesto implements Serializable {
         this.montoGastado = montoGastado;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 }

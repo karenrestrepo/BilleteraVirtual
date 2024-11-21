@@ -1,10 +1,12 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionController;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Productor.ProductorController;
@@ -20,11 +22,16 @@ import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.u
 public class TransaccionViewController {
     UsuarioDto usuarioSeleccionado;
     TransaccionController transaccionControllerService;
+    ObservableList<CategoriaDto> listaCategorias = FXCollections.observableArrayList();
     ObservableList<TransaccionDto> listaTransaccionesDto = FXCollections.observableArrayList();
     TransaccionDto transaccionSeleccionada;
 
+
     @FXML
     private ResourceBundle resources;
+
+    @FXML
+    private ComboBox<CategoriaDto> cmb;
 
     @FXML
     private URL location;
@@ -48,6 +55,8 @@ public class TransaccionViewController {
 
     @FXML
     private TableColumn<TransaccionDto, String> tcFechaTransaccion;
+    @FXML
+    private TableColumn<TransaccionDto, String> tcCategoria;
 
     @FXML
     private TableColumn<TransaccionDto, String> tcIdTransaccion;
@@ -86,6 +95,8 @@ public class TransaccionViewController {
 
     @FXML
     void onCategorizar(ActionEvent event) {
+        CategoriaDto categoriaSeleccionada = cmb.getSelectionModel().getSelectedItem();
+
 
     }
 
@@ -94,7 +105,19 @@ public class TransaccionViewController {
     void initialize() {
         transaccionControllerService = new TransaccionController();
         initView();
+        cargandoCategorias();
 
+    }
+
+    public void cargandoCategorias() {
+
+        listaCategorias.addAll(transaccionControllerService.obtenerCategoria());
+
+        cmb.setItems(listaCategorias);
+
+        if (!listaCategorias.isEmpty()) {
+            cmb.getSelectionModel().selectFirst();
+        }
     }
 
     private void initView() {
@@ -118,6 +141,7 @@ public class TransaccionViewController {
         tcDescripcionTransaccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
         tcCuentaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen()));
         tcCuentaDestinoTransaccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino()));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
 
     }
 
@@ -141,6 +165,7 @@ public class TransaccionViewController {
             txtDescripcionTransaccion.setText(transaccionSeleccionada.descripcion());
             txtCuentaOrigenTransaccion.setText(transaccionSeleccionada.cuentaOrigen());
             txtCuentaDestinoTransaccion.setText(transaccionSeleccionada.cuentaDestino());
+            cmb.setAccessibleText(transaccionSeleccionada.categoria());
 
         }
     }
@@ -218,6 +243,9 @@ public class TransaccionViewController {
     }
 
     private TransaccionDto construirTransaccionDto() {
+        // Obtener el nombre de la categoría seleccionada en el ComboBox
+        String categoriaSeleccionada = cmb.getSelectionModel().getSelectedItem().nombre();
+
         return new TransaccionDto(
                 txtIdTransaccion.getText(),
                 txtFechaTransaccion.getText(),
@@ -225,7 +253,8 @@ public class TransaccionViewController {
                 Double.valueOf(txtMontoTransaccion.getText()),
                 txtDescripcionTransaccion.getText(),
                 txtCuentaOrigenTransaccion.getText(),
-                txtCuentaDestinoTransaccion.getText()
+                txtCuentaDestinoTransaccion.getText(),
+                categoriaSeleccionada
 
         );
 
@@ -251,15 +280,31 @@ public class TransaccionViewController {
     }
 
     private void filtrarTablas(String valorBusqueda) {
-        ObservableList<TransaccionDto> transaccionFiltrada = FXCollections.observableArrayList();
-        for (TransaccionDto transaccionDto : listaTransaccionesDto) {
-            if (transaccionDto.fecha().toLowerCase().contains(valorBusqueda.toLowerCase()) ||
-                    transaccionDto.tipo().toLowerCase().contains(valorBusqueda.toLowerCase()))
-                    {
-                        transaccionFiltrada.add(transaccionDto);
+        filtrarRecursivo(listaTransaccionesDto, valorBusqueda, 0, FXCollections.observableArrayList());
+    }
+
+    private void filtrarRecursivo(List<TransaccionDto> lista, String valorBusqueda, int index, ObservableList<TransaccionDto> transaccionFiltrada) {
+        if (index < lista.size()) {
+            TransaccionDto transaccionDto = lista.get(index);
+
+            // Comprobación de null antes de llamar a toLowerCase()
+            String fecha = transaccionDto.fecha() != null ? transaccionDto.fecha().toLowerCase() : "";
+            String tipo = transaccionDto.tipo() != null ? transaccionDto.tipo().toLowerCase() : "";
+            String categoria = transaccionDto.categoria() != null ? transaccionDto.categoria().toLowerCase() : "";
+
+            // Ahora puedes comparar con seguridad
+            if (fecha.contains(valorBusqueda) || tipo.contains(valorBusqueda) || categoria.contains(valorBusqueda)) {
+                transaccionFiltrada.add(transaccionDto);
             }
+
+            // Llamada recursiva
+            filtrarRecursivo(lista, valorBusqueda, index + 1, transaccionFiltrada);
+        } else {
+            // Usar Platform.runLater para asegurarse de que se actualice en el hilo de la UI
+            javafx.application.Platform.runLater(() -> {
+                tableTransaccion.setItems(transaccionFiltrada);  // Cuando termina la recursión, actualiza la tabla
+            });
         }
-        tableTransaccion.setItems(transaccionFiltrada);
     }
 
 }

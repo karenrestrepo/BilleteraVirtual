@@ -2,6 +2,7 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Service.IPresupuestoControllerService;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.ModelFactory;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 
@@ -34,6 +35,14 @@ public class PresupuestoController implements IPresupuestoControllerService {
     @Override
     public boolean actualizarPresupuesto(String idActual, PresupuestoDto presupuestoDto){
         return modelFactory.actualizarPresupuesto(idActual, presupuestoDto);
+    }
+
+
+    @Override
+    public List<CategoriaDto> obtenerCategoria(){
+        return modelFactory.obtenerCategorias();
+
+
     }
 
     public void registrarAcciones(String mensaje, int nivel, String accion) {

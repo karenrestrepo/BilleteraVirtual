@@ -331,6 +331,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             throw new PresupuestoException("El Presupuesto a eliminar no existe");
         else{
             getListaPresupuestos().remove(presupuesto);
+            usuarioSeleccionado.getListaPresupuestos().remove(presupuesto);
             idExiste = true;
         }
         return idExiste;
@@ -348,6 +349,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             presupuestoExiste.setNombre(presupuesto.getNombre());
             presupuestoExiste.setMontoAsignado(presupuesto.getMontoAsignado());
             presupuestoExiste.setMontoGastado(presupuesto.getMontoGastado());
+            presupuestoExiste.setCategoria(presupuesto.getCategoria());
 
             return true;
         }
@@ -428,7 +430,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
             categoriaExistente.setIdCategoria(categoria.getIdCategoria());
             categoriaExistente.setNombre(categoria.getNombre());
-            categoriaExistente.setDescripcion(categoria.getIdCategoria());
+            categoriaExistente.setDescripcion(categoria.getDescripcion());
 
 
 

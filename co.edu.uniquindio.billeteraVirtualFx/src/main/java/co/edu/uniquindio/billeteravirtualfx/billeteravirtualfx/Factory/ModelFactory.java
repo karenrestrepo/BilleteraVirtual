@@ -344,6 +344,9 @@ public class ModelFactory implements IModelFactoryService {
     public List<TransaccionDto> obtenerTransaccionesAdm() {
         return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
     }
+    public List<CategoriaDto> obtenerCategoriasAdm() {
+        return  categoriaMapper.getCategoriaDto(billerteraVirtual.getListaCategorias());
+    }
 
 
     public List<CuentaDto> obtenerCuenta(){

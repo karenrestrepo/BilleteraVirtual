@@ -9,7 +9,8 @@ public record TransaccionDto (
         double monto,
         String descripcion,
         String cuentaOrigen,
-        String cuentaDestino
+        String cuentaDestino,
+        String categoria
 ){
 
 }

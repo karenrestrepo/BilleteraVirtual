@@ -1,11 +1,14 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.PresupuestoController;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria;
@@ -20,6 +23,7 @@ public class PresupuestoViewController {
 
     PresupuestoController presupuestoControllerSevice;
     ObservableList<PresupuestoDto> listaPresupuestosDto = FXCollections.observableArrayList();
+    ObservableList<CategoriaDto> listaCategorias = FXCollections.observableArrayList();
     BillerteraVirtual billerteraVirtual;
 
     PresupuestoDto presupeuestoSeleccioando;
@@ -41,7 +45,7 @@ public class PresupuestoViewController {
     private Button btnEliminar;
 
     @FXML
-    private ComboBox<Categoria> comboCategoria;
+    private ComboBox<CategoriaDto> comboCategoria;
 
     @FXML
     private TableView<PresupuestoDto> tablePresupuesto;
@@ -78,7 +82,7 @@ public class PresupuestoViewController {
 
     @FXML
     void onCategoriabox(ActionEvent event) {
-        Categoria categoriaSeleccionada = comboCategoria.getSelectionModel().getSelectedItem();
+        CategoriaDto categoriaSeleccionada = comboCategoria.getSelectionModel().getSelectedItem();
 
     }
 
@@ -104,6 +108,7 @@ public class PresupuestoViewController {
     void initialize() {
         presupuestoControllerSevice = new PresupuestoController();
         initView();
+        cargandoCategorias();
 
 
     }
@@ -124,15 +129,31 @@ public class PresupuestoViewController {
     }
 
     private void filtrarTablas(String valorBusqueda) {
-        ObservableList<PresupuestoDto> presupuestoFiltrado = FXCollections.observableArrayList();
-        for (PresupuestoDto presupuestoDto : listaPresupuestosDto) {
-            if (presupuestoDto.idPresupuesto().toLowerCase().contains(valorBusqueda.toLowerCase()) ||
-                    presupuestoDto.nombre().toLowerCase().contains(valorBusqueda.toLowerCase()))
-            {
-                presupuestoFiltrado.add(presupuestoDto);
+        filtrarRecursivo(listaPresupuestosDto, valorBusqueda, 0, FXCollections.observableArrayList());
+    }
+
+    private void filtrarRecursivo(List<PresupuestoDto> lista, String valorBusqueda, int index, ObservableList<PresupuestoDto> presupuestoFiltrada) {
+        if (index < lista.size()) {
+            PresupuestoDto presupuestoDto = lista.get(index);
+
+            // Comprobación de null antes de llamar a toLowerCase()
+            String categoria = presupuestoDto.categoria() != null ? presupuestoDto.categoria().toLowerCase() : "";
+            String id = presupuestoDto.idPresupuesto()!= null ? presupuestoDto.idPresupuesto().toLowerCase() : "";
+            String nombre = presupuestoDto.nombre() != null ? presupuestoDto.nombre().toLowerCase() : "";
+
+            // Ahora puedes comparar con seguridad
+            if (categoria.contains(valorBusqueda) || id.contains(valorBusqueda) || nombre.contains(valorBusqueda)) {
+                presupuestoFiltrada.add(presupuestoDto);
             }
+
+            // Llamada recursiva
+            filtrarRecursivo(lista, valorBusqueda, index + 1, presupuestoFiltrada);
+        } else {
+            // Usar Platform.runLater para asegurarse de que se actualice en el hilo de la UI
+            javafx.application.Platform.runLater(() -> {
+                tablePresupuesto.setItems(presupuestoFiltrada);  // Cuando termina la recursión, actualiza la tabla
+            });
         }
-        tablePresupuesto.setItems(presupuestoFiltrado);
     }
 
 
@@ -141,10 +162,15 @@ public class PresupuestoViewController {
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcMontoAsignado.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().montoAsignado())));
         tcMontoGastado.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().montoGastado())));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
+
     }
 
     private void obtenerPresupuestos() {
         listaPresupuestosDto.addAll(presupuestoControllerSevice.obtenerPresupuesto());
+    }
+    private void obtenerCategorias() {
+        listaCategorias.addAll(presupuestoControllerSevice.obtenerCategoria());
     }
 
 
@@ -165,27 +191,12 @@ public class PresupuestoViewController {
         }
     }
 
-    private void cargarCategorias() {
-        // Ejemplo: obtener las categorías desde algún servicio
-        ObservableList<Categoria> categorias = FXCollections.observableArrayList(billerteraVirtual.getListaCategorias());
 
-        System.out.println("Categorias cargadas: " + categorias.size());  // Verifica cuántas categorías se cargan
-        /// Asignar las categorías al ComboBox
-        comboCategoria.setItems(categorias);
-
-
-        // (Opcional) Seleccionar una categoría por defecto
-        if (!categorias.isEmpty()) {
-            comboCategoria.getSelectionModel().selectFirst(); // Selecciona la primera categoría por defecto
-        }
-    }
 
     private void actualizarPresupuesto() {
         boolean presupuestoActualizado= false;
-        //1. Capturar los datos
         String idActual = presupeuestoSeleccioando.idPresupuesto();
         PresupuestoDto presupuestoDto = construirPresupuestoDto();
-        //2. verificar el empleado seleccionado
         if(presupeuestoSeleccioando != null){
             //3. Validar la información
             if(datosValidos(presupeuestoSeleccioando)){
@@ -248,12 +259,16 @@ public class PresupuestoViewController {
     }
 
     private PresupuestoDto construirPresupuestoDto() {
+        // Obtener el nombre de la categoría seleccionada en el ComboBox
+        String categoriaSeleccionada = comboCategoria.getSelectionModel().getSelectedItem().nombre();
+
+        // Construir el DTO de Presupuesto con el nombre de la categoría
         return new PresupuestoDto(
                 txtIdPresupuesto.getText(),
                 txtNombre.getText(),
                 Double.valueOf(txtMontoAsignado.getText()),
-                Double.valueOf(0)
-
+                0.0,  // Suponiendo que el montoGastado siempre comienza en 0
+                categoriaSeleccionada  // Aquí pasamos solo el nombre de la categoría como un String
         );
     }
 
@@ -280,6 +295,18 @@ public class PresupuestoViewController {
         }else{
             mostrarMensaje("Notificación usuario","Datos invalidos",mensaje, Alert.AlertType.WARNING);
             return false;
+        }
+    }
+
+
+    public void cargandoCategorias() {
+
+        listaCategorias.addAll(presupuestoControllerSevice.obtenerCategoria());
+
+        comboCategoria.setItems(listaCategorias);
+
+        if (!listaCategorias.isEmpty()) {
+            comboCategoria.getSelectionModel().selectFirst();
         }
     }
 

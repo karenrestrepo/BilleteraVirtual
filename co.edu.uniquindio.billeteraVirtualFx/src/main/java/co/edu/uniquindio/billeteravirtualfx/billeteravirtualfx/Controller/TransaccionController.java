@@ -1,6 +1,7 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Service.ITransaccionControllerService;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.ModelFactory;
 import java.util.List;
@@ -20,6 +21,12 @@ public class TransaccionController implements ITransaccionControllerService {
     public boolean crearTransaccion(TransaccionDto transaccionDto) {
 
         return modelFactory.crearTransaccion(transaccionDto);
+    }
+    @Override
+    public List<CategoriaDto> obtenerCategoria(){
+        return modelFactory.obtenerCategorias();
+
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Service.ITransaccionAdmControllerService;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.ModelFactory;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 
 import java.util.List;
@@ -23,6 +24,12 @@ public class TransaccionAdmController implements ITransaccionAdmControllerServic
 
         return modelFactory.crearTransaccion(transaccionDto);
     }
+    public List<CategoriaDto> obtenerCategoria(){
+        return modelFactory.obtenerCategoriasAdm();
+
+
+    }
+
 
     @Override
     public void registrarAcciones(String mensaje, int nivel, String accion) {

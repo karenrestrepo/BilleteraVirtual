@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,8 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="503.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.CategoriaViewController">
+<AnchorPane prefHeight="503.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.CategoriaViewController">
    <children>
       <Pane prefHeight="503.0" prefWidth="655.0">
          <children>
@@ -21,15 +23,15 @@
             <TextField fx:id="txtNombreCategoria" layoutX="134.0" layoutY="117.0" />
             <Label layoutX="54.0" layoutY="188.0" text="Descripción: " />
             <TextField fx:id="txtDescripcion" layoutX="134.0" layoutY="184.0" />
-            <Button fx:id="btnActualizar" layoutX="68.0" layoutY="242.0" mnemonicParsing="false" onAction="#onActualizar" text="Actualizar " />
-            <Button fx:id="btnAgregar" layoutX="193.0" layoutY="242.0" mnemonicParsing="false" onAction="#onAgregar" text="Agregar" />
+            <Button fx:id="btnActualizar" layoutX="68.0" layoutY="242.0" mnemonicParsing="false" onAction="#onActualizar" style="-fx-background-color: #a5bfde;" text="Actualizar " />
+            <Button fx:id="btnAgregar" layoutX="193.0" layoutY="242.0" mnemonicParsing="false" onAction="#onAgregar" style="-fx-background-color: #a5bfde;" text="Agregar" />
             <TableView fx:id="tablaCategoria" layoutX="351.0" layoutY="58.0" prefHeight="353.0" prefWidth="269.0">
               <columns>
                 <TableColumn fx:id="tpIdCategoria" prefWidth="92.0" text="Id Categoria " />
                 <TableColumn fx:id="tpCategoria" prefWidth="176.0" text="Nombre Categoria" />
               </columns>
             </TableView>
-            <Button fx:id="btnEliminar" layoutX="468.0" layoutY="444.0" mnemonicParsing="false" onAction="#onEliminar" text="Eliminar" />
+            <Button fx:id="btnEliminar" layoutX="468.0" layoutY="444.0" mnemonicParsing="false" onAction="#onEliminar" style="-fx-background-color: #a5bfde;" text="Eliminar" />
             <Separator layoutX="-6.0" layoutY="28.0" prefHeight="1.0" prefWidth="665.0" />
          </children>
       </Pane>

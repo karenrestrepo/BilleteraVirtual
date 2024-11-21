@@ -5,4 +5,9 @@ public record CategoriaDto (
         String nombre,
         String descripcion
 ) {
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

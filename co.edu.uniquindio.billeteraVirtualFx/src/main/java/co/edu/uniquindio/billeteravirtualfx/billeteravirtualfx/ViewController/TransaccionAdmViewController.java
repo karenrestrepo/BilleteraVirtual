@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.TransaccionAdmController;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.*;
 public class TransaccionAdmViewController {
 
     TransaccionAdmController transaccionControllerService;
+    ObservableList<CategoriaDto> listaCategorias = FXCollections.observableArrayList();
     ObservableList<TransaccionDto> listaTransaccionesDto = FXCollections.observableArrayList();
     TransaccionDto transaccionSeleccionada;
 
@@ -34,6 +36,8 @@ public class TransaccionAdmViewController {
     @FXML
     private TableColumn<TransaccionDto, String> tcCuentaDestinoTransaccion;
 
+    @FXML
+    private TableColumn<TransaccionDto, String> tcCategoria;
     @FXML
     private TableColumn<TransaccionDto, String> tcCuentaOrigen;
 
@@ -83,9 +87,18 @@ public class TransaccionAdmViewController {
     private TextField txtTipoTransaccion;
 
     @FXML
+    private ComboBox<CategoriaDto> cmbCategorizar;
+
+    @FXML
     void onCrearTransaccion(ActionEvent event) {
         crearTransaccion();
         
+
+    }
+    @FXML
+    void onCategoria(ActionEvent event) {
+        CategoriaDto categoriaSeleccionada = cmbCategorizar.getSelectionModel().getSelectedItem();
+
 
     }
 
@@ -93,8 +106,19 @@ public class TransaccionAdmViewController {
     void initialize() {
         transaccionControllerService = new TransaccionAdmController();
         initView();
+        cargandoCategorias();
 
 
+    }
+
+    private void cargandoCategorias() {
+        listaCategorias.addAll(transaccionControllerService.obtenerCategoria());
+
+        cmbCategorizar.setItems(listaCategorias);
+
+        if (!listaCategorias.isEmpty()) {
+            cmbCategorizar.getSelectionModel().selectFirst();
+        }
     }
 
     private void initView() {
@@ -118,6 +142,8 @@ public class TransaccionAdmViewController {
         tcDescripcionTransaccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
         tcCuentaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen()));
         tcCuentaDestinoTransaccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino()));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
+
 
     }
 
@@ -141,6 +167,7 @@ public class TransaccionAdmViewController {
             txtDescripcionTransaccion.setText(transaccionSeleccionada.descripcion());
             txtCuentaOrigenTransaccion.setText(transaccionSeleccionada.cuentaOrigen());
             txtCuentaDestinoTransaccion.setText(transaccionSeleccionada.cuentaDestino());
+            cmbCategorizar.setAccessibleText(transaccionSeleccionada.categoria());
 
         }
     }
@@ -207,6 +234,8 @@ public class TransaccionAdmViewController {
     }
 
     private TransaccionDto construirTransaccionDto() {
+        String categoriaSeleccionada = cmbCategorizar.getSelectionModel().getSelectedItem().nombre();
+
         return new TransaccionDto(
                 txtIdTransaccion.getText(),
                 txtFechaTransaccion.getText(),
@@ -214,7 +243,8 @@ public class TransaccionAdmViewController {
                 Double.valueOf(txtMontoTransaccion.getText()),
                 txtDescripcionTransaccion.getText(),
                 txtCuentaOrigenTransaccion.getText(),
-                txtCuentaDestinoTransaccion.getText()
+                txtCuentaDestinoTransaccion.getText(),
+                categoriaSeleccionada
         );
     }
     private void limpiarCamposTransaccion() {

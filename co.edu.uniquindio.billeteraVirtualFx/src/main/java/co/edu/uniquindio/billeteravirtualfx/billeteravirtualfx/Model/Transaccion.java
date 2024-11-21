@@ -14,10 +14,19 @@ public class Transaccion implements Serializable {
     private String descripcion;
     private Cuenta cuentaOrigen;
     private Cuenta cuentaDestino;
+    private Categoria categoria;
+
+
 
     public Transaccion() {
     }
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
     public String getIdTransaccion() {
         return idTransaccion;
     }

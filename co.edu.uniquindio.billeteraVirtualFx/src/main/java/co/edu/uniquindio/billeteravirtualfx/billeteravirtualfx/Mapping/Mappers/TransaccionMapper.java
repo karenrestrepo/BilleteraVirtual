@@ -17,12 +17,14 @@ public interface TransaccionMapper {
     @Named("transaccionToTransaccionDto")
     @Mapping(source = "cuentaOrigen.numeroCuenta ",target = "cuentaOrigen")
     @Mapping(source = "cuentaDestino.numeroCuenta", target = "cuentaDestino")
+    @Mapping(source = "categoria.nombre", target = "categoria")
     TransaccionDto transaccionToTransaccionDto(Transaccion transaccion);
 
     @Named("transaccionDtoToTransaccion")
 
     @Mapping(source = "cuentaOrigen",target = "cuentaOrigen.numeroCuenta")
     @Mapping(source = "cuentaDestino", target = "cuentaDestino.numeroCuenta")
+    @Mapping(source = "categoria", target = "categoria.nombre")
     Transaccion transaccionDtoToTransaccion(TransaccionDto transaccionDto);
 
     @IterableMapping(qualifiedByName = "transaccionToTransaccionDto")
