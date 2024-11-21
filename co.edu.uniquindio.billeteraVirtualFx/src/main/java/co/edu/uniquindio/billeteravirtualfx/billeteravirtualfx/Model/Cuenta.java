@@ -1,11 +1,14 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
+import java.util.ArrayList;
+
 public class Cuenta {
     private String idCuenta;
     private String nombreBanco;
     private String numeroCuenta;
     private TipoCuenta tipoCuenta;
 
+    ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
     public Cuenta() {
     }
@@ -36,6 +39,14 @@ public class Cuenta {
 
     public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
+    }
+
+    public ArrayList<Transaccion> getListaTransacciones() {
+        return listaTransacciones;
+    }
+
+    public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
+        this.listaTransacciones = listaTransacciones;
     }
 
     public void setTipoCuenta(TipoCuenta tipoCuenta) {

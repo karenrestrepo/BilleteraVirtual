@@ -1,9 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model;
 
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.CategoriaException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.PresupuestoException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service.IBilleteraVirtualService;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistencia;
 
@@ -13,6 +10,8 @@ import java.util.ArrayList;
 public class BillerteraVirtual implements IBilleteraVirtualService, Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    ////// listas ///////////////
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
@@ -66,6 +65,8 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         this.listaCategorias = listaCategorias;
     }
 
+
+    /////// Usuario//////////////////
     @Override
     public Usuario agregarUsuario(String nombre, String idUsuario, String email, String telefono, double saldo, String contrasena) throws UsuarioException {
         Usuario nuevoUsuario = null;
@@ -89,6 +90,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         getListaUsuarios().add(nuevoUsuario);
     }
 
+    /////////////////// Eliminar ///////////////
     @Override
     public Boolean eliminarUsuario(String id) throws UsuarioException {
         Usuario usuario = null;
@@ -156,8 +158,10 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return getListaUsuarios();
     }
 
+    //////////// Transacción////////////////
+
     @Override
-    public boolean verificarCuentaExistente(String cuenta) throws TransaccionException {
+    public boolean verificarTransaccionExistente(String cuenta) throws TransaccionException {
         if (transaccionExiste(cuenta)) {
             throw new TransaccionException("La cuenta de origen: " + cuenta + " no existe");
         } else {
@@ -167,10 +171,11 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
     // Este método revisa si ya existe una transacción con el ID especificado
     public boolean transaccionExiste(String idTransaccion) {
-        for (Transaccion transaccion : listaTransacciones) {
+        for (Transaccion transaccion : usuarioSeleccionado.listaTransacciones) {
             if (transaccion.getIdTransaccion().equalsIgnoreCase(idTransaccion)) {
                 return true;  // Ya existe una transacción con el mismo ID
             }
+
         }
         return false;
     }
@@ -191,6 +196,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             // Si las verificaciones pasan, agregar la transacción a las listas
             getListaTransacciones().add(nuevaTransaccion);
             usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+
         } else {
             throw new TransaccionException("Una o ambas cuentas no existen.");
         }
@@ -198,7 +204,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
 
     public boolean encontrarCuentaExistenteUsuario(String transaccion) {
-        System.out.println(usuarioSeleccionado.listaCuentas);
+
         // Recorrer la lista de cuentas
         for (Cuenta cuenta : usuarioSeleccionado.getListaCuentas()) {
             // Si la cuenta coincide con la ID de transacción
@@ -213,7 +219,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return false;
     }
     public boolean encontrarCuentaExistente(String transaccion) {
-        System.out.println(listaCuentas);
+
         // Recorrer la lista de cuentas
         for (Cuenta cuenta : listaCuentas) {
             // Si la cuenta coincide con la ID de transacción
@@ -221,6 +227,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
                 System.out.println("La cuenta existe");
                 return true;  // Retorna true si la cuenta se encuentra
             }
+
         }
 
         // Si no se encontró la cuenta, se retorna false
@@ -291,7 +298,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
 
 
-
+/////////////// presupuesto //////////////////
 
 
     @Override
@@ -388,6 +395,9 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         usuarioSeleccionado.getListaPresupuestos().add(presupuesto);
     }
 
+
+    ///////////// categoria ///////////////////
+
     @Override
     public void crearCategoria(Categoria categoria) throws CategoriaException{
         getListaCategorias().add(categoria);
@@ -459,6 +469,87 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return categoria;
 
     }
+
+    /////////////// Cuenta//////////////////
+
+    @Override
+    public void crearCuenta(Cuenta cuenta) throws CuentaException{
+        System.out.println(usuarioSeleccionado.listaCuentas);
+        getListaCuentas().add(cuenta);
+        usuarioSeleccionado.listaCuentas.add(cuenta);
+
+    }
+    @Override
+    public Boolean eliminarCuenta(String id)throws CuentaException{
+        Cuenta cuenta = null;
+        boolean idExiste = false;
+        cuenta = obtenerCuenta(id);
+        if(cuenta == null)
+            throw new CuentaException("La Cuenta a eliminar no existe");
+        else{
+            getListaCategorias().remove(cuenta);
+            usuarioSeleccionado.getListaCategorias().remove(cuenta);
+            idExiste = true;
+        }
+        return idExiste;
+
+    }
+    @Override
+    public boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException{
+
+        Cuenta cuentaExistente = obtenerCuenta(idActual);
+        if(cuentaExistente == null)
+            throw new CuentaException("La Cuenta a actualizar no existe");
+        else{
+
+            cuentaExistente.setIdCuenta(cuenta.getIdCuenta());
+            cuentaExistente.setNombreBanco(cuenta.getNombreBanco());
+            cuentaExistente.setNumeroCuenta(cuenta.getNumeroCuenta());
+            cuentaExistente.setTipoCuenta(cuenta.getTipoCuenta());
+
+
+
+            return true;
+        }
+
+
+    }
+    @Override
+    public boolean  verificarCuentaExistente(String id) throws CuentaException{
+        if(cuentaExiste(id)){
+            throw new CuentaException("La cuenta de origen: "+id+" no existe");
+        }else{
+            return false;
+        }
+
+    }
+
+    private boolean cuentaExiste(String cuenta) {
+        boolean cuentaEncontrada = false;
+        for (Cuenta cuenta1 : usuarioSeleccionado.getListaCuentas()) {
+            if(cuenta1.getIdCuenta().equalsIgnoreCase(cuenta)){
+                cuentaEncontrada = true;
+                break;
+            }
+        }
+        return cuentaEncontrada;
+    }
+
+    @Override
+    public Cuenta obtenerCuenta(String id){
+        System.out.println(usuarioSeleccionado.listaCuentas);
+        Cuenta cuenta = null;
+        for (Cuenta cuenta1 : usuarioSeleccionado.listaCuentas ) {
+            if(cuenta1.getIdCuenta().equalsIgnoreCase(id)){
+                cuenta = cuenta1;
+                break;
+            }
+        }
+        return cuenta;
+
+    }
+
+
 
     public void setUsuarioSeleccionado(Usuario usuarioSeleccionado) {
         this.usuarioSeleccionado = usuarioSeleccionado;

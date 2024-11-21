@@ -1,9 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.Service;
 
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.*;
 
 import java.util.List;
 
@@ -31,4 +28,11 @@ public interface IModelFactoryService {
     boolean eliminarCategoria(String id);
 
     boolean actualizarCategoria(String idActual, CategoriaDto categoriaDto);
+
+    List<CuentaDto> obtenerCuenta();
+    boolean crearCuenta( CuentaDto cuentaDto);
+
+    boolean eliminarCuenta(String id);
+
+    boolean actualizarCuenta(String idActual, CuentaDto cuentaDto);
 }

@@ -1,18 +1,9 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory;
 
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.CategoriaException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.PresupuestoException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.Service.IModelFactoryService;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.PresupuestoDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.CategoriaMapper;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.PresupuestoMapper;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.TransaccionMapper;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.UsuarioMapper;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.*;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Mappers.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.Persistencia;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.BilleteraVirtualUtils;
@@ -30,6 +21,7 @@ public class ModelFactory implements IModelFactoryService {
     TransaccionMapper transaccionMapper = TransaccionMapper.INSTANCE;
     PresupuestoMapper presupuestoMapper = PresupuestoMapper.INSTANCE;
     CategoriaMapper categoriaMapper = CategoriaMapper.INSTANCE;
+    CuentaMapper cuentaMapper = CuentaMapper.INSTANCE;
 
     public static void registrarAccionesSistema(String mensaje, int nivel, String accion) {
         Persistencia.guardaRegistroLog(mensaje, nivel, accion);
@@ -42,7 +34,7 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     public List<PresupuestoDto> obtenerPresupuestos() {
-        return  presupuestoMapper.getPresupuestoDto(billerteraVirtual.getListaPresupuestos());
+        return  presupuestoMapper.getPresupuestoDto(usuario.getListaPresupuestos());
     }
 
 
@@ -181,7 +173,7 @@ public class ModelFactory implements IModelFactoryService {
     public boolean crearTransaccion(TransaccionDto transaccionDto) {
         try {
             // Verificar si la cuenta de origen existe
-            if (!billerteraVirtual.verificarCuentaExistente(transaccionDto.cuentaOrigen())) {
+            if (!billerteraVirtual.verificarTransaccionExistente(transaccionDto.cuentaOrigen())) {
                 // Verificar si la transacción ya existe
                 if (billerteraVirtual.transaccionExiste(transaccionDto.idTransaccion())) {
                     throw new TransaccionException("La transacción con el ID: " + transaccionDto.idTransaccion() + " ya existe.");
@@ -351,6 +343,54 @@ public class ModelFactory implements IModelFactoryService {
     }
     public List<TransaccionDto> obtenerTransaccionesAdm() {
         return  transaccionMapper.getTransaccionesDto(billerteraVirtual.getListaTransacciones());
+    }
+
+
+    public List<CuentaDto> obtenerCuenta(){
+        return  cuentaMapper.getCuentaDto(usuario.getListaCuentas());
+    }
+    public boolean crearCuenta( CuentaDto cuentaDto){
+        try{
+            if(!billerteraVirtual.verificarCuentaExistente(cuentaDto.idCuenta())) {;
+                Cuenta cuenta = cuentaMapper.cuentaDtoToCuenta(cuentaDto);
+                getBillerteraVirtual().crearCuenta(cuenta);
+                Persistencia.guardarCuenta(getBillerteraVirtual().getListaCuentas());
+                guardarResourceXML();
+            }
+            return true;
+        }catch (CuentaException e){
+            e.getMessage();
+            return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public boolean eliminarCuenta(String id){
+        boolean idExiste = false;
+        try {
+            idExiste = getBillerteraVirtual().eliminarCuenta(id);
+            guardarResourceXML();
+        } catch (CuentaException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return idExiste;
+
+    }
+
+    public boolean actualizarCuenta(String idActual, CuentaDto cuentaDto){
+        try {
+            Cuenta cuenta = cuentaMapper.cuentaDtoToCuenta(cuentaDto);
+            getBillerteraVirtual().actualizarCuenta(idActual, cuenta);
+            guardarResourceXML();
+            return true;
+        } catch (CuentaException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
 

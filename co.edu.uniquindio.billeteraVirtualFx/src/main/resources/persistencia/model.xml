@@ -12,6 +12,19 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria" id="Categoria1">
+     <void property="descripcion">
+      <string>Vehiculo</string>
+     </void>
+     <void property="idCategoria">
+      <string>03</string>
+     </void>
+     <void property="nombre">
+      <string>Vehiculo</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="listaCuentas">
    <void method="add">
@@ -61,10 +74,58 @@
       <string>4500555</string>
      </void>
      <void property="tipoCuenta">
-      <object class="java.lang.Enum" method="valueOf">
+      <object class="java.lang.Enum" id="TipoCuenta1" method="valueOf">
        <class>co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.TipoCuenta</class>
        <string>CORRIENTE</string>
       </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta" id="Cuenta3">
+     <void property="idCuenta">
+      <string>0112</string>
+     </void>
+     <void property="nombreBanco">
+      <string>BBVA</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>67858</string>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta" id="Cuenta4">
+     <void property="idCuenta">
+      <string>0113</string>
+     </void>
+     <void property="nombreBanco">
+      <string>BBVA</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>678998</string>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta1"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta" id="Cuenta5">
+     <void property="idCuenta">
+      <string>0114</string>
+     </void>
+     <void property="nombreBanco">
+      <string>BBVA</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>56677</string>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
      </void>
     </object>
    </void>
@@ -73,13 +134,52 @@
    <void method="add">
     <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto" id="Presupuesto0">
      <void property="idPresupuesto">
-      <string>01</string>
+      <string>02</string>
      </void>
      <void property="montoAsignado">
       <double>20000.0</double>
      </void>
      <void property="nombre">
-      <string>Alimentos</string>
+      <string>Medicamentos</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto" id="Presupuesto1">
+     <void property="idPresupuesto">
+      <string>a</string>
+     </void>
+     <void property="montoAsignado">
+      <double>2000.0</double>
+     </void>
+     <void property="nombre">
+      <string>a</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto" id="Presupuesto2">
+     <void property="idPresupuesto">
+      <string>03</string>
+     </void>
+     <void property="montoAsignado">
+      <double>30000.0</double>
+     </void>
+     <void property="nombre">
+      <string>Transporte</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto" id="Presupuesto3">
+     <void property="idPresupuesto">
+      <string>0A</string>
+     </void>
+     <void property="montoAsignado">
+      <double>100000.0</double>
+     </void>
+     <void property="nombre">
+      <string>Hospital</string>
      </void>
     </object>
    </void>
@@ -235,6 +335,138 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion5">
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>4500555</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-19</string>
+     </void>
+     <void property="idTransaccion">
+      <string>01</string>
+     </void>
+     <void property="monto">
+      <double>200000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Retiro</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion6">
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>4566555</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>personal </string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-12</string>
+     </void>
+     <void property="idTransaccion">
+      <string>g</string>
+     </void>
+     <void property="monto">
+      <double>30000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Retiro</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion7">
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>4566555</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>personal </string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-12</string>
+     </void>
+     <void property="idTransaccion">
+      <string>01</string>
+     </void>
+     <void property="monto">
+      <double>30000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Tranferencia</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion8">
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>4500555</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-18</string>
+     </void>
+     <void property="idTransaccion">
+      <string>02</string>
+     </void>
+     <void property="monto">
+      <double>30000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Retiro</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="listaUsuarios">
    <void method="add">
@@ -266,6 +498,32 @@
      <void property="listaCuentas">
       <void method="add">
        <object idref="Cuenta0"/>
+      </void>
+     </void>
+     <void property="listaPresupuestos">
+      <void method="add">
+       <object idref="Presupuesto3"/>
+      </void>
+      <void method="add">
+       <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto">
+        <void property="idPresupuesto">
+         <string>0B</string>
+        </void>
+        <void property="montoAsignado">
+         <double>90000.0</double>
+        </void>
+        <void property="nombre">
+         <string>Salud</string>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="listaTransacciones">
+      <void method="add">
+       <object idref="Transaccion6"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion7"/>
       </void>
      </void>
      <void property="nombre">
@@ -319,24 +577,45 @@
      </void>
      <void property="listaCategorias">
       <void method="add">
-       <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria">
-        <void property="idCategoria">
-         <string>02</string>
-        </void>
-        <void property="nombre">
-         <string>Belleza</string>
-        </void>
-       </object>
+       <object idref="Categoria1"/>
       </void>
      </void>
      <void property="listaCuentas">
       <void method="add">
        <object idref="Cuenta1"/>
       </void>
+      <void method="add">
+       <object idref="Cuenta3"/>
+      </void>
+      <void method="add">
+       <object idref="Cuenta4"/>
+      </void>
+      <void method="add">
+       <object idref="Cuenta5"/>
+      </void>
      </void>
      <void property="listaPresupuestos">
       <void method="add">
+       <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Presupuesto">
+        <void property="idPresupuesto">
+         <string>01</string>
+        </void>
+        <void property="montoAsignado">
+         <double>20000.0</double>
+        </void>
+        <void property="nombre">
+         <string>Alimentos</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
        <object idref="Presupuesto0"/>
+      </void>
+      <void method="add">
+       <object idref="Presupuesto1"/>
+      </void>
+      <void method="add">
+       <object idref="Presupuesto2"/>
       </void>
      </void>
      <void property="listaTransacciones">
@@ -376,6 +655,12 @@
       </void>
       <void method="add">
        <object idref="Transaccion4"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion5"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion8"/>
       </void>
      </void>
      <void property="nombre">

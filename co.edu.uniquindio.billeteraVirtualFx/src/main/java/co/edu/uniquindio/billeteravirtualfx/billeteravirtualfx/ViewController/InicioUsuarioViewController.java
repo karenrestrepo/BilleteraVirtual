@@ -107,11 +107,14 @@ public class InicioUsuarioViewController {
     @FXML
     void onCuenta(ActionEvent event) {
         try {
-            // Cargar el nuevo archivo FXML
-            Parent fxml = FXMLLoader.load(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/CuentaBancaria.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/billeteravirtualfx/billeteravirtualfx/CuentaBancaria.fxml"));
+            Parent fxml = loader.load();
+            CuentaBancariaViewController cuentaBancariaViewController = loader.getController();
+            cuentaBancariaViewController.setUser(usuarioDto);
 
             ctnContenido.getChildren().removeAll();
             ctnContenido.getChildren().setAll(fxml);
+
 
         } catch (IOException e) {
             e.printStackTrace();

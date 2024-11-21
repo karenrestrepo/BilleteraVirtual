@@ -1,5 +1,0 @@
-0B@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@2b790137@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@10905b54
-0C@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@36b68248@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@338a8e20
-0A@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@1d2cf35d@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@24c7eaad
-0B@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@266198bf@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@417df9dd
-0A@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@3b315cb4@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@20385bfd

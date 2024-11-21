@@ -1,8 +1,5 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Service;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.CategoriaException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.PresupuestoException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.TransaccionException;
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.UsuarioException;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Exception.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 
 import java.util.ArrayList;
@@ -15,7 +12,7 @@ public interface IBilleteraVirtualService {
     public Usuario obtenerUsuario(String id);
     public ArrayList<Usuario> obtenerUsuario();
 
-    boolean verificarCuentaExistente(String cuenta) throws TransaccionException;
+    boolean verificarTransaccionExistente(String cuenta) throws TransaccionException;
 
     void crearTransaccion( Transaccion transaccion) throws TransaccionException;
 
@@ -37,4 +34,10 @@ public interface IBilleteraVirtualService {
     boolean actualizarCategoria(String idActual, Categoria categoria) throws CategoriaException;
     public boolean  verificarCategoriaExistente(String id) throws CategoriaException;
     public Categoria obtenerCategoria(String id);
+
+    void crearCuenta(Cuenta cuenta) throws CuentaException;
+    public Boolean eliminarCuenta(String id)throws CuentaException;
+    boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException;
+    public boolean  verificarCuentaExistente(String id) throws CuentaException;
+    public Cuenta obtenerCuenta(String id);
 }

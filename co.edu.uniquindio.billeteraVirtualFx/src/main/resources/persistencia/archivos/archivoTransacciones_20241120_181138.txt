@@ -1,0 +1,9 @@
+0B@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@19a997b3@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@8c1d08a
+0C@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@6ebb1a9a@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@4aa72ee8
+0A@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@4c8a3d8a@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@34f8a0e6
+0B@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@2a10329@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@7102bdfb
+0A@@2024-11-18@@Transacción@@0.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@6c79b83c@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@1d77dac5
+01@@2024-11-19@@Retiro@@200000.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@17c53a09@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@734ca06f
+g@@2024-11-12@@Retiro@@30000.0@@personal @@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@52555e62@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@71d7071f
+01@@2024-11-12@@Tranferencia@@30000.0@@personal @@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@4f7c6e5e@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@59a5e006
+02@@2024-11-18@@Retiro@@30000.0@@Personal@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@21fb031e@@co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta@68dd07c1
