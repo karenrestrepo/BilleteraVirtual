@@ -1,6 +1,6 @@
 package co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx;
 
-import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Consumidor.controller.ConsumidorController;
+
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Utils.*;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.*;
 import javafx.application.Application;
@@ -21,8 +21,7 @@ public class BilleteraVirtualApplication extends Application {
         this.primaryStage.setTitle("Billetera Virtual");
         mostrarVentanaLogin();
         inicializarAplicacion();
-        ConsumidorController consumidorController = ConsumidorController.getInstance();
-        consumidorController.consumirMensajesServicio1();
+
 
     }
 

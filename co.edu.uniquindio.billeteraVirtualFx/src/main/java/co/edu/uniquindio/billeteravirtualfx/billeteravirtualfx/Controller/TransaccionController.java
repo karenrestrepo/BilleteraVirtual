@@ -4,6 +4,8 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Servic
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Factory.ModelFactory;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta;
+
 import java.util.List;
 
 public class TransaccionController implements ITransaccionControllerService {
@@ -33,4 +35,6 @@ public class TransaccionController implements ITransaccionControllerService {
     public void registrarAcciones(String mensaje, int nivel, String accion) {
         ModelFactory.registrarAccionesSistema(mensaje, nivel, accion);
     }
+
+
 }

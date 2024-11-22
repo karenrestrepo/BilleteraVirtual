@@ -17,7 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.util.Constantes.QUEUE_NUEVA_PUBLICACION;
+import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.util.Constantes.QUEUE_NUEVA_TRANSACCION;
 
 public class TransaccionViewController {
     UsuarioDto usuarioSeleccionado;
@@ -180,23 +180,15 @@ public class TransaccionViewController {
         TransaccionDto transaccionDto = construirTransaccionDto();
         if(datosValidos(transaccionDto)) {
             if (mostrarMensajeConfirmacion("¿Estas seguro de la realización de la transacción?")) {
-                if (transaccionControllerService.crearTransaccion(transaccionDto)) {
-
                     ProductorController modelFactoryController = ProductorController.getInstance();
                     String mensaje = "";
                     mensaje += "100;";
                     mensaje += "NUEVO_PRODUCTO";
-                    modelFactoryController.producirMensaje(QUEUE_NUEVA_PUBLICACION, mensaje);
-
+                    modelFactoryController.procesarMensajeTransaccion(transaccionDto);
                     listaTransaccionesDto.add(transaccionDto);
                     mostrarMensaje("Notificación Transacción", "Transacción creado", "El Transacción se ha creado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCamposTransaccion();
                     registrarAcciones(" Transacción Creada ", 1, " La transacción se creo correctamente");
-                } else {
-                    mostrarMensaje("Notificación Transacción", "Transacción no creado", "El Transacción no se ha creado con éxito", Alert.AlertType.ERROR);
-                }
-            } else {
-                mostrarMensaje("Notificación Transacción", "Transacción no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
             }
         }
     }

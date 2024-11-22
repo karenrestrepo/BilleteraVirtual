@@ -7,6 +7,8 @@ public class Cuenta {
     private String nombreBanco;
     private String numeroCuenta;
     private TipoCuenta tipoCuenta;
+    private Double saldo;
+
 
     ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
@@ -47,6 +49,14 @@ public class Cuenta {
 
     public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
+    }
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
     }
 
     public void setTipoCuenta(TipoCuenta tipoCuenta) {

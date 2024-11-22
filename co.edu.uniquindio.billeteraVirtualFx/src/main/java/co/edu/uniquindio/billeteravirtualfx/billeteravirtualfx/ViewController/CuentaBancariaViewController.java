@@ -11,6 +11,7 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.Presu
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.BillerteraVirtual;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.TipoCuenta;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,12 +56,18 @@ public class CuentaBancariaViewController {
 
     @FXML
     private TableColumn<CuentaDto, String> tcTipoCuenta;
+    @FXML
+    private TableColumn<CuentaDto, String> tcSaldoCuenta;
+
 
     @FXML
     private TextField txtFiltrarCuentas;
 
     @FXML
     private TextField txtIdCuenta;
+
+    @FXML
+    private TextField txtSaldoCuenta;
 
     @FXML
     private TextField txtNombreBanco;
@@ -141,6 +148,7 @@ public class CuentaBancariaViewController {
             txtNombreBanco.setText(cuentaSellecionada.nombreBanco());
             txtNumeroCuenta.setText(cuentaSellecionada.numeroCuenta());
             txtTipoCuenta.setText(cuentaSellecionada.tipoCuenta().name());
+            txtSaldoCuenta.setText(String.valueOf(cuentaSellecionada.saldo()));
 
 
         }
@@ -151,6 +159,8 @@ public class CuentaBancariaViewController {
         tcNombreBanco.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreBanco()));
         tcNumeroCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().numeroCuenta()));
         tcTipoCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoCuenta().name()));
+        tcSaldoCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().saldo())));
+
     }
 
     private void actualizarCuenta() {
@@ -225,7 +235,7 @@ public class CuentaBancariaViewController {
 
         TipoCuenta tipoCuenta = null;
         try {
-            // Intentar convertir el String a un valor del enum
+
             tipoCuenta = TipoCuenta.valueOf(tipoCuentaString);
         } catch (IllegalArgumentException e) {
             // Si ocurre un error (por ejemplo, el valor no es válido), se maneja aquí
@@ -238,7 +248,8 @@ public class CuentaBancariaViewController {
                 txtIdCuenta.getText(),
                 txtNombreBanco.getText(),
                 txtNumeroCuenta.getText(),
-                tipoCuenta // Pasa el enum
+                tipoCuenta ,// Pasa el enum
+                Double.valueOf(txtSaldoCuenta.getText())
         );
     }
 

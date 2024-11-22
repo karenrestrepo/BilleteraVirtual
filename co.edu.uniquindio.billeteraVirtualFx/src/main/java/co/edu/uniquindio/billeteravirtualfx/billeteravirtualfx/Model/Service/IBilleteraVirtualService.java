@@ -40,4 +40,11 @@ public interface IBilleteraVirtualService {
     boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException;
     public boolean  verificarCuentaExistente(String id) throws CuentaException;
     public Cuenta obtenerCuenta(String id);
+
+   public void  agregarMontoo(Transaccion nuevaTransaccion) throws TransaccionException;
+
+    void retirarMontoo(Transaccion nuevaTransaccion) throws TransaccionException;
+
+    void transferirMontoo(Transaccion nuevaTransaccion) throws TransaccionException;
+
 }

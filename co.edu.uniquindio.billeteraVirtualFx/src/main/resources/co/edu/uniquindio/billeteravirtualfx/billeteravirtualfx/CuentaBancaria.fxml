@@ -28,16 +28,19 @@
                   <Label layoutX="4.0" layoutY="1.0" text="Información de las cuentas" />
                   <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
                   <Button fx:id="btnActualizarCuenta" layoutX="491.0" layoutY="227.0" mnemonicParsing="false" onAction="#onActualizarCuenta" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #a5bfde;" text="Actualizar" />
+                  <Label layoutX="34.0" layoutY="149.0" text="Saldo Cuenta: " />
+                  <TextField fx:id="txtSaldoCuenta" layoutX="133.0" layoutY="154.0" prefHeight="25.0" prefWidth="240.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="865.0">
                <children>
-                  <TableView fx:id="tableCuentas" layoutX="52.0" layoutY="69.0" prefHeight="189.0" prefWidth="772.0">
+                  <TableView fx:id="tableCuentas" layoutX="12.0" layoutY="69.0" prefHeight="189.0" prefWidth="812.0">
                      <columns>
-                        <TableColumn fx:id="tcIdCuenta" prefWidth="165.0" text="Id cuenta" />
-                        <TableColumn fx:id="tcNombreBanco" minWidth="0.0" prefWidth="184.0" text="Nombre del banco" />
-                        <TableColumn fx:id="tcNumeroCuenta" prefWidth="226.0" text="Número de cuenta" />
-                        <TableColumn fx:id="tcTipoCuenta" prefWidth="196.0" text="Tipo de cuenta" />
+                        <TableColumn fx:id="tcIdCuenta" prefWidth="124.0" text="Id cuenta" />
+                        <TableColumn fx:id="tcNombreBanco" minWidth="0.0" prefWidth="145.0" text="Nombre del banco" />
+                        <TableColumn fx:id="tcNumeroCuenta" prefWidth="189.0" text="Número de cuenta" />
+                        <TableColumn fx:id="tcTipoCuenta" prefWidth="198.0" text="Tipo de cuenta" />
+                        <TableColumn fx:id="tcSaldoCuenta" prefWidth="155.0" text="Saldo Cuenta" />
                      </columns>
                   </TableView>
                   <TextField fx:id="txtFiltrarCuentas" layoutX="94.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0" />

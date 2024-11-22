@@ -16,8 +16,6 @@ public class Transaccion implements Serializable {
     private Cuenta cuentaDestino;
     private Categoria categoria;
 
-
-
     public Transaccion() {
     }
     public Categoria getCategoria() {

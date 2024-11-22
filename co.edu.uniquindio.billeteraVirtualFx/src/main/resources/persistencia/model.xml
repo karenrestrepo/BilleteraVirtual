@@ -70,6 +70,9 @@
      <void property="numeroCuenta">
       <string>9654445</string>
      </void>
+     <void property="saldo">
+      <double>0.0</double>
+     </void>
      <void property="tipoCuenta">
       <object idref="TipoCuenta0"/>
      </void>

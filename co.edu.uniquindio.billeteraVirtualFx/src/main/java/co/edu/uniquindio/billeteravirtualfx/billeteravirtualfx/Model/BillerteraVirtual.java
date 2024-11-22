@@ -183,23 +183,44 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
 
     @Override
     public void crearTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
-        // Verificar que ambas cuentas sean válidas
+
         boolean cuentaOrigenValida = encontrarCuentaExistenteUsuario(nuevaTransaccion.getCuentaOrigen().getNumeroCuenta());
         boolean cuentaDestinoValida = encontrarCuentaExistente(nuevaTransaccion.getCuentaDestino().getNumeroCuenta());
 
-        if (cuentaOrigenValida && cuentaDestinoValida) {
-            // Verificar que no exista una transacción con el mismo ID
-            if (transaccionExiste(nuevaTransaccion.getIdTransaccion())) {
-                throw new TransaccionException("Ya existe una transacción con el mismo ID: " + nuevaTransaccion.getIdTransaccion());
+        if (transaccionExiste(nuevaTransaccion.getIdTransaccion())) {
+            throw new TransaccionException("Ya existe una transacción con el mismo ID: " + nuevaTransaccion.getIdTransaccion());
+        }
+
+        if (nuevaTransaccion.getTipo().equalsIgnoreCase("Transferir")) {
+
+            if (cuentaOrigenValida && cuentaDestinoValida) {
+                // Verificar que no exista una transacción con el mismo ID
+                // Si las verificaciones pasan, agregar la transacción a las listas
+                transferirMontoo(nuevaTransaccion);
+            }
+            else {
+                throw new TransaccionException("Una o ambas cuentas no existen.");
             }
 
-            // Si las verificaciones pasan, agregar la transacción a las listas
-            getListaTransacciones().add(nuevaTransaccion);
-            usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+        }if (nuevaTransaccion.getTipo().equalsIgnoreCase("Agregar")){
+            if (cuentaOrigenValida ) {
+                agregarMontoo(nuevaTransaccion);
+            }
 
-        } else {
-            throw new TransaccionException("Una o ambas cuentas no existen.");
+
+        }if (nuevaTransaccion.getTipo().equalsIgnoreCase("Retirar")){
+
+            if (cuentaOrigenValida) {
+                retirarMontoo(nuevaTransaccion);
+            }
+
+
+        }else{
+            throw new TransaccionException("Datos invalidos");
+
         }
+
+
     }
 
 
@@ -262,6 +283,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         System.out.println("No se encontró coincidencia");
         return null;
     }
+
 
     @Override
     public Cuenta obtenerCuentaPorNumero(String numeroCuenta) {
@@ -508,6 +530,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             cuentaExistente.setNombreBanco(cuenta.getNombreBanco());
             cuentaExistente.setNumeroCuenta(cuenta.getNumeroCuenta());
             cuentaExistente.setTipoCuenta(cuenta.getTipoCuenta());
+            cuentaExistente.setSaldo(cuenta.getSaldo());
 
 
 
@@ -550,6 +573,75 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return cuenta;
 
     }
+
+    /////// operaciones logicas de una transacción /////////////////
+
+    @Override
+    public void agregarMontoo(Transaccion nuevaTransaccion) throws TransaccionException {
+
+        Cuenta cuentaOrigen = nuevaTransaccion.getCuentaOrigen();
+
+        // verificar saldo suficiente
+        if (cuentaOrigen.getSaldo() < nuevaTransaccion.getMonto()) {
+            throw new TransaccionException("Saldo insuficiente en la cuenta de origen.");
+        }
+
+        double saldoActualizadoOrigen = cuentaOrigen.getSaldo() + nuevaTransaccion.getMonto();
+        cuentaOrigen.setSaldo(saldoActualizadoOrigen);
+
+
+        getListaTransacciones().add(nuevaTransaccion);
+        usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+
+
+    }
+
+    @Override
+    public void retirarMontoo(Transaccion nuevaTransaccion) throws TransaccionException {
+
+        Cuenta cuentaOrigen = nuevaTransaccion.getCuentaOrigen();
+        // verificar saldo suficiente
+        if (cuentaOrigen.getSaldo() < nuevaTransaccion.getMonto()) {
+            throw new TransaccionException("Saldo insuficiente en la cuenta de origen.");
+        }
+
+        double saldoActualizadoOrigen = cuentaOrigen.getSaldo() - nuevaTransaccion.getMonto();
+        cuentaOrigen.setSaldo(saldoActualizadoOrigen);
+
+        // Registrar la transacción en las listas correspondientes
+        getListaTransacciones().add(nuevaTransaccion);
+        usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+
+
+    }
+
+    @Override
+    public void transferirMontoo(Transaccion nuevaTransaccion) throws TransaccionException {
+
+        Cuenta cuentaOrigen = nuevaTransaccion.getCuentaOrigen();
+        Cuenta cuentaDestino = nuevaTransaccion.getCuentaDestino();
+        // verificar saldo suficiente
+        if (cuentaOrigen.getSaldo() < nuevaTransaccion.getMonto()) {
+            throw new TransaccionException("Saldo insuficiente en la cuenta de origen.");
+        }
+
+        double saldoActualizadoOrigen = cuentaOrigen.getSaldo() - nuevaTransaccion.getMonto();
+        cuentaOrigen.setSaldo(saldoActualizadoOrigen);
+
+        // Actualizar el saldo de la cuenta de destino (sumando el monto)
+        double saldoActualizadoDestino = cuentaDestino.getSaldo() + nuevaTransaccion.getMonto();
+        cuentaDestino.setSaldo(saldoActualizadoDestino);
+
+        // Registrar la transacción en las listas correspondientes
+        getListaTransacciones().add(nuevaTransaccion);
+        usuarioSeleccionado.getListaTransacciones().add(nuevaTransaccion);
+    }
+
+
+
+
+
+
 
 
 
