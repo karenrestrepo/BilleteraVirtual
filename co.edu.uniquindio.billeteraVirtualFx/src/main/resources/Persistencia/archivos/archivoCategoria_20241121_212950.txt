@@ -1,3 +1,5 @@
 03@@Comida@@null
 03@@Vehiculo@@Vehiculo
 02@@Transporte@@Transporte
+00009@@Comidaa@@Mes de enero
+04@@Rumba@@FIn de semana

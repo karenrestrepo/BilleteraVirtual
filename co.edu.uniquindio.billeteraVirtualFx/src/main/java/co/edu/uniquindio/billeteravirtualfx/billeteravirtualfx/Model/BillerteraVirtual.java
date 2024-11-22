@@ -580,6 +580,46 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         getListaCuentas().add(cuenta);
     }
 
+    @Override
+    public boolean verificarTransaccionExistenteA(String cuenta) throws TransaccionException {
+        if (transaccionExisteA(cuenta)) {
+            throw new TransaccionException("La cuenta de origen: " + cuenta + " no existe");
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean transaccionExisteA(String s) {
+        for (Transaccion transaccion : listaTransacciones) {
+            if (transaccion.getIdTransaccion().equalsIgnoreCase(s)) {
+                return true;  // Ya existe una transacción con el mismo ID
+            }
+
+        }
+        return false;
+    }
+
+    @Override
+    public void crearTransaccionA(Transaccion transaccion) throws TransaccionException {
+        // Verificar que ambas cuentas sean válidas
+
+        boolean cuentaValida = encontrarCuentaExistente(transaccion.getCuentaDestino().getNumeroCuenta());
+
+        if (cuentaValida) {
+            // Verificar que no exista una transacción con el mismo ID
+            if (transaccionExisteA(transaccion.getIdTransaccion())) {
+                throw new TransaccionException("Ya existe una transacción con el mismo ID: " + transaccion.getIdTransaccion());
+            }
+
+            // Si las verificaciones pasan, agregar la transacción a las listas
+            getListaTransacciones().add(transaccion);
+
+        } else {
+            throw new TransaccionException("Una o ambas cuentas no existen.");
+        }
+    }
+
     private Cuenta obtenerCuentaA(String idCuenta) {
         Cuenta cuenta = null;
         for (Cuenta cuenta1 : listaCuentas ) {

@@ -428,6 +428,41 @@ public class ModelFactory implements IModelFactoryService {
         return idExiste;
     }
 
+    @Override
+    public boolean crearTransaccionA(TransaccionDto transaccionDto) {
+        try {
+            // Verificar si la cuenta de origen existe
+            if (!billerteraVirtual.verificarTransaccionExistenteA(transaccionDto.cuentaOrigen())) {
+                // Verificar si la transacción ya existe
+                if (billerteraVirtual.transaccionExisteA(transaccionDto.idTransaccion())) {
+                    throw new TransaccionException("La transacción con el ID: " + transaccionDto.idTransaccion() + " ya existe.");
+                }
+
+                // Si las verificaciones pasaron, crear la transacción
+                Transaccion transaccion = transaccionMapper.transaccionDtoToTransaccion(transaccionDto);
+
+                // Iniciar la transacción para crear la nueva transacción en la billetera
+                getBillerteraVirtual().crearTransaccionA(transaccion);
+
+                // Registrar acción en el sistema
+                registrarAccionesSistema("Transacción realizada: " + transaccion.getIdTransaccion(), 1, "crearTransaccion");
+
+                // Guardar cambios en la persistencia y los archivos
+                Persistencia.guardarTransacciones(getBillerteraVirtual().getListaTransacciones());
+                guardarResourceXML();
+            }
+            return true;
+        } catch (TransaccionException e) {
+            // Log de error
+            registrarAccionesSistema(e.getMessage(), 3, "crearTransaccion");
+            return false;
+        } catch (IOException e) {
+            // Si ocurre un error en la persistencia, revertir cambios y lanzar error
+            registrarAccionesSistema("Error al guardar las transacciones: " + e.getMessage(), 3, "crearTransaccion");
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void guardarResourceXML() {
         Persistencia.guardarRecursoBilleteraXML(billerteraVirtual);

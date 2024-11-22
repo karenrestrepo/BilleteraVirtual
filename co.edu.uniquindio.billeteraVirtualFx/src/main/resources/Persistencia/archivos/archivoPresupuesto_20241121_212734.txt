@@ -1,4 +1,5 @@
 02@@Medicamentos@@20000.0@@0.0
 0A@@Hospital@@100000.0@@0.0
 01@@Alimentos@@20000.0@@0.0
-0C@@Alimentos@@150000.0@@0.0
+0987767@@Gastos diciembre@@1000000.0@@0.0
+0C@@Salidas@@50000.0@@0.0

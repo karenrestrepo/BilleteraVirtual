@@ -22,7 +22,7 @@ public class TransaccionAdmController implements ITransaccionAdmControllerServic
     @Override
     public boolean crearTransaccion(TransaccionDto transaccionDto) {
 
-        return modelFactory.crearTransaccion(transaccionDto);
+        return modelFactory.crearTransaccionA(transaccionDto);
     }
     public List<CategoriaDto> obtenerCategoria(){
         return modelFactory.obtenerCategoriasAdm();

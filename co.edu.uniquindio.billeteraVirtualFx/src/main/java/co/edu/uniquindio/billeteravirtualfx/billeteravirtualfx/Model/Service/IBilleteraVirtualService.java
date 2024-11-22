@@ -46,4 +46,10 @@ public interface IBilleteraVirtualService {
     boolean eliminarCuentaA(String idCuenta) throws CuentaException;
 
     void crearCuentaAdm(Cuenta cuenta);
+
+    boolean verificarTransaccionExistenteA(String id) throws TransaccionException;
+
+    boolean transaccionExisteA(String s);
+
+    void crearTransaccionA(Transaccion transaccion) throws TransaccionException;
 }
