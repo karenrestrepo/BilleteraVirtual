@@ -835,6 +835,166 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion15">
+     <void property="categoria">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria">
+       <void property="nombre">
+        <string>Vehiculo</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>4500555</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-22</string>
+     </void>
+     <void property="idTransaccion">
+      <string>0AA</string>
+     </void>
+     <void property="monto">
+      <double>10000.0</double>
+     </void>
+     <void property="tipo">
+      <string>DEPOSITO</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion16">
+     <void property="categoria">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria">
+       <void property="nombre">
+        <string>Vehiculo</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>67858</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-22</string>
+     </void>
+     <void property="idTransaccion">
+      <string>0A2</string>
+     </void>
+     <void property="monto">
+      <double>10000.0</double>
+     </void>
+     <void property="tipo">
+      <string>DEPOSITO</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion17">
+     <void property="categoria">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria">
+       <void property="nombre">
+        <string>Vehiculo</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>67858</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-22</string>
+     </void>
+     <void property="idTransaccion">
+      <string>0A3</string>
+     </void>
+     <void property="monto">
+      <double>10000.0</double>
+     </void>
+     <void property="tipo">
+      <string>DEPOSITO</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Transaccion" id="Transaccion18">
+     <void property="categoria">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Categoria">
+       <void property="nombre">
+        <string>Vehiculo</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>67858</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Model.Cuenta">
+       <void property="numeroCuenta">
+        <string>9654445</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>Personal</string>
+     </void>
+     <void property="fecha">
+      <string>2024-11-22</string>
+     </void>
+     <void property="idTransaccion">
+      <string>0A4</string>
+     </void>
+     <void property="monto">
+      <double>10000.0</double>
+     </void>
+     <void property="tipo">
+      <string>DEPOSITO</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="listaUsuarios">
    <void method="add">
@@ -1088,6 +1248,18 @@
       </void>
       <void method="add">
        <object idref="Transaccion8"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion15"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion16"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion17"/>
+      </void>
+      <void method="add">
+       <object idref="Transaccion18"/>
       </void>
      </void>
      <void property="nombre">

@@ -2,9 +2,10 @@ module co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.mapstruct;
-    requires java.logging;
     requires java.desktop;
     requires com.rabbitmq.client;
+    requires com.google.gson;
+    requires java.logging;
 
 
     opens co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx to javafx.fxml;

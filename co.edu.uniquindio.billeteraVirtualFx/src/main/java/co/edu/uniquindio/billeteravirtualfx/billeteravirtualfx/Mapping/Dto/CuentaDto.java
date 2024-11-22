@@ -7,7 +7,8 @@ public record CuentaDto (
         String idCuenta,
         String nombreBanco,
         String numeroCuenta,
-        TipoCuenta tipoCuenta
+        TipoCuenta tipoCuenta,
+        double saldo
 
 
 ){

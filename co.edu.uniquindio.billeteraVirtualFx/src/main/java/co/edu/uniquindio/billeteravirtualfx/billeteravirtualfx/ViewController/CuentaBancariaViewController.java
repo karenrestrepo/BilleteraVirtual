@@ -55,6 +55,8 @@ public class CuentaBancariaViewController {
 
     @FXML
     private TableColumn<CuentaDto, String> tcTipoCuenta;
+    @FXML
+    private TableColumn<CuentaDto, String> tcSaldo;
 
     @FXML
     private TextField txtFiltrarCuentas;
@@ -70,6 +72,8 @@ public class CuentaBancariaViewController {
 
     @FXML
     private TextField txtTipoCuenta;
+    @FXML
+    private TextField txtSaldo;
 
     @FXML
     void onActualizarCuenta(ActionEvent event) {
@@ -141,6 +145,7 @@ public class CuentaBancariaViewController {
             txtNombreBanco.setText(cuentaSellecionada.nombreBanco());
             txtNumeroCuenta.setText(cuentaSellecionada.numeroCuenta());
             txtTipoCuenta.setText(cuentaSellecionada.tipoCuenta().name());
+            txtSaldo.setText(String.valueOf(cuentaSellecionada.saldo()));
 
 
         }
@@ -151,6 +156,7 @@ public class CuentaBancariaViewController {
         tcNombreBanco.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreBanco()));
         tcNumeroCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().numeroCuenta()));
         tcTipoCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoCuenta().name()));
+        tcSaldo.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().saldo())));
     }
 
     private void actualizarCuenta() {
@@ -238,7 +244,8 @@ public class CuentaBancariaViewController {
                 txtIdCuenta.getText(),
                 txtNombreBanco.getText(),
                 txtNumeroCuenta.getText(),
-                tipoCuenta // Pasa el enum
+                tipoCuenta, // Pasa el enum
+                Double.parseDouble(txtSaldo.getText())
         );
     }
 
@@ -248,6 +255,7 @@ public class CuentaBancariaViewController {
         txtNombreBanco.setText("");
         txtNumeroCuenta.setText("");
         txtTipoCuenta.setText("");
+        txtSaldo.setText("");
 
 
 

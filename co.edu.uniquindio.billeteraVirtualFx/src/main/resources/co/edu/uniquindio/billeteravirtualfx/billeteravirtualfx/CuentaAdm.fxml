@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.ViewController.CuentaAdmViewController">
    <children>
       <SplitPane dividerPositions="0.6130952380952381" orientation="VERTICAL" prefHeight="506.0" prefWidth="887.0">
@@ -27,6 +26,8 @@
                   <Label layoutX="4.0" layoutY="1.0" text="Información de las cuentas" />
                   <Separator layoutX="-12.0" layoutY="17.0" prefHeight="5.0" prefWidth="880.0" />
                   <Button fx:id="btnActualizarCuenta" layoutX="481.0" layoutY="252.0" mnemonicParsing="false" onAction="#onActualizarCuenta" prefHeight="25.0" prefWidth="102.0" text="Actualizar" />
+                  <Label layoutX="75.0" layoutY="151.0" text="Saldo:" />
+                  <TextField fx:id="txtSaldo" layoutX="133.0" layoutY="147.0" prefHeight="25.0" prefWidth="240.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="885.0">

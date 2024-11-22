@@ -508,6 +508,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
             cuentaExistente.setNombreBanco(cuenta.getNombreBanco());
             cuentaExistente.setNumeroCuenta(cuenta.getNumeroCuenta());
             cuentaExistente.setTipoCuenta(cuenta.getTipoCuenta());
+            cuentaExistente.setSaldo(cuenta.getSaldo());
 
 
 
@@ -550,6 +551,8 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         return cuenta;
 
     }
+
+
 
     @Override
     public boolean verificarCuentaExistenteA(String id) throws CuentaException {
@@ -620,7 +623,7 @@ public class BillerteraVirtual implements IBilleteraVirtualService, Serializable
         }
     }
 
-    private Cuenta obtenerCuentaA(String idCuenta) {
+    public Cuenta obtenerCuentaA(String idCuenta) {
         Cuenta cuenta = null;
         for (Cuenta cuenta1 : listaCuentas ) {
             if(cuenta1.getNumeroCuenta().equalsIgnoreCase(idCuenta)){

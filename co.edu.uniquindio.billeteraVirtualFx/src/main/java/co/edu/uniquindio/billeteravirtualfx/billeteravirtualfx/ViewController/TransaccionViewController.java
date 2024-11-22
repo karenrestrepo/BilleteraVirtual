@@ -9,7 +9,9 @@ import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Controller.Transa
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.CategoriaDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.TransaccionDto;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.Mapping.Dto.UsuarioDto;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Confi.TransactionMessage;
 import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Productor.ProductorController;
+import co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.Productor.TransactionService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,7 @@ import javafx.scene.control.*;
 import static co.edu.uniquindio.billeteravirtualfx.billeteravirtualfx.RabbitMQ.util.Constantes.QUEUE_NUEVA_PUBLICACION;
 
 public class TransaccionViewController {
+    private TransactionService transactionService;
     UsuarioDto usuarioSeleccionado;
     TransaccionController transaccionControllerService;
     ObservableList<CategoriaDto> listaCategorias = FXCollections.observableArrayList();
@@ -106,6 +109,9 @@ public class TransaccionViewController {
         transaccionControllerService = new TransaccionController();
         initView();
         cargandoCategorias();
+        transactionService = new TransactionService();
+        // Iniciar consumidor en un hilo separado
+        new Thread(() -> transactionService.startTransactionConsumer()).start();
 
     }
 
@@ -182,11 +188,8 @@ public class TransaccionViewController {
             if (mostrarMensajeConfirmacion("¿Estas seguro de la realización de la transacción?")) {
                 if (transaccionControllerService.crearTransaccion(transaccionDto)) {
 
-                    ProductorController modelFactoryController = ProductorController.getInstance();
-                    String mensaje = "";
-                    mensaje += "100;";
-                    mensaje += "NUEVO_PRODUCTO";
-                    modelFactoryController.producirMensaje(QUEUE_NUEVA_PUBLICACION, mensaje);
+                    TransactionMessage mensaje = new TransactionMessage(transaccionDto);
+                    transactionService.processTransaction(mensaje);
 
                     listaTransaccionesDto.add(transaccionDto);
                     mostrarMensaje("Notificación Transacción", "Transacción creado", "El Transacción se ha creado con éxito", Alert.AlertType.INFORMATION);

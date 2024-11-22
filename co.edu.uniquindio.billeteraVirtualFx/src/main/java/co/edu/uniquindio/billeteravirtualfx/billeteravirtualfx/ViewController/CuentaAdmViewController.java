@@ -54,6 +54,8 @@ public class CuentaAdmViewController {
 
     @FXML
     private TextField txtTipoCuenta;
+    @FXML
+    private TextField txtSaldo;
 
     @FXML
     void onActualizarCuenta(ActionEvent event) {
@@ -92,6 +94,7 @@ public class CuentaAdmViewController {
         txtNumeroCuenta.setText("");
         txtTipoCuenta.setText("");
         txtNombreBanco.setText("");
+        txtSaldo.setText("");
     }
 
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
@@ -151,7 +154,8 @@ public class CuentaAdmViewController {
                 txtIdCuenta.getText(),
                 txtNombreBanco.getText(),
                 txtNumeroCuenta.getText(),
-                tipoCuenta // Pasa el enum
+                tipoCuenta, // Pasa el enum
+                Double.parseDouble(txtSaldo.getText())
         );
     }
 
